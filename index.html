@@ -55,6 +55,7 @@ footer{background:#203d30;color:#f4f3eb;padding:42px 0 20px}.footgrid{display:gr
 {id:7,name:"ماشین آفرود کوچک",category:"اسباب‌بازی",subcategory:"ماشین و وسایل نقلیه",cat:"ماشین و وسایل نقلیه",price:540000,tag:"ماجراجویی",img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80"},
 {id:8,name:"قطار چوبی رنگی",category:"اسباب‌بازی",subcategory:"سازه‌ها و ساختنی",cat:"سازه‌ها و ساختنی",price:780000,tag:"چوبی",img:"https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=700&q=80"}];
 const stored=JSON.parse(localStorage.getItem("senobar-products")||"null");
+if(!stored)localStorage.setItem("senobar-products",JSON.stringify(sampleProducts));
 let products=(stored||sampleProducts).map(p=>({...p,category:p.category||"اسباب‌بازی",subcategory:p.subcategory||p.cat||"سایر"}));
 let cart=JSON.parse(localStorage.getItem("senobar-cart")||"{}");
 const departments=[["اسباب‌بازی","🧸","ماشین، عروسک، سازه و بازی فکری"],["خانه و آشپزخانه","🏠","وسایل خانه، ظروف و ابزار آشپزی"],["پوشاک","👕","لباس و پوشیدنی"],["اکسسوری","👜","لوازم جانبی و کاربردی"],["دیجیتال","🎧","لوازم و تجهیزات دیجیتال"],["هدیه و دکوری","🎁","هدیه‌ها و وسایل تزئینی"],["کتاب و لوازم‌التحریر","📚","کتاب، دفتر و نوشت‌افزار"],["سایر محصولات","📦","محصولات متنوع دیگر"]];
