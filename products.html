@@ -8,10 +8,10 @@ const sample=[
 {id:6,name:"بازی فکری جورچین",category:"اسباب‌بازی",subcategory:"فکری و آموزشی",cat:"فکری و آموزشی",price:215000,tag:"آموزشی",img:"https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=700&q=80"},
 {id:7,name:"ماشین آفرود کوچک",category:"اسباب‌بازی",subcategory:"ماشین و وسایل نقلیه",cat:"ماشین و وسایل نقلیه",price:540000,tag:"ماجراجویی",img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80"},
 {id:8,name:"قطار چوبی رنگی",category:"اسباب‌بازی",subcategory:"سازه‌ها و ساختنی",cat:"سازه‌ها و ساختنی",price:780000,tag:"چوبی",img:"https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=700&q=80"}];
-const all=(JSON.parse(localStorage.getItem("senobar-products")||"null")||sample).map(p=>({...p,category:p.category||"اسباب‌بازی",subcategory:p.subcategory||p.cat||"سایر"}));
+const all=(JSON.parse(localStorage.getItem("senobar-products")||"null")||sample).filter(p=>(p.category||"اسباب‌بازی")==="اسباب‌بازی").map(p=>({...p,category:"اسباب‌بازی",subcategory:p.subcategory||p.cat||"سایر"}));
 const params=new URLSearchParams(location.search),category=params.get("category"),subcategory=params.get("subcategory"),q=params.get("q")||"";
-let list=all.filter(p=>(!category||p.category===category)&&(!subcategory||p.subcategory===subcategory)&&(!q||p.name.toLowerCase().includes(q.toLowerCase())));
-const title=subcategory||category||"همه محصولات";
+let list=all.filter(p=>p.category==="اسباب‌بازی"&&(!subcategory||p.subcategory===subcategory)&&(!q||p.name.toLowerCase().includes(q.toLowerCase())));
+const title=subcategory||"همه اسباب‌بازی‌ها";
 document.querySelector("h1").textContent=title;
 document.querySelector(".crumb").innerHTML='<a href="index.html">خانه</a>　›　<a href="index.html#categories">دسته‌بندی‌ها</a>　›　'+title;
 const toman=n=>new Intl.NumberFormat("fa-IR").format(n)+" تومان";
