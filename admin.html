@@ -37,4 +37,5 @@ function edit(id){const p=items.find(x=>x.id===id);if(!p)return;$("editId").valu
 function removeItem(id){if(!confirm("این محصول حذف شود؟"))return;items=items.filter(p=>p.id!==id);persist()}
 $("cancelEdit").onclick=()=>{$("productForm").reset();$("editId").value="";selectedImage="";$("imagePreview").removeAttribute("src");$("imagePreview").style.display="none";$("submitBtn").textContent="ذخیره محصول";$("cancelEdit").classList.add("hidden")};
 $("reset").onclick=()=>{if(!confirm("محصولات نمونه بازگردانی شوند؟"))return;items=defaults;persist()};
-draw();</body></html>
+draw();</script>
+</body></html>
