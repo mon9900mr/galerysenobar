@@ -69,4 +69,5 @@ function showToast(msg){const t=document.getElementById("toast");t.textContent=m
 document.getElementById("search").addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.value.trim())location.href="products.html?q="+encodeURIComponent(e.target.value.trim())});
 document.getElementById("cartOpen").onclick=()=>location.href="products.html#cart";
 renderCategories();renderProducts();updateCart();
+</script>
 </body></html>
