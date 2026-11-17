@@ -128,23 +128,23 @@ const categories=[
  {name:"عروسک و پولیشی",emoji:"🧸"},
  {name:"فکری و آموزشی",emoji:"🧩"},
  {name:"بازی‌های فضای باز",emoji:"⚽"},
- {name:"موسیقی و ابزار کودک",emoji:"🎵"}
+ {name:"اسباب‌بازی‌های دیگر",emoji:"🎲"}
 ];
 const sample=[
-{id:1,name:"ماشین مسابقه‌ای",category:"اسباب‌بازی",subcategory:"ماشین و وسایل نقلیه",cat:"ماشین و وسایل نقلیه",price:320000,stock:12,tag:"پرفروش",img:"https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=700&q=80"},
-{id:2,name:"آشپزخانه کوچولو",category:"اسباب‌بازی",subcategory:"آشپزخانه و خانه‌بازی",cat:"آشپزخانه و خانه‌بازی",price:890000,stock:5,tag:"جدید",img:"https://images.unsplash.com/photo-1599629954294-14df9ec8a8c9?auto=format&fit=crop&w=700&q=80"},
-{id:3,name:"بلوک‌های لگو رنگی",category:"اسباب‌بازی",subcategory:"لگو و ساختنی",cat:"لگو و ساختنی",price:690000,stock:8,tag:"خلاقیت",img:"https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=700&q=80"},
-{id:4,name:"خانه‌سازی چوبی",category:"اسباب‌بازی",subcategory:"خانه‌سازی و سازه‌ها",cat:"خانه‌سازی و سازه‌ها",price:780000,stock:4,tag:"چوبی",img:"https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=700&q=80"},
-{id:5,name:"خرس پولیشی مهربون",category:"اسباب‌بازی",subcategory:"عروسک و پولیشی",cat:"عروسک و پولیشی",price:485000,stock:9,tag:"هدیه",img:"https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=700&q=80"},
-{id:6,name:"پازل رنگین‌کمان",category:"اسباب‌بازی",subcategory:"فکری و آموزشی",cat:"فکری و آموزشی",price:275000,stock:15,tag:"آموزشی",img:"https://images.unsplash.com/photo-1606503153255-59d8b8b821b1?auto=format&fit=crop&w=700&q=80"}
-];
+{id:1,name:"ماشین فلزی آبی",category:"اسباب‌بازی",subcategory:"ماشین و وسایل نقلیه",cat:"ماشین و وسایل نقلیه",price:0,stock:0,tag:"ماشین",img:"https://i5.walmartimages.com/seo/YEYUN-Diecast-Car1-32-Shelby-GT350-Model-Car-Pull-Back-Collectible-Toy-Car-with-Sound-and-Light-Toy-Vehicle-for-Boys-Adults-Gift-Blue_886b8c41-8145-4013-80aa-6b5d937541f7.0a0bc47ef38be8294ea5a97ac5abea4f.jpeg"},
+{id:2,name:"آشپزخانه بازی کودک",category:"اسباب‌بازی",subcategory:"آشپزخانه و خانه‌بازی",cat:"آشپزخانه و خانه‌بازی",price:0,stock:0,tag:"خانه‌بازی",img:"https://i5.walmartimages.com/seo/Spark-Create-Imagine-Play-Kitchen-with-18-Piece-Accessory-Play-Set-Pink_11bb370e-78dd-4f04-8835-eb6423eeb48b_1.357035291d9f18e216e5eebcb40fe322.jpeg"},
+{id:3,name:"بلوک‌های رنگی ساختنی",category:"اسباب‌بازی",subcategory:"لگو و ساختنی",cat:"لگو و ساختنی",price:0,stock:0,tag:"ساختنی",img:"https://miro.medium.com/v2/resize:fit:1400/1*rPuYOAsFB-y88COgvGLrBQ.jpeg"},
+{id:4,name:"خرس پولیشی قهوه‌ای",category:"اسباب‌بازی",subcategory:"عروسک و پولیشی",cat:"عروسک و پولیشی",price:0,stock:0,tag:"عروسک",img:"https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAxL3Jhd3BpeGVsb2ZmaWNlMTVfcGhvdG9fb2ZfYV90ZWRkeWJlYXJfdG95c2luZ2xlX3BuZ19pc29sYXRlZF9vbl9kYjdiNDYwYS0yN2NlLTQzY2EtOWIxMC0wMzhhNTlhNTc5ZTVfMS5qcGc.jpg"},
+{id:5,name:"پازل و بازی فکری",category:"اسباب‌بازی",subcategory:"فکری و آموزشی",cat:"فکری و آموزشی",price:0,stock:0,tag:"فکری",img:"https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=900&q=85"},
+{id:6,name:"خانه‌سازی و سازه کودک",category:"اسباب‌بازی",subcategory:"خانه‌سازی و سازه‌ها",cat:"خانه‌سازی و سازه‌ها",price:0,stock:0,tag:"سازه",img:"https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=900&q=85"}
+]
 const KEY="senobar-products";
 const money=n=>new Intl.NumberFormat("fa-IR").format(Number(n)||0)+" تومان";
 const num=n=>new Intl.NumberFormat("fa-IR").format(Number(n)||0);
 const $=id=>document.getElementById(id);
 const escapeHTML=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 let products=loadProducts(),selectedImage="";
-function loadProducts(){try{const data=JSON.parse(localStorage.getItem(KEY));return (Array.isArray(data)?data:sample).map((p,i)=>({...p,id:p.id??Date.now()+i,category:"اسباب‌بازی",subcategory:p.subcategory||p.cat||"سایر",stock:Number(p.stock??1)}))}catch{return sample.map(p=>({...p}))}}
+function loadProducts(){try{if(localStorage.getItem("senobar-catalog-version")!=="2"){localStorage.setItem(KEY,JSON.stringify(sample));localStorage.setItem("senobar-catalog-version","2")}const data=JSON.parse(localStorage.getItem(KEY));return (Array.isArray(data)?data:sample).map((p,i)=>({...p,id:p.id??Date.now()+i,category:"اسباب‌بازی",subcategory:p.subcategory||p.cat||"سایر",stock:Number(p.stock??0)}))}catch{return sample.map(p=>({...p}))}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(products));renderAll();toast("تغییرات ذخیره شد")}catch(e){toast("فضای ذخیره مرورگر کافی نیست؛ عکس کوچک‌تری انتخاب کن")}}
 function toast(message){$("toast").textContent=message;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),2300)}
 function fillCategorySelects(){const opts=categories.map(c=>'<option value="'+escapeHTML(c.name)+'">'+c.emoji+" "+escapeHTML(c.name)+"</option>").join("");$("pCategory").innerHTML=opts;$("categoryFilter").innerHTML='<option value="">همه دسته‌ها</option>'+opts}
