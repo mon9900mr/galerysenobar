@@ -33,7 +33,7 @@
   <button data-page="categories"><span class="ico">▤</span>دسته‌بندی‌ها</button>
   <button data-page="orders"><span class="ico">▧</span>سفارش‌ها</button>
   <button data-page="customers"><span class="ico">♙</span>مشتریان</button>
-  <button data-page="reports"><span class="ico">▥</span>گزارش‌ها</button>
+  <button data-page="reports"><span class="ico">▥</span>گزارش‌ها</button>\n  <button data-page="owner"><span class="ico">✎</span>ویرایش ظاهر سایت</button>
  </nav></div>
  <div class="navgroup"><small>سایر</small><nav class="nav"><button data-page="settings"><span class="ico">⚙</span>تنظیمات</button><a class="btn" href="index.html" style="text-align:center;margin-top:5px">← مشاهده فروشگاه</a></nav></div>
  <div class="sidebottom">گالری صنوبر<br>پنل مدیریت نسخه آزمایشی</div>
@@ -90,6 +90,27 @@
    <div class="stats"><div class="stat"><div class="stathead">تعداد محصولات</div><strong id="reportCount">۰</strong></div><div class="stat"><div class="stathead">میانگین قیمت</div><strong id="reportAverage">۰</strong></div><div class="stat"><div class="stathead">گران‌ترین محصول</div><strong id="reportMax" style="font-size:14px">—</strong></div><div class="stat"><div class="stathead">ارزان‌ترین محصول</div><strong id="reportMin" style="font-size:14px">—</strong></div></div>
    <div class="panel"><div class="panelhead"><h2>توزیع محصولات بر اساس دسته</h2></div><div class="bars" id="reportBars"></div></div>
   </section>
+  <section class="section" id="page-owner">
+   <div class="pagehead"><div><h1>ویرایش ظاهر سایت</h1><p>متن‌ها و تصویر پیش‌فرض صفحه اصلی را تغییر بده.</p></div></div>
+   <div class="notice">نسخه فعلی فقط روی همین مرورگر ذخیره می‌کند و قفل مالکیت امن ندارد؛ هر بازدیدکننده‌ای که به این صفحه برسد می‌تواند ابزار محلی را ببیند. برای محافظت واقعی از مالک، باید پس از خرید هاست، ورود و سطح دسترسی OWNER در بک‌اند فعال شود.</div>
+   <div class="panel"><div class="panelhead"><div><h2>متن‌های پیش‌فرض فروشگاه</h2><p>تغییرات پس از ذخیره در صفحه اصلی همین مرورگر نمایش داده می‌شوند.</p></div></div>
+    <form id="siteForm" class="formgrid">
+     <div class="field"><label for="sBrand">نام فروشگاه</label><input id="sBrand" maxlength="60" required></div>
+     <div class="field"><label for="sSubtitle">متن زیر نام فروشگاه</label><input id="sSubtitle" maxlength="90"></div>
+     <div class="field full"><label for="sTopline">نوار پیام بالای سایت</label><input id="sTopline" maxlength="140"></div>
+     <div class="field"><label for="sEyebrow">متن کوتاه بالای عنوان اصلی</label><input id="sEyebrow" maxlength="90"></div>
+     <div class="field"><label for="sHeroTitle">عنوان اصلی صفحه (متن ساده)</label><input id="sHeroTitle" maxlength="120"></div>
+     <div class="field full"><label for="sHeroText">توضیح صفحه اصلی</label><textarea id="sHeroText" maxlength="400"></textarea></div>
+     <div class="field"><label for="sBannerTitle">عنوان بنر پایین صفحه</label><input id="sBannerTitle" maxlength="100"></div>
+     <div class="field"><label for="sBannerText">توضیح بنر پایین صفحه</label><input id="sBannerText" maxlength="180"></div>
+     <div class="field full"><label for="sAbout">متن درباره فروشگاه</label><textarea id="sAbout" maxlength="500"></textarea></div>
+     <div class="field full"><label for="sContact">اطلاعات تماس</label><input id="sContact" maxlength="180"></div>
+     <div class="field full"><label>تصویر اصلی صفحه</label><div class="upload"><img class="preview" id="siteImagePreview" alt="پیش‌نمایش تصویر اصلی"><div><input id="siteImage" type="file" accept="image/png,image/jpeg,image/webp"><div class="muted" style="font-size:9px;margin-top:6px">تصویر جدید به‌صورت محلی فشرده و ذخیره می‌شود.</div></div></div></div>
+     <div class="field full actions"><button class="btn" type="submit">ذخیره تغییرات ظاهر سایت</button><button class="btn ghost" type="button" onclick="resetSiteContent()">بازگردانی متن‌های پیش‌فرض</button></div>
+    </form>
+   </div>
+   <div class="panel"><div class="panelhead"><div><h2>ویرایش تصاویر محصولات</h2><p>برای تغییر عکس هر محصول، از بخش محصولات گزینه ویرایش را بزن و عکس جدید بارگذاری کن.</p></div><button class="btn soft" onclick="go('products')">رفتن به محصولات</button></div></div>
+  </section>
   <section class="section" id="page-settings">
    <div class="pagehead"><div><h1>تنظیمات فروشگاه</h1><p>تنظیمات پایه این نسخه آزمایشی</p></div></div>
    <div class="panel"><div class="panelhead"><h2>اطلاعات فروشگاه</h2></div><div class="formgrid"><div class="field"><label>نام فروشگاه</label><input class="control" value="گالری صنوبر" readonly></div><div class="field"><label>گروه محصولات</label><input class="control" value="اسباب‌بازی" readonly></div><div class="field"><label>واحد قیمت</label><input class="control" value="تومان" readonly></div><div class="field"><label>روش ذخیره‌سازی</label><input class="control" value="LocalStorage مرورگر" readonly></div></div></div>
@@ -127,7 +148,7 @@ function loadProducts(){try{const data=JSON.parse(localStorage.getItem(KEY));ret
 function save(){try{localStorage.setItem(KEY,JSON.stringify(products));renderAll();toast("تغییرات ذخیره شد")}catch(e){toast("فضای ذخیره مرورگر کافی نیست؛ عکس کوچک‌تری انتخاب کن")}}
 function toast(message){$("toast").textContent=message;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),2300)}
 function fillCategorySelects(){const opts=categories.map(c=>'<option value="'+escapeHTML(c.name)+'">'+c.emoji+" "+escapeHTML(c.name)+"</option>").join("");$("pCategory").innerHTML=opts;$("categoryFilter").innerHTML='<option value="">همه دسته‌ها</option>'+opts}
-function go(page){document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));$("page-"+page).classList.add("active");document.querySelectorAll("[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===page));const labels={dashboard:"داشبورد",products:"محصولات",categories:"دسته‌بندی‌ها",orders:"سفارش‌ها",customers:"مشتریان",reports:"گزارش‌ها",settings:"تنظیمات"};$("crumb").textContent=labels[page];window.scrollTo({top:0,behavior:"smooth"})}
+function go(page){document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));$("page-"+page).classList.add("active");document.querySelectorAll("[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===page));const labels={dashboard:"داشبورد",products:"محصولات",categories:"دسته‌بندی‌ها",orders:"سفارش‌ها",customers:"مشتریان",reports:"گزارش‌ها",owner:"ویرایش ظاهر سایت",settings:"تنظیمات"};$("crumb").textContent=labels[page];window.scrollTo({top:0,behavior:"smooth"})}
 document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.page)));
 function categoryCount(name){return products.filter(p=>(p.subcategory||p.cat)===name).length}
 function renderBars(target){const max=Math.max(1,...categories.map(c=>categoryCount(c.name)));$(target).innerHTML=categories.map(c=>'<div class="barrow"><span>'+c.emoji+" "+escapeHTML(c.name)+'</span><div class="track"><div class="fill" style="width:'+(categoryCount(c.name)/max*100)+'%"></div></div><b>'+num(categoryCount(c.name))+'</b></div>').join("")}
@@ -156,5 +177,12 @@ function download(name,data,type){const blob=new Blob([data],{type}),url=URL.cre
 function exportProducts(){const rows=[["نام محصول","دسته‌بندی","قیمت تومان","موجودی"],...products.map(p=>[p.name,p.subcategory||p.cat,p.price,p.stock??0])];const csv="\uFEFF"+rows.map(r=>r.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\n");download("senobar-products.csv",csv,"text/csv;charset=utf-8")}
 function backupProducts(){download("senobar-products-backup.json",JSON.stringify(products,null,2),"application/json")}
 function resetProducts(){if(!confirm("فهرست فعلی با محصولات نمونه جایگزین شود؟"))return;products=sample.map(p=>({...p}));save()}
-fillCategorySelects();renderAll();
+function siteDefaults(){return {brand:"گالری صنوبر",subtitle:"دنیای بازی، خلاقیت و لبخند",topline:"با بازی، دنیای تازه‌ای بساز! · فروشگاه تخصصی اسباب‌بازی",heroEyebrow:"برای لحظه‌های شاد و خلاقانه",heroTitle:"دنیای بازی، از صنوبر شروع می‌شود",heroText:"از ماشین و لگو تا عروسک و بازی‌های فکری؛ دسته‌بندی موردعلاقه‌ات را پیدا کن و دنیای بازی را کشف کن.",heroImage:"https://i5.walmartimages.com/seo/YEYUN-Diecast-Car1-32-Shelby-GT350-Model-Car-Pull-Back-Collectible-Toy-Car-with-Sound-and-Light-Toy-Vehicle-for-Boys-Adults-Gift-Blue_886b8c41-8145-4013-80aa-6b5d937541f7.0a0bc47ef38be8294ea5a97ac5abea4f.jpeg",bannerTitle:"وقتشه بازی شروع بشه!",bannerText:"اسباب‌بازی مناسب برای خیال‌پردازی، یادگیری و لحظه‌های قشنگ.",about:"گالری صنوبر، فروشگاهی تخصصی برای دنیای رنگارنگ اسباب‌بازی‌ها؛ از بازی‌های فکری تا ساختنی‌ها و عروسک‌های دوست‌داشتنی.",contact:"اطلاعات تماس فروشگاه به‌زودی تکمیل می‌شود."}}
+function loadSiteContent(){try{return {...siteDefaults(),...(JSON.parse(localStorage.getItem("senobar-site-content"))||{})}}catch{return siteDefaults()}}
+let siteImageData="";
+function fillSiteForm(){const c=loadSiteContent();const map={sBrand:"brand",sSubtitle:"subtitle",sTopline:"topline",sEyebrow:"heroEyebrow",sHeroTitle:"heroTitle",sHeroText:"heroText",sBannerTitle:"bannerTitle",sBannerText:"bannerText",sAbout:"about",sContact:"contact"};Object.entries(map).forEach(([id,key])=>$(id).value=c[key]||"");$("siteImagePreview").src=c.heroImage||"";$("siteImagePreview").style.display=c.heroImage?"block":"none"}
+function resetSiteContent(){if(!confirm("متن‌ها و تصویر پیش‌فرض سایت به حالت اولیه برگردند؟"))return;localStorage.removeItem("senobar-site-content");siteImageData="";fillSiteForm();toast("محتوای پیش‌فرض بازگردانی شد")}
+$("siteImage").addEventListener("change",async e=>{const file=e.target.files[0];if(!file)return;try{siteImageData=await compressImage(file);$("siteImagePreview").src=siteImageData;$("siteImagePreview").style.display="block"}catch(err){alert(err.message);e.target.value=""}});
+$("siteForm").addEventListener("submit",e=>{e.preventDefault();const old=loadSiteContent();const c={...old,brand:$("sBrand").value.trim(),subtitle:$("sSubtitle").value.trim(),topline:$("sTopline").value.trim(),heroEyebrow:$("sEyebrow").value.trim(),heroTitle:$("sHeroTitle").value.trim(),heroText:$("sHeroText").value.trim(),bannerTitle:$("sBannerTitle").value.trim(),bannerText:$("sBannerText").value.trim(),about:$("sAbout").value.trim(),contact:$("sContact").value.trim(),heroImage:siteImageData||old.heroImage};try{localStorage.setItem("senobar-site-content",JSON.stringify(c));siteImageData="";toast("متن‌ها و تصویر سایت ذخیره شد")}catch(err){toast("فضای ذخیره مرورگر کافی نیست؛ تصویر کوچک‌تری انتخاب کن")}});
+fillCategorySelects();renderAll();fillSiteForm();
 </script></body></html>
