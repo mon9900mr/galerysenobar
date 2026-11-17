@@ -9,12 +9,22 @@ body.senobar-dark :is(button.btn.outline,.btn-outline){background:#24352c!import
 body.senobar-dark :is(table th,table td){border-color:var(--sb-night-line)!important}
 body.senobar-dark :is(.notice,.alert){background:#332b1d!important;color:#ead2a5!important;border-color:#5d4a2b!important}
 body.senobar-dark .pill{background:#294637!important;color:#dcebe0!important}
-/* Tiny individual SVG toys stay on the page background, never inside cards or content blocks. */
-body{background-image:url("toy-teddy.svg),url("toy-train.svg),url("toy-car.svg),url("toy-kite.svg),url("toy-blocks.svg),url("toy-rocket.svg")!important;background-repeat:repeat!important;background-size:190px 190px,260px 170px,220px 150px,170px 210px,210px 210px,180px 220px!important;background-position:0 0,70px 45px,35px 110px,120px 20px,150px 95px,45px 140px!important;background-attachment:fixed!important;animation:senobar-small-toys 75s linear infinite!important}
-@keyframes senobar-small-toys{to{background-position:190px 120px,330px 205px,255px 260px,290px 170px,360px 305px,225px 280px}}
+/* Small, low-contrast SVG details on the page canvas only. */
+body{
+ background-image:url("toy-teddy.svg"),url("toy-train.svg"),url("toy-car.svg"),url("toy-kite.svg"),url("toy-blocks.svg"),url("toy-rocket.svg")!important;
+ background-repeat:repeat!important;
+ background-size:72px 72px,104px 66px,88px 60px,58px 76px,68px 68px,52px 68px!important;
+ background-position:8px 12px,42px 34px,18px 55px,75px 8px,105px 82px,24px 116px!important;
+ background-attachment:fixed!important;
+ animation:senobar-small-toys 150s linear infinite!important
+}
+@keyframes senobar-small-toys{
+ from{background-position:8px 12px,42px 34px,18px 55px,75px 8px,105px 82px,24px 116px}
+ to{background-position:80px 64px,146px 98px,106px 115px,132px 72px,173px 152px,96px 184px}
+}
 body.senobar-dark{background-color:var(--sb-night-bg)!important}
 .senobar-theme-toggle{position:fixed!important;left:18px!important;bottom:18px!important;z-index:10000!important;border:1px solid #9caf9f!important;border-radius:999px!important;padding:11px 16px!important;background:#fff!important;color:#234333!important;box-shadow:0 8px 25px #203d3026!important;font:700 12px Vazirmatn,Tahoma,sans-serif!important;cursor:pointer!important;transition:transform .2s,background .2s!important}
 .senobar-theme-toggle:hover{transform:translateY(-3px)}
 body.senobar-dark .senobar-theme-toggle{background:#263a2e!important;color:#f0f6f0!important;border-color:#536b5a!important}
-@media(max-width:600px){body{background-size:150px 150px,210px 140px,180px 125px,135px 170px,165px 165px,145px 180px!important}.senobar-theme-toggle{left:12px!important;bottom:12px!important;padding:9px 12px!important}}
+@media(max-width:600px){body{background-size:58px 58px,86px 55px,72px 49px,48px 63px,56px 56px,43px 56px!important}.senobar-theme-toggle{left:12px!important;bottom:12px!important;padding:9px 12px!important}}
 @media(prefers-reduced-motion:reduce){body{animation:none!important}.senobar-theme-toggle{transition:none}}
