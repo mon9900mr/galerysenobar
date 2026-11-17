@@ -103,3 +103,67 @@ body.senobar-dark .senobar-theme-toggle{
   .senobar-theme-toggle{left:12px!important;bottom:12px!important;padding:9px 12px!important}
 }
 @media(prefers-reduced-motion:reduce){.senobar-theme-toggle{transition:none}}
+
+/* Global typography and homepage contrast fixes */
+body,body *:not(svg):not(path):not(.icon){
+  font-family:Vazirmatn,Tahoma,sans-serif!important;
+}
+body.senobar-dark{
+  --cream:#151c18;
+  --paper:#202a24;
+  --ink:#edf3ee;
+  --muted:#b0beb4;
+  --line:#39483e;
+  --green:#8eb79a;
+  --deep:#17241c;
+}
+body.senobar-dark header{
+  background:#1d2821f2!important;
+  border-color:var(--sb-dark-line)!important;
+}
+body.senobar-dark .links{color:#c2cec5!important}
+body.senobar-dark .links a:hover{color:#a9d0b2!important}
+body.senobar-dark .hero-card,
+body.senobar-dark .banner{
+  background:#26352b!important;
+  color:var(--sb-dark-ink)!important;
+}
+body.senobar-dark .hero h1,
+body.senobar-dark .hero h1 em,
+body.senobar-dark .banner h2{color:#edf3ee!important}
+body.senobar-dark .hero p,
+body.senobar-dark .banner p{color:#c0ccc3!important}
+body.senobar-dark .eyebrow{
+  background:#35483a!important;color:#e5eee7!important;
+}
+body.senobar-dark .hero-photo{
+  background:linear-gradient(145deg,#26362c,#1d2922)!important;
+}
+body.senobar-dark .hero-fallback{
+  background:linear-gradient(145deg,#314437,#25352b)!important;
+  color:#edf3ee!important;
+}
+body.senobar-dark .hero-fallback small{color:#c0ccc3!important}
+body.senobar-dark .search input{
+  background:#111a15!important;color:#f0f5f1!important;
+  border-color:#526457!important;
+}
+body.senobar-dark .search input::placeholder{color:#aab8ad!important}
+body.senobar-dark .ownerlink{
+  background:#304638!important;color:#e5eee7!important;
+}
+body.senobar-dark .perk,
+body.senobar-dark .cat,
+body.senobar-dark .product{
+  background:#202a24!important;color:#edf3ee!important;
+  border-color:#39483e!important;
+}
+body.senobar-dark .cat-info small,
+body.senobar-dark .prod-info small{color:#b0beb4!important}
+body.senobar-dark .cat-placeholder{
+  background:linear-gradient(135deg,#304238,#28352c)!important;
+}
+body.senobar-dark .product img{background:#26332b!important}
+body.senobar-dark .tag{background:#304638!important;color:#e0eee4!important}
+body.senobar-dark .empty{background:#202a24!important;color:#b0beb4!important}
+body.senobar-dark .primary{background:#477557!important;color:#fff!important}
