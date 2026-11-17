@@ -222,3 +222,90 @@ body.senobar-dark :where(button, input[type="button"], input[type="submit"], inp
     transform:none!important;
   }
 }
+
+/* Visible button motion: lift, soft pulse and press feedback */
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+a.btn,
+a.primary,
+a.ownerlink,
+.storelink,
+.nav button,
+.role,
+.senobar-theme-toggle{
+  transform:translateY(0) scale(1)!important;
+  transform-origin:center;
+  transition:transform .22s cubic-bezier(.2,.8,.2,1), box-shadow .22s ease, filter .22s ease!important;
+  will-change:transform;
+}
+button:not(:disabled):not([aria-disabled="true"]):hover,
+input[type="button"]:not(:disabled):hover,
+input[type="submit"]:not(:disabled):hover,
+input[type="reset"]:not(:disabled):hover,
+a.btn:hover,
+a.primary:hover,
+a.ownerlink:hover,
+.storelink:hover,
+.nav button:not(:disabled):hover,
+.role:hover,
+.senobar-theme-toggle:hover{
+  transform:translateY(-4px) scale(1.025)!important;
+  box-shadow:0 10px 22px #203d3026!important;
+  animation:senobar-button-pop .38s ease-out both;
+}
+button:not(:disabled):not([aria-disabled="true"]):active,
+input[type="button"]:not(:disabled):active,
+input[type="submit"]:not(:disabled):active,
+input[type="reset"]:not(:disabled):active,
+a.btn:active,
+a.primary:active,
+a.ownerlink:active,
+.storelink:active,
+.nav button:active,
+.role:active,
+.senobar-theme-toggle:active{
+  transform:translateY(1px) scale(.96)!important;
+  box-shadow:0 2px 5px #203d3020!important;
+  animation:none!important;
+}
+@keyframes senobar-button-pop{
+  0%{transform:translateY(0) scale(1)}
+  55%{transform:translateY(-5px) scale(1.04)}
+  100%{transform:translateY(-4px) scale(1.025)}
+}
+button:focus-visible,
+a.btn:focus-visible,
+a.primary:focus-visible,
+a.ownerlink:focus-visible,
+.storelink:focus-visible,
+.nav button:focus-visible,
+.role:focus-visible{
+  outline:3px solid #8dbb98!important;
+  outline-offset:3px!important;
+}
+@media(hover:none){
+  button:not(:disabled):active,
+  a.btn:active,
+  a.primary:active,
+  a.ownerlink:active,
+  .storelink:active,
+  .nav button:active,
+  .role:active{
+    transform:scale(.96)!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  button,input[type="button"],input[type="submit"],input[type="reset"],
+  a.btn,a.primary,a.ownerlink,.storelink,.nav button,.role,.senobar-theme-toggle{
+    transition:none!important;
+    animation:none!important;
+    will-change:auto;
+  }
+  button:hover,button:active,a.btn:hover,a.btn:active,a.primary:hover,a.primary:active,
+  a.ownerlink:hover,a.ownerlink:active,.storelink:hover,.storelink:active,
+  .nav button:hover,.nav button:active,.role:hover,.role:active{
+    transform:none!important;
+  }
+}
