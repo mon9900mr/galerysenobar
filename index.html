@@ -11,7 +11,7 @@
 <section class="wrap"><div class="banner"><div><h2 id="bannerTitle"></h2><p id="bannerText"></p></div><span>🎈🧸</span></div></section></main>
 <footer id="about"><div class="wrap"><div class="foot"><div><h3 id="footerBrand">✿ گالری صنوبر</h3><p id="aboutText"></p></div><div><h4>دسترسی سریع</h4><a href="index.html">صفحه اصلی</a><a href="category.html">دسته‌بندی‌ها</a><a href="products.html">محصولات</a><a href="admin.html">پنل مالک</a></div><div><h4>ارتباط با ما</h4><p id="contactText"></p></div></div><div class="copy">© گالری صنوبر · فروشگاه تخصصی اسباب‌بازی</div></div></footer>
 <script src="store-data.js"></script><script>
-const content=senobarContent(), products=senobarProducts().filter(p=>(p.category||"اسباب‌بازی")==="اسباب‌بازی"),cats=SENOBAR_CATEGORIES;
+const content=senobarContent(), products=senobarProducts().filter(p=>(p.category||"اسباب‌بازی")==="اسباب‌بازی"),cats=senobarCategories();
 const $=id=>document.getElementById(id),fmt=n=>new Intl.NumberFormat("fa-IR").format(n);
 $("topline").textContent=content.topline;$("brandName").textContent=content.brand;$("brandSub").textContent=content.subtitle;$("heroEyebrow").textContent=content.heroEyebrow;$("heroTitle").textContent=content.heroTitle;$("heroText").textContent=content.heroText;$("heroImage").src=content.heroImage;$("bannerTitle").textContent=content.bannerTitle;$("bannerText").textContent=content.bannerText;$("aboutText").textContent=content.about;$("contactText").textContent=content.contact;$("footerBrand").textContent="✿ "+content.brand;
 const imageFor=name=>(products.find(p=>p.subcategory===name)||{}).img||"";
