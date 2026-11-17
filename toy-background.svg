@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" fill="none">
+<g stroke="#8b9a90" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity=".62">
+<!-- teddy bear -->
+<g transform="translate(95 90)"><circle cx="58" cy="24" r="19"/><circle cx="138" cy="24" r="19"/><circle cx="98" cy="65" r="52"/><ellipse cx="98" cy="158" rx="57" ry="66"/><ellipse cx="98" cy="79" rx="24" ry="18"/><circle cx="82" cy="60" r="4" fill="#8b9a90"/><circle cx="114" cy="60" r="4" fill="#8b9a90"/><path d="M91 81q7 7 14 0M52 129l-31 42 27 15M144 129l31 42-27 15M67 211l-9 29h36l4-24M130 211l9 29h-36l-4-24"/></g>
+<!-- train -->
+<g transform="translate(650 105)"><path d="M0 118h405v70H0zM22 118V75h85v43M54 75V38h35v37M143 118V62h88v56M161 62V35h48v27M254 118V85h120v33"/><path d="M0 188h430M22 188v18m365-18v18"/><circle cx="75" cy="199" r="24"/><circle cx="185" cy="199" r="24"/><circle cx="330" cy="199" r="24"/><path d="M375 85l30 33h-30z"/></g>
+<!-- toy car -->
+<g transform="translate(105 500)"><path d="M10 95l20-48q8-18 28-18h90q18 0 31 17l34 49v42H10z"/><path d="M49 48l18-31h69l25 31M10 95h203"/><circle cx="57" cy="138" r="22"/><circle cx="166" cy="138" r="22"/><path d="M75 17h48"/></g>
+<!-- kite -->
+<g transform="translate(540 440)"><path d="M90 0l88 90-88 90L2 90zM90 0v180M2 90h176M90 180q-25 34 0 51t0 49"/><path d="M90 231l-17 15 17 13 17-13zM90 280l-17 15 17 13 17-13z"/></g>
+<!-- blocks -->
+<g transform="translate(875 495)"><path d="M0 82h90v90H0zM90 82h90v90H90zM45 0h90v82H45z"/><circle cx="45" cy="22" r="9"/><circle cx="135" cy="22" r="9"/><circle cx="45" cy="104" r="9"/><circle cx="135" cy="104" r="9"/></g>
+<!-- rocking horse -->
+<g transform="translate(340 310)"><path d="M35 104q-8-58 42-82 40-20 79 9l30 30-17 34-34-13-13 52H70l-8-31z"/><path d="M143 35l20-27 23 13-5 34M72 132l-5 55m61-55 8 55M40 187q66 25 134 0M58 203h137"/><circle cx="105" cy="50" r="4" fill="#8b9a90"/></g>
+</g></svg>
