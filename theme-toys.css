@@ -167,3 +167,11 @@ body.senobar-dark .product img{background:#26332b!important}
 body.senobar-dark .tag{background:#304638!important;color:#e0eee4!important}
 body.senobar-dark .empty{background:#202a24!important;color:#b0beb4!important}
 body.senobar-dark .primary{background:#477557!important;color:#fff!important}
+
+/* Keep the store name visible in the header in both themes */
+body .nav .brand,
+body .nav .brand b,
+body .nav .brand small{visibility:visible!important;opacity:1!important}
+body .nav .brand b{color:var(--green)!important}
+body.senobar-dark .nav .brand b{color:#d9eadc!important}
+body.senobar-dark .nav .brand small{color:#b0beb4!important}
