@@ -19,10 +19,16 @@ window.SENOBAR_CATEGORIES = [
  {name:"اسباب‌بازی‌های دیگر",emoji:"🎲",desc:"سرگرمی‌های متنوع کودک"}
 ];
 window.senobarProducts = function(){
- try { const v=JSON.parse(localStorage.getItem("senobar-products")); return Array.isArray(v)&&v.length?v:v=window.SENOBAR_DEFAULT_PRODUCTS; }
- catch(e){ return window.SENOBAR_DEFAULT_PRODUCTS; }
+ try {
+  if(localStorage.getItem("senobar-catalog-version")!=="2"){
+   localStorage.setItem("senobar-products",JSON.stringify(window.SENOBAR_DEFAULT_PRODUCTS));
+   localStorage.setItem("senobar-catalog-version","2");
+  }
+  const v=JSON.parse(localStorage.getItem("senobar-products"));
+  return Array.isArray(v)&&v.length?v:window.SENOBAR_DEFAULT_PRODUCTS;
+ } catch(e){return window.SENOBAR_DEFAULT_PRODUCTS;}
 };
 window.senobarContent = function(){
- const base={brand:"گالری صنوبر",subtitle:"دنیای بازی، خلاقیت و لبخند",topline:"با بازی، دنیای تازه‌ای بساز! · فروشگاه تخصصی اسباب‌بازی",heroEyebrow:"برای لحظه‌های شاد و خلاقانه",heroTitle:"دنیای بازی،<br><em>از صنوبر شروع می‌شود</em>",heroText:"از ماشین و لگو تا عروسک و بازی‌های فکری؛ دسته‌بندی موردعلاقه‌ات را پیدا کن و دنیای بازی را کشف کن.",heroImage:"https://i5.walmartimages.com/seo/YEYUN-Diecast-Car1-32-Shelby-GT350-Model-Car-Pull-Back-Collectible-Toy-Car-with-Sound-and-Light-Toy-Vehicle-for-Boys-Adults-Gift-Blue_886b8c41-8145-4013-80aa-6b5d937541f7.0a0bc47ef38be8294ea5a97ac5abea4f.jpeg",bannerTitle:"وقتشه بازی شروع بشه!",bannerText:"اسباب‌بازی مناسب برای خیال‌پردازی، یادگیری و لحظه‌های قشنگ.",about:"گالری صنوبر، فروشگاهی تخصصی برای دنیای رنگارنگ اسباب‌بازی‌ها؛ از بازی‌های فکری تا ساختنی‌ها و عروسک‌های دوست‌داشتنی.",contact:"اطلاعات تماس فروشگاه به‌زودی تکمیل می‌شود."};
+ const base={brand:"گالری صنوبر",subtitle:"دنیای بازی، خلاقیت و لبخند",topline:"با بازی، دنیای تازه‌ای بساز! · فروشگاه تخصصی اسباب‌بازی",heroEyebrow:"برای لحظه‌های شاد و خلاقانه",heroTitle:"دنیای بازی، از صنوبر شروع می‌شود",heroText:"از ماشین و لگو تا عروسک و بازی‌های فکری؛ دسته‌بندی موردعلاقه‌ات را پیدا کن و دنیای بازی را کشف کن.",heroImage:"https://i5.walmartimages.com/seo/YEYUN-Diecast-Car1-32-Shelby-GT350-Model-Car-Pull-Back-Collectible-Toy-Car-with-Sound-and-Light-Toy-Vehicle-for-Boys-Adults-Gift-Blue_886b8c41-8145-4013-80aa-6b5d937541f7.0a0bc47ef38be8294ea5a97ac5abea4f.jpeg",bannerTitle:"وقتشه بازی شروع بشه!",bannerText:"اسباب‌بازی مناسب برای خیال‌پردازی، یادگیری و لحظه‌های قشنگ.",about:"گالری صنوبر، فروشگاهی تخصصی برای دنیای رنگارنگ اسباب‌بازی‌ها؛ از بازی‌های فکری تا ساختنی‌ها و عروسک‌های دوست‌داشتنی.",contact:"اطلاعات تماس فروشگاه به‌زودی تکمیل می‌شود."};
  try{return {...base,...(JSON.parse(localStorage.getItem("senobar-site-content"))||{})}}catch(e){return base}
 };
