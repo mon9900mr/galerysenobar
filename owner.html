@@ -18,7 +18,7 @@
 .categorylist{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.categoryitem{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:12px;padding:11px}.categoryitem .emoji{font-size:21px}.categoryitem b{font-size:11px}.categoryitem small{display:block;color:var(--muted);font-size:9px;margin-top:3px}
 .toolbar{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:14px}.control{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px;font-size:11px;outline:none;color:var(--ink)}.control:focus{border-color:#91aa96}.searchbox{min-width:210px;flex:1}
 .formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.field label{display:block;font-size:10px;color:var(--muted);margin-bottom:6px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px;background:#fff;font-size:11px;outline:none}.field textarea{min-height:80px;resize:vertical}.field.full{grid-column:1/-1}.upload{border:1px dashed #9aaf9c;border-radius:13px;background:#f7faf6;padding:12px;display:flex;align-items:center;gap:14px}.preview{width:78px;height:78px;object-fit:contain;border-radius:10px;background:#fff;border:1px solid var(--line);display:none}.upload input{border:0;padding:5px;background:transparent}.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.section{display:none}.section.active{display:block}.hidden{display:none!important}.bars{display:grid;gap:12px}.barrow{display:grid;grid-template-columns:95px 1fr 30px;gap:8px;align-items:center;font-size:10px}.track{height:8px;background:#eef1eb;border-radius:10px;overflow:hidden}.fill{height:100%;background:#6f9277;border-radius:10px}.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.quick button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:14px 8px;text-align:center;color:var(--ink);font-size:10px}.quick span{display:block;font-size:20px;margin-bottom:7px}
+.categoryitem{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--line);border-radius:13px;margin-bottom:8px}.categoryitem .category-actions{margin-right:auto;display:flex;gap:6px}.categoryitem .category-actions button{font-size:10px;padding:7px 10px}.categoryitem .emoji{font-size:23px;width:38px;height:38px;display:grid;place-items:center;background:#f3f6f0;border-radius:11px}.categoryitem b{display:block;font-size:12px}.categoryitem small{display:block;color:var(--muted);font-size:10px;margin-top:4px}.section{display:none}.section.active{display:block}.hidden{display:none!important}.bars{display:grid;gap:12px}.barrow{display:grid;grid-template-columns:95px 1fr 30px;gap:8px;align-items:center;font-size:10px}.track{height:8px;background:#eef1eb;border-radius:10px;overflow:hidden}.fill{height:100%;background:#6f9277;border-radius:10px}.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.quick button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:14px 8px;text-align:center;color:var(--ink);font-size:10px}.quick span{display:block;font-size:20px;margin-bottom:7px}
 .toast{position:fixed;bottom:22px;left:22px;background:#203d30;color:#fff;padding:12px 17px;border-radius:12px;font-size:11px;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);pointer-events:none;transition:.2s;z-index:20}.toast.show{opacity:1;transform:translateY(0)}
 @media(max-width:1000px){.app{grid-template-columns:205px minmax(0,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
 @media(max-width:700px){.app{display:block}.sidebar{padding:12px;gap:12px}.brand{padding:0 5px}.brandmark{width:35px;height:35px}.navgroup small,.sidebottom{display:none}.nav{display:flex;overflow:auto;gap:5px}.nav button{white-space:nowrap;padding:9px 11px}.topbar{height:58px;padding:0 15px}.content{padding:20px 14px 35px}.pagehead{align-items:center}.pagehead h1{font-size:19px}.stats{gap:9px}.stat{padding:13px}.stat strong{font-size:19px}.panel{padding:14px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.quick{grid-template-columns:repeat(3,1fr)}}
@@ -74,8 +74,17 @@
    <div class="panel"><div class="toolbar"><input class="control searchbox" id="productSearch" placeholder="جست‌وجوی نام محصول..."><select class="control" id="categoryFilter"><option value="">همه دسته‌ها</option></select><button class="btn soft" onclick="exportProducts()">خروجی CSV</button></div><div class="tablewrap"><table><thead><tr><th>محصول</th><th>دسته‌بندی</th><th>قیمت</th><th>موجودی</th><th>عملیات</th></tr></thead><tbody id="productRows"></tbody></table></div></div>
   </section>
   <section class="section" id="page-categories">
-   <div class="pagehead"><div><h1>دسته‌بندی‌های اسباب‌بازی</h1><p>محصولات فروشگاه فقط در گروه اسباب‌بازی قرار می‌گیرند.</p></div></div>
-   <div class="panel"><div class="panelhead"><h2>فهرست دسته‌بندی‌ها</h2><span class="pill">فقط اسباب‌بازی</span></div><div class="categorylist" id="categoryList"></div></div>
+   <div class="pagehead"><div><h1>دسته‌بندی‌های اسباب‌بازی</h1><p>دسته‌بندی‌ها را اضافه، ویرایش یا حذف کن؛ تغییرات در فروشگاه هم نمایش داده می‌شوند.</p></div></div>
+   <div class="panel"><div class="panelhead"><div><h2 id="categoryFormTitle">افزودن دسته‌بندی جدید</h2><p>نام، آیکون و توضیح دسته را وارد کن.</p></div></div>
+    <form id="categoryForm" class="formgrid">
+     <input type="hidden" id="categoryEditName">
+     <div class="field"><label for="categoryName">نام دسته‌بندی</label><input id="categoryName" maxlength="60" required placeholder="مثلاً ماشین و وسایل نقلیه"></div>
+     <div class="field"><label for="categoryEmoji">آیکون / ایموجی</label><input id="categoryEmoji" maxlength="8" required value="🧸" placeholder="مثلاً 🚗"></div>
+     <div class="field full"><label for="categoryDesc">توضیح کوتاه</label><input id="categoryDesc" maxlength="120" placeholder="توضیحی که در فروشگاه نمایش داده می‌شود"></div>
+     <div class="field full actions"><button class="btn" id="saveCategory" type="submit">افزودن دسته‌بندی</button><button class="btn ghost" type="button" onclick="resetCategoryForm()">پاک کردن فرم</button></div>
+    </form>
+   </div>
+   <div class="panel"><div class="panelhead"><h2>فهرست دسته‌بندی‌ها</h2><span class="pill" id="categoryTotal">۰ دسته</span></div><div class="categorylist" id="categoryList"></div></div>
   </section>
   <section class="section" id="page-orders">
    <div class="pagehead"><div><h1>سفارش‌ها</h1><p>نمایش سفارش‌هایی که در این مرورگر ذخیره شده باشند.</p></div></div>
@@ -121,7 +130,7 @@
 </main></div>
 <div class="toast" id="toast"></div>
 <script>
-const categories=[
+const DEFAULT_CATEGORIES=[
  {name:"ماشین و وسایل نقلیه",emoji:"🚗"},
  {name:"آشپزخانه و خانه‌بازی",emoji:"🍳"},
  {name:"لگو و ساختنی",emoji:"🧱"},
@@ -131,6 +140,9 @@ const categories=[
  {name:"بازی‌های فضای باز",emoji:"⚽"},
  {name:"اسباب‌بازی‌های دیگر",emoji:"🎲"}
 ];
+let categories=loadCategories();
+function loadCategories(){try{const saved=JSON.parse(localStorage.getItem("senobar-categories"));if(Array.isArray(saved))return saved}catch(e){}return DEFAULT_CATEGORIES.map(c=>({...c}))}
+function saveCategories(){localStorage.setItem("senobar-categories",JSON.stringify(categories));fillCategorySelects();renderAll()}
 const sample=[
 {id:1,name:"ماشین فلزی آبی",category:"اسباب‌بازی",subcategory:"ماشین و وسایل نقلیه",cat:"ماشین و وسایل نقلیه",price:0,stock:0,tag:"ماشین",img:"https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=900&q=85"},
 {id:2,name:"آشپزخانه بازی کودک",category:"اسباب‌بازی",subcategory:"آشپزخانه و خانه‌بازی",cat:"آشپزخانه و خانه‌بازی",price:0,stock:0,tag:"خانه‌بازی",img:"https://images.unsplash.com/photo-1599629954294-14df9ec8a8c9?auto=format&fit=crop&w=900&q=85"},
@@ -151,6 +163,13 @@ function toast(message){$("toast").textContent=message;$("toast").classList.add(
 function fillCategorySelects(){const opts=categories.map(c=>'<option value="'+escapeHTML(c.name)+'">'+c.emoji+" "+escapeHTML(c.name)+"</option>").join("");$("pCategory").innerHTML=opts;$("categoryFilter").innerHTML='<option value="">همه دسته‌ها</option>'+opts}
 function go(page){document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));$("page-"+page).classList.add("active");document.querySelectorAll("[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===page));const labels={dashboard:"داشبورد",products:"محصولات",categories:"دسته‌بندی‌ها",orders:"سفارش‌ها",customers:"مشتریان",reports:"گزارش‌ها",owner:"ویرایش ظاهر سایت",settings:"تنظیمات"};$("crumb").textContent=labels[page];window.scrollTo({top:0,behavior:"smooth"})}
 document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.page)));
+
+function resetCategoryForm(){$("categoryForm").reset();$("categoryEditName").value="";$("categoryEmoji").value="🧸";$("categoryFormTitle").textContent="افزودن دسته‌بندی جدید";$("saveCategory").textContent="افزودن دسته‌بندی"}
+function editCategory(name){const c=categories.find(x=>x.name===name);if(!c)return;$("categoryEditName").value=name;$("categoryName").value=c.name;$("categoryEmoji").value=c.emoji||"🧸";$("categoryDesc").value=c.desc||"";$("categoryFormTitle").textContent="ویرایش دسته‌بندی";$("saveCategory").textContent="ذخیره تغییرات";$("categoryForm").scrollIntoView({behavior:"smooth",block:"center"})}
+function deleteCategory(name){const used=products.filter(p=>(p.subcategory||p.cat)===name).length;if(used){alert("این دسته "+num(used)+" محصول دارد. ابتدا دسته‌بندی محصولاتش را تغییر بده؛ سپس می‌توانی آن را حذف کنی.");return}if(!confirm("دسته‌بندی «"+name+"» حذف شود؟"))return;categories=categories.filter(c=>c.name!==name);saveCategories();resetCategoryForm();toast("دسته‌بندی حذف شد")}
+$("categoryForm").addEventListener("submit",e=>{e.preventDefault();const oldName=$("categoryEditName").value,name=$("categoryName").value.trim(),emoji=$("categoryEmoji").value.trim(),desc=$("categoryDesc").value.trim();if(!name)return;if(categories.some(c=>c.name===name&&name!==oldName)){alert("این نام دسته‌بندی قبلاً ثبت شده است.");return}if(oldName){categories=categories.map(c=>c.name===oldName?{name,emoji,desc}:c);products=products.map(p=>(p.subcategory||p.cat)===oldName?{...p,subcategory:name,cat:name}:p);localStorage.setItem(KEY,JSON.stringify(products));toast("دسته‌بندی و محصولات مرتبط به‌روزرسانی شدند")}else{categories.push({name,emoji,desc});toast("دسته‌بندی جدید اضافه شد")}saveCategories();resetCategoryForm()});
+$("categoryList").addEventListener("click",e=>{const edit=e.target.closest("[data-edit-category]"),del=e.target.closest("[data-delete-category]");if(edit)editCategory(edit.dataset.editCategory);if(del)deleteCategory(del.dataset.deleteCategory)});
+
 function categoryCount(name){return products.filter(p=>(p.subcategory||p.cat)===name).length}
 function renderBars(target){const max=Math.max(1,...categories.map(c=>categoryCount(c.name)));$(target).innerHTML=categories.map(c=>'<div class="barrow"><span>'+c.emoji+" "+escapeHTML(c.name)+'</span><div class="track"><div class="fill" style="width:'+(categoryCount(c.name)/max*100)+'%"></div></div><b>'+num(categoryCount(c.name))+'</b></div>').join("")}
 function productRow(p,withActions=false){return '<tr><td><div class="productcell"><img src="'+escapeHTML(p.img||"")+'" alt=""><span><b>'+escapeHTML(p.name)+'</b><small>شناسه: '+escapeHTML(p.id)+'</small></span></div></td><td>'+escapeHTML(p.subcategory||p.cat||"سایر")+'</td><td>'+(Number(p.price)>0?money(p.price):'ثبت نشده')+'</td>'+(withActions?'<td>'+num(p.stock)+'</td><td><div class="actions"><button class="btn soft small" onclick="editProduct('+Number(p.id)+')">ویرایش</button><button class="btn danger small" onclick="deleteProduct('+Number(p.id)+')">حذف</button></div></td>':'')+'</tr>'}
@@ -160,7 +179,8 @@ function renderAll(){
  let orders=[];try{orders=JSON.parse(localStorage.getItem("senobar-orders")||"[]")||[]}catch{};$("statOrders").textContent=num(orders.length);
  $("recentRows").innerHTML=products.length?products.slice(0,5).map(p=>productRow(p,false)).join(""):'<tr><td colspan="3" class="empty">هنوز محصولی ثبت نشده است.</td></tr>';
  renderProducts();renderBars("categoryBars");renderBars("reportBars");
- $("categoryList").innerHTML=categories.map(c=>'<div class="categoryitem"><span class="emoji">'+c.emoji+'</span><div><b>'+escapeHTML(c.name)+'</b><small>'+num(categoryCount(c.name))+' محصول</small></div></div>').join("");
+ $("categoryTotal").textContent=num(categories.length)+" دسته";
+ $("categoryList").innerHTML=categories.map(c=>'<div class="categoryitem"><span class="emoji">'+escapeHTML(c.emoji)+'</span><div><b>'+escapeHTML(c.name)+'</b><small>'+num(categoryCount(c.name))+' محصول · '+escapeHTML(c.desc||"بدون توضیح")+'</small></div><div class="category-actions"><button class="btn soft small" data-edit-category="'+escapeHTML(c.name)+'">ویرایش</button><button class="btn danger small" data-delete-category="'+escapeHTML(c.name)+'">حذف</button></div></div>').join("") || '<div class="empty">هنوز دسته‌بندی‌ای ساخته نشده است.</div>';
  $("reportCount").textContent=num(products.length);const avg=products.length?products.reduce((s,p)=>s+Number(p.price||0),0)/products.length:0;$("reportAverage").textContent=money(avg);
  const sorted=[...products].sort((a,b)=>Number(b.price)-Number(a.price));$("reportMax").textContent=sorted[0]?escapeHTML(sorted[0].name):"—";$("reportMin").textContent=sorted.length?escapeHTML(sorted[sorted.length-1].name):"—";
  $("orderRows").innerHTML=orders.length?orders.map((o,i)=>'<tr><td>'+escapeHTML(o.id||i+1)+'</td><td>'+escapeHTML(o.name||o.customer||"—")+'</td><td>'+money(o.total||o.amount||0)+'</td><td><span class="pill">'+escapeHTML(o.status||"ثبت‌شده")+'</span></td></tr>').join(""):'<tr><td colspan="4" class="empty">هنوز سفارشی در این مرورگر ثبت نشده است.</td></tr>';
