@@ -175,3 +175,50 @@ body .nav .brand small{visibility:visible!important;opacity:1!important}
 body .nav .brand b{color:var(--green)!important}
 body.senobar-dark .nav .brand b{color:#d9eadc!important}
 body.senobar-dark .nav .brand small{color:#b0beb4!important}
+
+/* Subtle, consistent button micro-interactions */
+:where(button, input[type="button"], input[type="submit"], input[type="reset"], .btn, a.btn, .primary, .ownerlink, .senobar-theme-toggle){
+  position:relative;
+  transform:translateZ(0);
+  transition:
+    transform .18s cubic-bezier(.2,.75,.25,1),
+    box-shadow .2s ease,
+    background-color .2s ease,
+    border-color .2s ease,
+    color .2s ease,
+    filter .2s ease!important;
+  -webkit-tap-highlight-color:transparent;
+}
+:where(button, input[type="button"], input[type="submit"], input[type="reset"], .btn, a.btn, .primary, .ownerlink):not(:disabled):not([aria-disabled="true"]):hover{
+  transform:translateY(-2px);
+  box-shadow:0 7px 17px #294b361c;
+  filter:brightness(1.035);
+}
+:where(button, input[type="button"], input[type="submit"], input[type="reset"], .btn, a.btn, .primary, .ownerlink):not(:disabled):not([aria-disabled="true"]):active{
+  transform:translateY(1px) scale(.975);
+  box-shadow:0 2px 6px #294b3620;
+  filter:brightness(.98);
+}
+:where(button, input[type="button"], input[type="submit"], input[type="reset"], .btn, a.btn, .primary, .ownerlink):focus-visible{
+  outline:3px solid #82b894!important;
+  outline-offset:3px!important;
+}
+:where(button, input[type="button"], input[type="submit"], input[type="reset"], .btn, a.btn, .primary, .ownerlink):disabled,
+:where(button, input[type="button"], input[type="submit"], input[type="reset"], .btn, a.btn, .primary, .ownerlink)[aria-disabled="true"]{
+  cursor:not-allowed;
+  filter:saturate(.65);
+  opacity:.65;
+}
+body.senobar-dark :where(button, input[type="button"], input[type="submit"], input[type="reset"], .btn, a.btn, .primary, .ownerlink):not(:disabled):not([aria-disabled="true"]):hover{
+  box-shadow:0 7px 18px #00000038;
+}
+@media(prefers-reduced-motion:reduce){
+  :where(button, input[type="button"], input[type="submit"], input[type="reset"], .btn, a.btn, .primary, .ownerlink, .senobar-theme-toggle){
+    transition:none!important;
+    animation:none!important;
+  }
+  :where(button, input[type="button"], input[type="submit"], input[type="reset"], .btn, a.btn, .primary, .ownerlink):hover,
+  :where(button, input[type="button"], input[type="submit"], input[type="reset"], .btn, a.btn, .primary, .ownerlink):active{
+    transform:none!important;
+  }
+}
