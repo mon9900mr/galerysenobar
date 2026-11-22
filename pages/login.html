@@ -130,22 +130,26 @@ $('signup').addEventListener('submit',e=>{
  if(loginMode){
   const account=accounts.find(a=>a.phone===phone&&a.password===password);
   if(!account){setStatus('حسابی با این شماره و رمز در این تب پیدا نشد. ابتدا ثبت‌نام کن.','error');return}
-  sessionStorage.setItem('senobar-demo-user',JSON.stringify(account));
-  sessionStorage.setItem('senobar-demo-role','user');
-  setStatus('ورود موفق بود؛ در حال انتقال به پنل کاربری...','ok');
+  const role=phone==='09991733170'?'owner':'user';
+  sessionStorage.setItem('senobar-demo-user',JSON.stringify({...account,role}));
+  sessionStorage.setItem('senobar-demo-role',role);
+  setStatus(role==='owner'?'ورود مالک موفق بود؛ در حال انتقال به پنل مالک...':'ورود موفق بود؛ در حال انتقال به پنل کاربری...','ok');
  }else{
   const firstName=$('firstName').value.trim(),lastName=$('lastName').value.trim(),postal=digits($('postalCode').value).replace(/\D/g,'');
   if(!firstName||!lastName){setStatus('نام و نام خانوادگی را کامل وارد کن.','error');return}
   if(!/^\d{10}$/.test(postal)){setStatus('کد پستی باید ۱۰ رقم باشد.','error');return}
   if(!$('latitude').value||!$('address').value){setStatus('لطفاً محل سکونت را روی نقشه انتخاب کن.','error');return}
   if(accounts.some(a=>a.phone===phone)){setStatus('برای این شماره قبلاً در همین تب حساب ساخته شده؛ از گزینه ورود استفاده کن.','error');return}
-  const account={firstName,lastName,phone,password,postalCode:postal,address:$('address').value,latitude:$('latitude').value,longitude:$('longitude').value,createdAt:Date.now()};
+  const role=phone==='09991733170'?'owner':'user';
+  const account={firstName,lastName,phone,password,postalCode:postal,address:$('address').value,latitude:$('latitude').value,longitude:$('longitude').value,createdAt:Date.now(),role};
   accounts.push(account);sessionStorage.setItem('senobar-temp-accounts',JSON.stringify(accounts));
-  sessionStorage.setItem('senobar-demo-user',JSON.stringify(account));sessionStorage.setItem('senobar-demo-role','user');
-  setStatus('حساب موقت ساخته شد؛ در حال انتقال به پنل کاربری...','ok');
+  sessionStorage.setItem('senobar-demo-user',JSON.stringify(account));sessionStorage.setItem('senobar-demo-role',role);
+  setStatus(role==='owner'?'حساب مالک ساخته شد؛ در حال انتقال به پنل مالک...':'حساب موقت ساخته شد؛ در حال انتقال به پنل کاربری...','ok');
  }
  const next=new URLSearchParams(location.search).get('next');
- const allowed=['user-panel.html'];setTimeout(()=>location.href=allowed.includes(next)?next:'user-panel.html',650);
+ const destination=roleForRedirect();
+ function roleForRedirect(){return sessionStorage.getItem('senobar-demo-role')==='owner'?'owner.html':'user-panel.html'}
+ setTimeout(()=>location.href=destination,650);
 });
 setTimeout(()=>map.invalidateSize(),250);
 })();
