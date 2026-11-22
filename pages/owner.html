@@ -22,6 +22,15 @@
 .toast{position:fixed;bottom:22px;left:22px;background:#203d30;color:#fff;padding:12px 17px;border-radius:12px;font-size:11px;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);pointer-events:none;transition:.2s;z-index:20}.toast.show{opacity:1;transform:translateY(0)}
 @media(max-width:1000px){.app{grid-template-columns:205px minmax(0,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
 @media(max-width:700px){.app{display:block}.sidebar{padding:12px;gap:12px}.brand{padding:0 5px}.brandmark{width:35px;height:35px}.navgroup small,.sidebottom{display:none}.nav{display:flex;overflow:auto;gap:5px}.nav button{white-space:nowrap;padding:9px 11px}.topbar{height:58px;padding:0 15px}.content{padding:20px 14px 35px}.pagehead{align-items:center}.pagehead h1{font-size:19px}.stats{gap:9px}.stat{padding:13px}.stat strong{font-size:19px}.panel{padding:14px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.quick{grid-template-columns:repeat(3,1fr)}}
+
+.customer-stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+.customer-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.customer-detail-item{border:1px solid var(--line);background:#fbfcfa;border-radius:12px;padding:12px;min-width:0;overflow-wrap:anywhere}
+.customer-detail-item small{display:block;color:var(--muted);font-size:10px;margin-bottom:5px}
+.customer-detail-item b{font-size:12px;line-height:1.9}
+.customer-map-link{margin-top:12px;font-size:11px;color:var(--green)}
+.customer-map-link a{display:inline-block;margin:5px 0;padding:9px 12px;border-radius:9px;background:var(--green-soft);font-weight:800}
+@media(max-width:700px){.customer-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.customer-detail-grid{grid-template-columns:1fr}}
 </style><link rel="stylesheet" href="../assets/css/theme-toys.css"></head>
 <body>
 <script>(function(){if(sessionStorage.getItem('senobar-demo-role')!=='owner'){location.replace('login.html?next=owner.html');}})();</script>
@@ -92,8 +101,19 @@
    <div class="panel"><div class="panelhead"><h2>فهرست سفارش‌ها</h2></div><div class="tablewrap"><table><thead><tr><th>شماره</th><th>مشتری</th><th>مبلغ</th><th>وضعیت</th></tr></thead><tbody id="orderRows"></tbody></table></div></div>
   </section>
   <section class="section" id="page-customers">
-   <div class="pagehead"><div><h1>مشتریان</h1><p>فهرست کاربران ثبت‌شده، در صورت وجود داده محلی</p></div></div>
-   <div class="panel"><div class="panelhead"><h2>کاربران</h2></div><div class="tablewrap"><table><thead><tr><th>نام</th><th>ایمیل / شناسه</th><th>نقش</th></tr></thead><tbody id="customerRows"></tbody></table></div></div>
+   <div class="pagehead"><div><h1>مدیریت مشتریان</h1><p>مشاهده مشخصات ثبت‌نام، اطلاعات تماس و نشانی مشتریان این مرورگر</p></div><div class="actions"><button class="btn soft" onclick="exportCustomers()">خروجی CSV</button><button class="btn ghost" onclick="renderCustomers()">به‌روزرسانی</button></div></div>
+   <div class="stats customer-stats">
+    <div class="stat"><div class="stathead">کل حساب‌ها</div><strong id="customerCount">۰</strong><em>حساب‌های آزمایشی قابل مشاهده</em></div>
+    <div class="stat"><div class="stathead">مشتریان</div><strong id="customerRegularCount">۰</strong><em>حساب‌های عادی</em></div>
+    <div class="stat"><div class="stathead">حساب مالک</div><strong id="customerOwnerCount">۰</strong><em>حساب مالک فروشگاه</em></div>
+    <div class="stat"><div class="stathead">دارای نشانی</div><strong id="customerAddressCount">۰</strong><em>ثبت نشانی در فرم ثبت‌نام</em></div>
+   </div>
+   <div class="notice">حریم خصوصی: این فهرست فقط اطلاعات حساب‌های آزمایشی موجود در همین تب مرورگر را نشان می‌دهد. رمز عبور نمایش داده یا در خروجی گرفته نمی‌شود. برای دیدن حساب‌های همه مشتریان از دستگاه‌های مختلف، باید بک‌اند و پایگاه داده مشترک راه‌اندازی شود.</div>
+   <div class="panel">
+    <div class="toolbar"><input class="control searchbox" id="customerSearch" placeholder="جست‌وجو با نام، موبایل یا کد پستی..." oninput="renderCustomers()"><select class="control" id="customerRoleFilter" onchange="renderCustomers()"><option value="">همه نقش‌ها</option><option value="user">مشتری</option><option value="owner">مالک</option></select></div>
+    <div class="tablewrap"><table><thead><tr><th>مشتری</th><th>موبایل</th><th>کد پستی</th><th>نشانی</th><th>تاریخ عضویت</th><th>نقش</th><th>عملیات</th></tr></thead><tbody id="customerRows"></tbody></table></div>
+   </div>
+   <div class="panel hidden" id="customerDetail"><div class="panelhead"><div><h2>جزئیات کامل مشتری</h2><p id="customerDetailSubtitle">اطلاعات ثبت‌نام</p></div><button class="btn ghost small" onclick="closeCustomerDetail()">بستن ×</button></div><div class="customer-detail-grid" id="customerDetailGrid"></div><div class="customer-map-link" id="customerMapLink"></div></div>
   </section>
   <section class="section" id="page-reports">
    <div class="pagehead"><div><h1>گزارش‌ها</h1><p>گزارش آماری کاتالوگ فعلی فروشگاه</p></div><button class="btn soft" onclick="exportProducts()">دریافت گزارش CSV</button></div>
@@ -161,7 +181,7 @@ function loadProducts(){try{if(localStorage.getItem("senobar-catalog-version")!=
 function save(){try{localStorage.setItem(KEY,JSON.stringify(products));renderAll();toast("تغییرات ذخیره شد")}catch(e){toast("فضای ذخیره مرورگر کافی نیست؛ عکس کوچک‌تری انتخاب کن")}}
 function toast(message){$("toast").textContent=message;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),2300)}
 function fillCategorySelects(){const opts=categories.map(c=>'<option value="'+escapeHTML(c.name)+'">'+c.emoji+" "+escapeHTML(c.name)+"</option>").join("");$("pCategory").innerHTML=opts;$("categoryFilter").innerHTML='<option value="">همه دسته‌ها</option>'+opts}
-function go(page){document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));$("page-"+page).classList.add("active");document.querySelectorAll("[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===page));const labels={dashboard:"داشبورد",products:"محصولات",categories:"دسته‌بندی‌ها",orders:"سفارش‌ها",customers:"مشتریان",reports:"گزارش‌ها",owner:"ویرایش ظاهر سایت",settings:"تنظیمات"};$("crumb").textContent=labels[page];window.scrollTo({top:0,behavior:"smooth"})}
+function go(page){if(page==="customers")setTimeout(renderCustomers,0);document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));$("page-"+page).classList.add("active");document.querySelectorAll("[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===page));const labels={dashboard:"داشبورد",products:"محصولات",categories:"دسته‌بندی‌ها",orders:"سفارش‌ها",customers:"مشتریان",reports:"گزارش‌ها",owner:"ویرایش ظاهر سایت",settings:"تنظیمات"};$("crumb").textContent=labels[page];window.scrollTo({top:0,behavior:"smooth"})}
 document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.page)));
 
 function resetCategoryForm(){$("categoryForm").reset();$("categoryEditName").value="";$("categoryEmoji").value="🧸";$("categoryFormTitle").textContent="افزودن دسته‌بندی جدید";$("saveCategory").textContent="افزودن دسته‌بندی"}
@@ -185,6 +205,51 @@ function renderAll(){
  const sorted=[...products].sort((a,b)=>Number(b.price)-Number(a.price));$("reportMax").textContent=sorted[0]?escapeHTML(sorted[0].name):"—";$("reportMin").textContent=sorted.length?escapeHTML(sorted[sorted.length-1].name):"—";
  $("orderRows").innerHTML=orders.length?orders.map((o,i)=>'<tr><td>'+escapeHTML(o.id||i+1)+'</td><td>'+escapeHTML(o.name||o.customer||"—")+'</td><td>'+money(o.total||o.amount||0)+'</td><td><span class="pill">'+escapeHTML(o.status||"ثبت‌شده")+'</span></td></tr>').join(""):'<tr><td colspan="4" class="empty">هنوز سفارشی در این مرورگر ثبت نشده است.</td></tr>';
  let users=[];try{users=JSON.parse(localStorage.getItem("senobar-users")||"[]")||[]}catch{};$("customerRows").innerHTML=users.length?users.map(u=>'<tr><td>'+escapeHTML(u.name||u.fullName||"—")+'</td><td>'+escapeHTML(u.email||u.username||u.phone||"—")+'</td><td><span class="pill">'+escapeHTML(u.role||"CUSTOMER")+'</span></td></tr>').join(""):'<tr><td colspan="3" class="empty">اطلاعات مشتریان به بک‌اند متصل نیست.</td></tr>';
+}
+
+// Customer management: demo data visible in this browser tab only.
+function getDemoCustomers(){
+ let list=[];try{const a=JSON.parse(sessionStorage.getItem("senobar-temp-accounts")||"[]");if(Array.isArray(a))list=a}catch(e){}
+ try{const legacy=JSON.parse(localStorage.getItem("senobar-users")||"[]");if(Array.isArray(legacy))legacy.forEach(u=>{if(!list.some(x=>x.phone&&x.phone===u.phone))list.push(u)})}catch(e){}
+ return list;
+}
+function customerName(u){return [u.firstName,u.lastName].filter(Boolean).join(" ")||u.name||u.fullName||"بدون نام"}
+function renderCustomers(){
+ const q=($("customerSearch")?.value||"").trim().toLowerCase(),role=$("customerRoleFilter")?.value||"";
+ const all=getDemoCustomers(),list=all.filter(u=>{
+  const r=u.role||"user",hay=[customerName(u),u.phone,u.postalCode,u.address].join(" ").toLowerCase();
+  return (!role||r===role)&&(!q||hay.includes(q));
+ });
+ $("customerCount").textContent=num(all.length);
+ $("customerRegularCount").textContent=num(all.filter(u=>(u.role||"user")==="user").length);
+ $("customerOwnerCount").textContent=num(all.filter(u=>u.role==="owner").length);
+ $("customerAddressCount").textContent=num(all.filter(u=>u.address).length);
+ $("customerRows").innerHTML=list.length?list.map(u=>{
+  const key=all.indexOf(u),date=u.createdAt?new Date(u.createdAt).toLocaleDateString("fa-IR"):"—";
+  return '<tr><td><b>'+escapeHTML(customerName(u))+'</b></td><td>'+escapeHTML(u.phone||"—")+'</td><td>'+escapeHTML(u.postalCode||"—")+'</td><td title="'+escapeHTML(u.address||"")+'">'+escapeHTML((u.address||"ثبت نشده").slice(0,48))+'</td><td>'+date+'</td><td><span class="pill">'+(u.role==="owner"?"مالک":"مشتری")+'</span></td><td><button class="btn soft small" onclick="showCustomerDetail('+key+')">جزئیات</button> <button class="btn danger small" onclick="deleteDemoCustomer('+key+')">حذف آزمایشی</button></td></tr>';
+ }).join(""):'<tr><td colspan="7" class="empty">مشتری مطابق جست‌وجو پیدا نشد؛ یا حساب آزمایشی دیگری در این تب ثبت نشده است.</td></tr>';
+}
+function showCustomerDetail(index){
+ const u=getDemoCustomers()[index];if(!u)return;
+ const fields=[["نام",customerName(u)],["شماره موبایل",u.phone],["کد پستی",u.postalCode],["نشانی کامل",u.address],["عرض جغرافیایی",u.latitude],["طول جغرافیایی",u.longitude],["تاریخ عضویت",u.createdAt?new Date(u.createdAt).toLocaleString("fa-IR"):"—"],["نقش",u.role==="owner"?"مالک":"مشتری"]];
+ $("customerDetailSubtitle").textContent=customerName(u)+" · "+(u.phone||"بدون شماره");
+ $("customerDetailGrid").innerHTML=fields.map(([k,v])=>'<div class="customer-detail-item"><small>'+escapeHTML(k)+'</small><b>'+escapeHTML(v||"ثبت نشده")+'</b></div>').join("");
+ $("customerMapLink").innerHTML=u.latitude&&u.longitude?'<a target="_blank" rel="noopener" href="https://www.openstreetmap.org/?mlat='+encodeURIComponent(u.latitude)+'&mlon='+encodeURIComponent(u.longitude)+'#map=17/'+encodeURIComponent(u.latitude)+'/'+encodeURIComponent(u.longitude)+'">مشاهده نشانی روی نقشه ↗</a>':"برای این حساب مختصات نقشه ثبت نشده است.";
+ $("customerDetail").classList.remove("hidden");$("customerDetail").scrollIntoView({behavior:"smooth",block:"center"});
+}
+function closeCustomerDetail(){$("customerDetail").classList.add("hidden")}
+function deleteDemoCustomer(index){
+ const all=getDemoCustomers(),u=all[index];if(!u||!confirm("حساب آزمایشی "+customerName(u)+" از همین تب حذف شود؟"))return;
+ let accounts=[];try{accounts=JSON.parse(sessionStorage.getItem("senobar-temp-accounts")||"[]")}catch(e){}
+ const target=accounts.findIndex(x=>x===u||x.phone&&x.phone===u.phone);
+ if(target>=0){accounts.splice(target,1);sessionStorage.setItem("senobar-temp-accounts",JSON.stringify(accounts))}
+ else{let legacy=[];try{legacy=JSON.parse(localStorage.getItem("senobar-users")||"[]")}catch(e){}legacy=legacy.filter(x=>x.phone!==u.phone);localStorage.setItem("senobar-users",JSON.stringify(legacy))}
+ renderCustomers();closeCustomerDetail();toast("حساب آزمایشی حذف شد");
+}
+function exportCustomers(){
+ const rows=[["نام","شماره موبایل","کد پستی","نشانی","عرض جغرافیایی","طول جغرافیایی","نقش","تاریخ عضویت"],...getDemoCustomers().map(u=>[customerName(u),u.phone||"",u.postalCode||"",u.address||"",u.latitude||"",u.longitude||"",u.role||"user",u.createdAt?new Date(u.createdAt).toISOString():""])];
+ const csv="\\uFEFF"+rows.map(row=>row.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\\r\\n");
+ const url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"})),a=document.createElement("a");a.href=url;a.download="senobar-customers-demo.csv";a.click();URL.revokeObjectURL(url);
 }
 function openNewProduct(){$("productEditor").classList.remove("hidden");$("productForm").reset();$("editId").value="";selectedImage="";$("imagePreview").style.display="none";$("imagePreview").removeAttribute("src");$("formTitle").textContent="افزودن محصول جدید";$("saveProduct").textContent="ذخیره محصول";$("productEditor").scrollIntoView({behavior:"smooth",block:"start"})}
 function closeEditor(){$("productEditor").classList.add("hidden");$("productForm").reset();$("editId").value="";selectedImage="";$("imagePreview").style.display="none"}
