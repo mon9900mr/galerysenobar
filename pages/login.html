@@ -66,11 +66,9 @@ $('signup').addEventListener('submit',e=>{
  if(!/^09\d{9}$/.test(phone)){setStatus('شماره موبایل باید با 09 شروع شود و ۱۱ رقم باشد.','error');return}
  if(!/^\d{10}$/.test(postal)){setStatus('کد پستی باید ۱۰ رقم باشد.','error');return}
  if(!$('latitude').value||!$('address').value){setStatus('لطفاً محل سکونت را روی نقشه انتخاب کن.','error');return}
- const profile={firstName,lastName,phone,postalCode:postal,address:selectedAddress,latitude:$('latitude').value,longitude:$('longitude'),updatedAt:new Date().toISOString()};
- try{localStorage.setItem('senobar-profile-preview',JSON.stringify(profile));localStorage.setItem('senobar-demo-role','user')}catch(err){setStatus('ذخیره‌سازی مرورگر در دسترس نیست.','error');return}
- const ownerPhone='09991733170';
- if(phone===ownerPhone){setStatus('شماره مالک شناسایی شد؛ اما فعال‌سازی دسترسی مالک تا اتصال احراز هویت امن سمت سرور انجام نمی‌شود.','ok');return}
- setStatus('اطلاعات پیش‌نمایش ذخیره شد. ورود واقعی بعد از اتصال پیامک و بک‌اند فعال می‌شود.','ok');
+ // فعلاً داده‌های شخصی در مرورگر یا فایل‌های عمومی سایت ذخیره نمی‌شوند.
+ // شماره مالک باید فقط در تنظیمات امن بک‌اند ثبت و سمت سرور بررسی شود.
+ setStatus('اطلاعات معتبر است. ذخیره حساب و تشخیص نقش پس از اتصال بک‌اند امن فعال می‌شود؛ هنوز هیچ داده شخصی ارسال یا ذخیره نشده است.','ok');
 });
 setTimeout(()=>map.invalidateSize(),250);
 })();
