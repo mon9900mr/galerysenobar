@@ -118,6 +118,7 @@ function setMode(login){
  $('submitButton').textContent=login?'ورود به حساب':'ساخت حساب موقت';
  $('temporaryNotice').innerHTML=login?'<b>ورود آزمایشی</b><br>شماره موبایل و رمز حسابی را وارد کن که در همین تب ساخته‌ای.':'<b>حساب موقت و آزمایشی</b><br>اطلاعات حساب فقط در همین تب مرورگر نگهداری می‌شود و با بستن تب از بین می‌رود. پیامک ارسال نمی‌شود؛ رمز واقعی یا تکراری خودت را وارد نکن.';
  setStatus(login?'شماره موبایل و رمز عبور را وارد کن.':'اطلاعات حساب فقط تا باز بودن این تب نگهداری می‌شود.');
+ if(!login)setTimeout(()=>map.invalidateSize(),80);
 }
 $('modeToggle').addEventListener('click',()=>setMode(!loginMode));
 $('signup').addEventListener('submit',e=>{
