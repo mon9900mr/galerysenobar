@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f3f6f1"><title>ورود به حساب | گالری صنوبر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme-toys.css">
+<style>
+:root{--green:#315d48;--deep:#203d30;--bg:#f3f6f1;--ink:#24352d;--muted:#849087;--line:#e3eae2}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:22px;background:radial-gradient(ellipse at 15% 10%,#dcebdd 0,transparent 35%),radial-gradient(ellipse at 90% 90%,#e8e4d5 0,transparent 32%),var(--bg);font-family:Vazirmatn,Tahoma,sans-serif;color:var(--ink)}
+a{color:inherit;text-decoration:none}button,input{font:inherit}.login-wrap{width:min(940px,100%);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;border:1px solid #e1e9df;border-radius:28px;background:#fff;box-shadow:0 28px 90px #203d3018;min-height:510px}
+.visual{position:relative;padding:38px;background:linear-gradient(145deg,#254936,#172c21);color:white;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.visual:before,.visual:after{content:"";position:absolute;border:1px solid #ffffff18;border-radius:50%;width:310px;height:310px;left:-120px;bottom:-130px}
+.visual:after{width:210px;height:210px;left:-65px;bottom:-80px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;font-size:19px;position:relative;z-index:1}.mark{width:44px;height:44px;border-radius:15px;background:#ffffff1c;display:grid;place-items:center;font-size:24px}.brand small{display:block;font-size:10px;color:#c2d4c7;font-weight:500}
+.visual-copy{position:relative;z-index:1}.visual-copy .eyebrow{font-size:11px;color:#c2d4c7}.visual-copy h1{font-size:30px;line-height:1.8;margin:10px 0}.visual-copy p{font-size:12px;line-height:2.3;color:#d1dfd4;max-width:340px}.visual-foot{font-size:10px;color:#b4c9b9;position:relative;z-index:1}
+.form-side{padding:clamp(24px,5vw,52px);display:flex;flex-direction:column;justify-content:center}.form-side h2{font-size:23px;margin:0 0 7px}.sub{font-size:11px;line-height:2;color:var(--muted);margin:0 0 28px}
+.field{margin-bottom:16px}.field label{display:block;font-size:11px;font-weight:800;margin:0 0 8px}.field input{width:100%;height:50px;border:1px solid var(--line);border-radius:13px;padding:0 14px;background:#fbfcfa;color:var(--ink);outline:none;font-size:13px;transition:.2s}.field input:focus{border-color:#7d9c83;box-shadow:0 0 0 4px #315d4810;background:#fff}
+.password-wrap{position:relative}.password-wrap input{padding-left:58px}.show-pass{position:absolute;left:8px;top:8px;height:34px;border:0;border-radius:9px;background:#edf3ec;color:var(--green);font-size:10px;padding:0 10px;cursor:pointer}
+.submit{width:100%;height:49px;border:0;border-radius:13px;background:linear-gradient(120deg,#315d48,#244632);color:#fff;font-weight:800;font-size:12px;cursor:pointer;box-shadow:0 8px 20px #315d4828}.submit:disabled{opacity:.6;cursor:wait}
+.status{min-height:40px;margin:13px 0 0;font-size:11px;line-height:1.9;color:var(--muted)}.status.error{color:#b84d43}.status.ok{color:#315d48}
+.switch{margin-top:15px;padding-top:17px;border-top:1px solid var(--line);font-size:11px;color:var(--muted);text-align:center}.switch a{color:var(--green);font-weight:900;margin-right:4px}.back{display:block;text-align:center;margin-top:18px;font-size:10px;color:var(--muted)}
+@media(max-width:680px){.login-wrap{grid-template-columns:1fr;max-width:430px}.visual{min-height:180px;padding:22px}.visual-copy h1{font-size:21px;margin:5px 0}.visual-copy p{margin:0}.visual-foot{display:none}.form-side{padding:27px 23px}}
+body.senobar-dark{background:#111a16;color:#e8efe9}body.senobar-dark .login-wrap{background:#1b2922;border-color:#34463a}body.senobar-dark .form-side h2{color:#edf4ee}body.senobar-dark .field input{background:#17231c;border-color:#3b4b40;color:#edf4ee}body.senobar-dark .switch{border-color:#34463a}
+</style>
+</head>
+<body>
+<main class="login-wrap">
+<section class="visual">
+<a class="brand" href="../index.html"><span class="mark">✿</span><span>گالری صنوبر<small>دنیای بازی، خلاقیت و لبخند</small></span></a>
+<div class="visual-copy"><span class="eyebrow">خوش برگشتی!</span><h1>دوباره به دنیای صنوبر وارد شو</h1><p>با ورود به حساب خود می‌توانی اطلاعات کاربری و سفارش‌هایت را در یک مکان ببینی.</p></div>
+<div class="visual-foot">حساب آزمایشی · بدون ارسال پیامک</div>
+</section>
+<section class="form-side">
+<h2>ورود به حساب</h2><p class="sub">شماره موبایل و رمز عبوری را وارد کن که هنگام ساخت حساب آزمایشی استفاده کردی.</p>
+<form id="loginForm" novalidate>
+<div class="field"><label for="phone">شماره موبایل</label><input id="phone" type="tel" inputmode="numeric" autocomplete="username" maxlength="11" placeholder="09xxxxxxxxx" required></div>
+<div class="field"><label for="password">رمز عبور</label><div class="password-wrap"><input id="password" type="password" autocomplete="current-password" placeholder="رمز عبور حساب" required><button class="show-pass" type="button" id="showPass">نمایش</button></div></div>
+<button class="submit" id="submit" type="submit">ورود به حساب</button><div class="status" id="status" role="status" aria-live="polite">اطلاعات حساب آزمایشی در همین تب مرورگر نگهداری می‌شود.</div>
+</form>
+<div class="switch">هنوز حساب نساخته‌ای؟ <a href="login.html">ساخت حساب موقت</a></div>
+<a class="back" href="../index.html">بازگشت به فروشگاه</a>
+</section>
+</main>
+<script>
+(()=>{const $=id=>document.getElementById(id),status=$('status');const digits=s=>String(s||'').replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));function say(t,type=''){status.textContent=t;status.className='status '+type}
+$('showPass').addEventListener('click',()=>{const p=$('password');p.type=p.type==='password'?'text':'password';$('showPass').textContent=p.type==='password'?'نمایش':'پنهان'});
+$('loginForm').addEventListener('submit',e=>{e.preventDefault();const phone=digits($('phone').value).replace(/\D/g,''),password=$('password').value;if(!/^09\d{9}$/.test(phone)){say('شماره موبایل باید ۱۱ رقم و با 09 شروع شود.','error');return}if(!password){say('رمز عبور را وارد کن.','error');return}let accounts=[];try{accounts=JSON.parse(sessionStorage.getItem('senobar-temp-accounts')||'[]');if(!Array.isArray(accounts))accounts=[]}catch{}const account=accounts.find(a=>a.phone===phone&&a.password===password);if(!account){say('حسابی با این شماره و رمز در این تب پیدا نشد. اگر هنوز حساب نساخته‌ای، از گزینه ساخت حساب استفاده کن.','error');return}const role=phone==='09991733170'?'owner':'user';const active={...account,role};sessionStorage.setItem('senobar-demo-user',JSON.stringify(active));sessionStorage.setItem('senobar-demo-role',role);say(role==='owner'?'ورود مالک موفق بود؛ در حال انتقال به پنل مالک...':'ورود موفق بود؛ در حال انتقال به پنل کاربری...','ok');$('submit').disabled=true;setTimeout(()=>location.href=role==='owner'?'owner.html':'user-panel.html',550)});
+})();
+</script>
+<script src="../assets/js/theme-toys.js"></script>
+</body></html>
