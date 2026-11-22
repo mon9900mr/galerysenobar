@@ -22,7 +22,7 @@
 .toast{position:fixed;bottom:22px;left:22px;background:#203d30;color:#fff;padding:12px 17px;border-radius:12px;font-size:11px;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);pointer-events:none;transition:.2s;z-index:20}.toast.show{opacity:1;transform:translateY(0)}
 @media(max-width:1000px){.app{grid-template-columns:205px minmax(0,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
 @media(max-width:700px){.app{display:block}.sidebar{padding:12px;gap:12px}.brand{padding:0 5px}.brandmark{width:35px;height:35px}.navgroup small,.sidebottom{display:none}.nav{display:flex;overflow:auto;gap:5px}.nav button{white-space:nowrap;padding:9px 11px}.topbar{height:58px;padding:0 15px}.content{padding:20px 14px 35px}.pagehead{align-items:center}.pagehead h1{font-size:19px}.stats{gap:9px}.stat{padding:13px}.stat strong{font-size:19px}.panel{padding:14px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.quick{grid-template-columns:repeat(3,1fr)}}
-</style><link rel="stylesheet" href="theme-toys.css"></head>
+</style><link rel="stylesheet" href="assets/css/theme-toys.css"></head>
 <body>
 <script>(function(){if(sessionStorage.getItem('senobar-demo-role')!=='owner'){location.replace('login.html?next=owner.html');}})();</script>
 <div class="app"><div style="position:fixed;z-index:50;bottom:12px;left:12px;background:#fff4d9;color:#76510b;border:1px solid #eed79b;border-radius:12px;padding:10px 14px;font:12px Vazirmatn;max-width:330px">نسخه نمایشی GitHub · نقش مالک فقط در مرورگر شبیه‌سازی شده و هنوز احراز هویت امن ندارد.</div>
@@ -206,4 +206,4 @@ function resetSiteContent(){if(!confirm("متن‌ها و تصویر پیش‌ف
 $("siteImage").addEventListener("change",async e=>{const file=e.target.files[0];if(!file)return;try{siteImageData=await compressImage(file);$("siteImagePreview").src=siteImageData;$("siteImagePreview").style.display="block"}catch(err){alert(err.message);e.target.value=""}});
 $("siteForm").addEventListener("submit",e=>{e.preventDefault();const old=loadSiteContent();const c={...old,brand:$("sBrand").value.trim(),subtitle:$("sSubtitle").value.trim(),topline:$("sTopline").value.trim(),heroEyebrow:$("sEyebrow").value.trim(),heroTitle:$("sHeroTitle").value.trim(),heroText:$("sHeroText").value.trim(),bannerTitle:$("sBannerTitle").value.trim(),bannerText:$("sBannerText").value.trim(),about:$("sAbout").value.trim(),contact:$("sContact").value.trim(),heroImage:siteImageData||old.heroImage};try{localStorage.setItem("senobar-site-content",JSON.stringify(c));siteImageData="";toast("متن‌ها و تصویر سایت ذخیره شد")}catch(err){toast("فضای ذخیره مرورگر کافی نیست؛ تصویر کوچک‌تری انتخاب کن")}});
 fillCategorySelects();renderAll();fillSiteForm();
-</script><script src="theme-toys.js"></script></body></html>
+</script><script src="assets/js/theme-toys.js"></script></body></html>
