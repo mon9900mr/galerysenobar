@@ -1,4 +1,4 @@
-/* گالری صنوبر — داده‌های پیش‌فرض فروشگاه
+/* گالری سنوبر — داده‌های پیش‌فرض فروشگاه
    این داده‌ها صرفاً نمونه‌ی طراحی هستند؛ قیمت/موجودی تا زمان ورود اطلاعات واقعی منتشر نمی‌شوند. */
 window.SENOBAR_DEFAULT_PRODUCTS = [
  {id:1,name:"ماشین فلزی آبی",category:"اسباب‌بازی",subcategory:"ماشین و وسایل نقلیه",tag:"ماشین",price:null,stock:null,img:"https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=900&q=85"},
@@ -29,7 +29,7 @@ window.senobarProducts = function(){
  } catch(e){return window.SENOBAR_DEFAULT_PRODUCTS;}
 };
 window.senobarContent = function(){
- const base={brand:"گالری صنوبر",subtitle:"دنیای بازی، خلاقیت و لبخند",topline:"با بازی، دنیای تازه‌ای بساز! · فروشگاه تخصصی اسباب‌بازی",heroEyebrow:"برای لحظه‌های شاد و خلاقانه",heroTitle:"دنیای بازی، از صنوبر شروع می‌شود",heroText:"از ماشین و لگو تا عروسک و بازی‌های فکری؛ دسته‌بندی موردعلاقه‌ات را پیدا کن و دنیای بازی را کشف کن.",heroImage:"https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=900&q=85",bannerTitle:"وقتشه بازی شروع بشه!",bannerText:"اسباب‌بازی مناسب برای خیال‌پردازی، یادگیری و لحظه‌های قشنگ.",about:"گالری صنوبر، فروشگاهی تخصصی برای دنیای رنگارنگ اسباب‌بازی‌ها؛ از بازی‌های فکری تا ساختنی‌ها و عروسک‌های دوست‌داشتنی.",contact:"اطلاعات تماس فروشگاه به‌زودی تکمیل می‌شود."};
+ const base={brand:"گالری سنوبر",subtitle:"دنیای بازی، خلاقیت و لبخند",topline:"با بازی، دنیای تازه‌ای بساز! · فروشگاه تخصصی اسباب‌بازی",heroEyebrow:"برای لحظه‌های شاد و خلاقانه",heroTitle:"دنیای بازی، از سنوبر شروع می‌شود",heroText:"از ماشین و لگو تا عروسک و بازی‌های فکری؛ دسته‌بندی موردعلاقه‌ات را پیدا کن و دنیای بازی را کشف کن.",heroImage:"https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=900&q=85",bannerTitle:"وقتشه بازی شروع بشه!",bannerText:"اسباب‌بازی مناسب برای خیال‌پردازی، یادگیری و لحظه‌های قشنگ.",about:"گالری سنوبر، فروشگاهی تخصصی برای دنیای رنگارنگ اسباب‌بازی‌ها؛ از بازی‌های فکری تا ساختنی‌ها و عروسک‌های دوست‌داشتنی.",contact:"اطلاعات تماس فروشگاه به‌زودی تکمیل می‌شود."};
  try{return {...base,...(JSON.parse(localStorage.getItem("senobar-site-content"))||{})}}catch(e){return base}
 };
 
