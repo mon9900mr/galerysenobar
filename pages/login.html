@@ -159,6 +159,7 @@ $('signup').addEventListener('submit',e=>{
   const account=accounts.find(a=>normalizePhone(a.phone)===phone&&a.password===password);
   if(!account){setStatus('حسابی با این شماره و رمز در این تب پیدا نشد. ابتدا ثبت‌نام کن.','error');return}
   const role=isOwnerPhone(phone)?'owner':'user';
+  account.phone=phone;account.role=role;const accountIndex=accounts.findIndex(a=>normalizePhone(a.phone)===phone);if(accountIndex>=0){accounts[accountIndex]={...accounts[accountIndex],phone,role};sessionStorage.setItem('senobar-temp-accounts',JSON.stringify(accounts))}
   sessionStorage.setItem('senobar-demo-user',JSON.stringify({...account,role}));
   sessionStorage.setItem('senobar-demo-role',role);
   setStatus(role==='owner'?'ورود مالک موفق بود؛ در حال انتقال به پنل مالک...':'ورود موفق بود؛ در حال انتقال به پنل کاربری...','ok');
