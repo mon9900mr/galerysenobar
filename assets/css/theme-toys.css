@@ -649,3 +649,24 @@ body.senobar-dark :is(.filter,.quick button,.category-actions button){text-shado
 body :is(.sidebar,.side,.nav,.section,.panel,.form,.actions) button,
 body :is(.sidebar,.side,.nav,.section,.panel,.form,.actions) a{pointer-events:auto!important}
 body .senobar-theme-toggle{pointer-events:auto!important}
+
+/* Dashboard interaction stability: never hide or transform admin/owner/user controls */
+:where(body:has(.app),body:has(.shell)) .sb-reveal{
+ opacity:1!important;
+ visibility:visible!important;
+ transform:none!important;
+ transition:none!important;
+}
+:where(body:has(.app),body:has(.shell)) :is(button,a,[role="button"],input[type="submit"],input[type="button"]){
+ pointer-events:auto!important;
+ touch-action:manipulation;
+ cursor:pointer;
+}
+:where(body:has(.app),body:has(.shell)) :is(.sidebar,.side,.nav,.topbar,.top,.content,.section,.panel,.card,.actions,.toolbar){
+ pointer-events:auto;
+}
+:where(body:has(.app),body:has(.shell)) :is(.sidebar,.side,.nav,.section,.panel,.card)::before,
+:where(body:has(.app),body:has(.shell)) :is(.sidebar,.side,.nav,.section,.panel,.card)::after{
+ pointer-events:none;
+}
+.senobar-theme-toggle{z-index:40!important}
