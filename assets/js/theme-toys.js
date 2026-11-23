@@ -19,7 +19,8 @@
  body.appendChild(toggle);
 
  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- if(reduce)return;
+ // Dashboard panels contain forms and action buttons; avoid observer-driven reveal transforms there.
+ if(reduce||document.querySelector('.app,.shell'))return;
  if(!('IntersectionObserver' in window))return;
  const targets='.hero-copy,.hero-photo,.hero-card,.profile-card,.profile-panel,.orders-panel,.card,.panel,.product-card,.product,.cat,.tile,.stat,.stat-card,.metric,.section-card,.order-card,.info-card,.category-card,.feature-card,.section';
  let observer;
