@@ -516,3 +516,50 @@ body:not(.senobar-dark) .senobar-theme-toggle{
   color:#315d48!important;
   border-color:#d2ddd3!important;
 }
+
+
+/* Senobar motion system — lightweight, responsive and theme-aware */
+:root{--sb-motion-fast:160ms;--sb-motion-base:280ms;--sb-motion-slow:520ms;--sb-motion-ease:cubic-bezier(.2,.75,.25,1)}
+html{scroll-behavior:smooth}
+body{animation:sb-page-enter .42s var(--sb-motion-ease) both}
+@keyframes sb-page-enter{from{opacity:.78}to{opacity:1}}
+:where(.card,.panel,.product-card,.product,.cat,.tile,.stat,.stat-card,.metric,.section-card,.order-card,.info-card,.category-card,.quick button,.feature-card){
+ transition:transform var(--sb-motion-base) var(--sb-motion-ease),box-shadow var(--sb-motion-base) var(--sb-motion-ease),border-color var(--sb-motion-base) ease,background-color var(--sb-motion-base) ease,color var(--sb-motion-base) ease;
+}
+:where(.product-card,.product,.cat,.tile,.category-card,.feature-card){overflow:hidden}
+:where(.product-card,.product,.cat,.tile,.category-card,.feature-card):hover{
+ transform:translateY(-5px);
+ box-shadow:0 16px 34px rgba(31,65,45,.12);
+}
+:where(.product-card,.product,.cat,.tile,.category-card,.feature-card) img{
+ transition:transform 520ms var(--sb-motion-ease),filter 350ms ease;
+}
+:where(.product-card,.product,.cat,.tile,.category-card,.feature-card):hover img{
+ transform:scale(1.045);
+}
+:where(button,.btn,[role="button"],.nav a,.links a,.navlinks a){
+ transition:transform var(--sb-motion-fast) ease,background-color var(--sb-motion-base) ease,color var(--sb-motion-base) ease,box-shadow var(--sb-motion-base) ease,border-color var(--sb-motion-base) ease;
+}
+:where(button,.btn,[role="button"]):active{transform:scale(.97)}
+.senobar-theme-toggle{transition:transform 220ms ease,background-color 280ms ease,color 280ms ease,box-shadow 280ms ease}
+.senobar-theme-toggle:hover{transform:translateY(-2px)}
+.sb-reveal{opacity:0;transform:translateY(18px);transition:opacity 520ms var(--sb-motion-ease),transform 520ms var(--sb-motion-ease)}
+.sb-reveal.sb-visible{opacity:1;transform:translateY(0)}
+.sb-reveal[data-sb-delay="1"]{transition-delay:55ms}
+.sb-reveal[data-sb-delay="2"]{transition-delay:110ms}
+.sb-reveal[data-sb-delay="3"]{transition-delay:165ms}
+.sb-reveal[data-sb-delay="4"]{transition-delay:220ms}
+.sb-image-float{animation:sb-float 5s ease-in-out infinite}
+@keyframes sb-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.sb-cart-bump{animation:sb-cart-bump 380ms cubic-bezier(.2,.8,.2,1)}
+@keyframes sb-cart-bump{0%,100%{transform:scale(1)}35%{transform:scale(1.13)}65%{transform:scale(.96)}}
+.sb-added{animation:sb-added 520ms ease}
+@keyframes sb-added{0%{box-shadow:0 0 0 0 rgba(49,93,72,.28)}100%{box-shadow:0 0 0 12px rgba(49,93,72,0)}}
+body.senobar-dark :where(.product-card,.product,.cat,.tile,.category-card,.feature-card):hover{box-shadow:0 16px 34px rgba(0,0,0,.28)}
+@media(hover:none){:where(.product-card,.product,.cat,.tile,.category-card,.feature-card):hover{transform:none;box-shadow:inherit}:where(.product-card,.product,.cat,.tile,.category-card,.feature-card):hover img{transform:none}}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ body{animation:none!important}
+ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+ .sb-reveal{opacity:1!important;transform:none!important}
+}
