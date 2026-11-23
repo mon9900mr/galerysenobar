@@ -2,5 +2,7 @@
 const cats=senobarCategories();
 const categoryImages={"ماشین و وسایل نقلیه":"../assets/images/categories/vehicles.jpg","آشپزخانه و خانه‌بازی":"../assets/images/categories/kitchen-play.jpg","لگو و ساختنی":"../assets/images/categories/building-blocks.jpg","خانه‌سازی و سازه‌ها":"../assets/images/categories/construction.jpg","عروسک و پولیشی":"../assets/images/categories/dolls-plush.jpg","فکری و آموزشی":"../assets/images/categories/educational-games.jpg","بازی‌های فضای باز":"../assets/images/categories/outdoor-play.jpg","اسباب‌بازی‌های دیگر":"../assets/images/categories/other-toys.jpg"};
 const imageFor=c=>c.image||categoryImages[c.name]||categoryImages["اسباب‌بازی‌های دیگر"];
-document.getElementById("categoryGrid").innerHTML=cats.map(c=>'<a class="tile" href="products.html?subcategory='+encodeURIComponent(c.name)+'"><img loading="lazy" src="'+imageFor(c)+'" alt="'+c.name+'"><div><b>'+c.emoji+" "+c.name+'</b><p>'+c.desc+'</p></div></a>').join("");
+function categoryImageFallback(img){const box=document.createElement("div");box.className="category-image-fallback";box.textContent="🧸";box.setAttribute("role","img");box.setAttribute("aria-label",img.alt||"تصویر دسته‌بندی");img.replaceWith(box)}
+
+document.getElementById("categoryGrid").innerHTML=cats.map(c=>'<a class="tile" href="products.html?subcategory='+encodeURIComponent(c.name)+'"><img loading="lazy" src="'+imageFor(c)+'" alt="'+c.name+'" onerror="categoryImageFallback(this)"><div><b>'+c.emoji+" "+c.name+'</b><p>'+c.desc+'</p></div></a>').join("");
 </script><script src="../assets/js/theme-toys.js"></script></body></html>
