@@ -637,3 +637,15 @@ body.senobar-dark .card img{background:#26332b}
 .sb-cart-items{padding:10px 0;display:grid;gap:10px}.sb-cart-row{display:flex;gap:12px;align-items:center;border:1px solid #e8e8df;border-radius:13px;padding:9px}.sb-cart-row img{width:76px;height:76px;object-fit:contain;border-radius:9px;background:#f5f5f0}.sb-cart-meta{min-width:0;flex:1}.sb-cart-meta b,.sb-cart-meta small{display:block}.sb-cart-meta b{font-size:12px}.sb-cart-meta small{font-size:10px;color:#748278;margin-top:4px}.sb-qty{display:flex;align-items:center;gap:9px;margin-top:8px;font-size:12px}.sb-qty button{border:1px solid #dce4dc;background:#f7f5ef;color:#24352d;border-radius:7px;padding:4px 9px;cursor:pointer}.sb-qty .sb-remove{margin-right:auto;color:#a33;background:#fff3f1}.sb-cart-empty{color:#748278;text-align:center;padding:20px}.sb-cart-total{border-top:1px solid #e8e8df;padding:14px 0;font-size:13px}.sb-checkout{display:grid;gap:10px;margin-top:5px}.sb-checkout h3{font-size:14px;margin:4px 0}.sb-checkout label{display:grid;gap:5px;font-size:11px}.sb-checkout input,.sb-checkout textarea{width:100%;border:1px solid #dce4dc;border-radius:9px;padding:10px;background:#fff;color:#24352d;min-width:0}.sb-checkout small{font-size:10px;line-height:1.9;color:#748278}.sb-cart-lock{overflow:hidden!important}
 body.senobar-dark .sb-cart-drawer{background:#202a24;color:#edf3ee}body.senobar-dark .sb-cart-head,body.senobar-dark .sb-cart-total{border-color:#39483e}body.senobar-dark .sb-cart-row{border-color:#39483e}body.senobar-dark .sb-cart-row img{background:#26332b}body.senobar-dark .sb-cart-meta small,body.senobar-dark .sb-cart-empty,body.senobar-dark .sb-checkout small{color:#b0beb4}body.senobar-dark .sb-checkout input,body.senobar-dark .sb-checkout textarea{background:#151c18;color:#edf3ee;border-color:#39483e}body.senobar-dark .sb-qty button{background:#26332b;color:#edf3ee;border-color:#39483e}
 @media(max-width:560px){.sb-cart-open{font-size:10px;padding:8px 10px}.sb-cart-drawer{padding:14px}.sb-cart-row img{width:64px;height:64px}}
+
+/* Repair category labels, missing image placeholders and interactive panel controls */
+body.senobar-dark .filter{color:#edf3ee!important;background:#26332b!important;border-color:#526457!important}
+body.senobar-dark .filter.active{color:#fff!important;background:#477557!important}
+.category-image-fallback,.product-image-fallback{display:grid;place-items:center;min-height:170px;width:100%;background:linear-gradient(145deg,#e8eee5,#f6eadc);color:#315d48;font-size:54px}
+body.senobar-dark .category-image-fallback,body.senobar-dark .product-image-fallback{background:linear-gradient(145deg,#304238,#202a24);color:#e5eee7}
+.category-image-fallback{height:clamp(160px,18vw,220px)}
+.product-image-fallback{height:230px}
+body.senobar-dark :is(.filter,.quick button,.category-actions button){text-shadow:none}
+body :is(.sidebar,.side,.nav,.section,.panel,.form,.actions) button,
+body :is(.sidebar,.side,.nav,.section,.panel,.form,.actions) a{pointer-events:auto!important}
+body .senobar-theme-toggle{pointer-events:auto!important}
