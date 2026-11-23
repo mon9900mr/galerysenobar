@@ -563,3 +563,11 @@ body.senobar-dark :where(.product-card,.product,.cat,.tile,.category-card,.featu
  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
  .sb-reveal{opacity:1!important;transform:none!important}
 }
+
+/* Hero and dashboard entrance details */
+.hero-copy{animation:sb-hero-copy .65s var(--sb-motion-ease) both}
+.hero-photo,.hero-card{animation:sb-hero-photo .8s .08s var(--sb-motion-ease) both}
+@keyframes sb-hero-copy{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes sb-hero-photo{from{opacity:0;transform:translateX(-18px) scale(.985)}to{opacity:1;transform:translateX(0) scale(1)}}
+:where(.profile-card,.profile-panel,.orders-panel,.section,.panel,.stat,.customer-stats){transition:transform 300ms var(--sb-motion-ease),box-shadow 300ms ease,border-color 300ms ease,background-color 300ms ease}
+:where(.profile-card,.profile-panel,.orders-panel,.section,.panel,.stat):hover{border-color:rgba(49,93,72,.24)}
