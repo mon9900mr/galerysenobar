@@ -22,35 +22,7 @@ galerysenobar/
 │   │   └── theme-toys.js
 │   └── images/
 │       └── toys/
-│           ├── toy-background.svg
-│           ├── toy-blocks.svg
-│           ├── toy-car.svg
-│           ├── toy-kite.svg
-│           ├── toy-rocket.svg
-│           ├── toy-teddy.svg
-│           └── toy-train.svg
-└── README.md
-```
-
-## صفحات
-
-- `index.html`: صفحه اصلی فروشگاه
-- `category.html`: دسته‌بندی اسباب‌بازی‌ها
-- `products.html`: فهرست و فیلتر محصولات
-- `pages/login.html`: فرم یکپارچه ثبت‌نام/ورود با نام، نام خانوادگی، موبایل، کد پستی و نقشه انتخاب نشانی
-- `owner.html`: پنل مالک
-- `admin-panel.html`: پنل ادمین
-- `user-panel.html`: پنل مشتری
-- `admin.html`: هدایت کاربر به پنل متناسب با نقش انتخاب‌شده
-
-فایل `index.html` در ریشه باقی مانده و سایر صفحات در پوشه `pages/` قرار گرفته‌اند. تنظیمات GitHub Pages همچنان روی شاخه `main` و پوشه `/ (root)` است.
-
-## فایل‌های مشترک
-
-- `assets/css/theme-toys.css`: پوسته مشترک، حالت تاریک و استایل‌های عمومی
-- `assets/js/theme-toys.js`: کنترل حالت روشن و تاریک
-- `assets/js/store-data.js`: داده‌های پیش‌فرض محصولات، دسته‌بندی‌ها و محتوای فروشگاه
-- `assets/images/toys/`: تصاویر SVG محلی پروژه
+│   └── images/ (مسیر نگهداری تصاویر واقعی فروشگاه)
 
 ## اجرا
 
