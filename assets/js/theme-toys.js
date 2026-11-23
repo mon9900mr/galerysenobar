@@ -21,12 +21,12 @@
  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  if(reduce)return;
  if(!('IntersectionObserver' in window))return;
- const targets='.card,.panel,.product-card,.product,.cat,.tile,.stat,.stat-card,.metric,.section-card,.order-card,.info-card,.category-card,.feature-card';
+ const targets='.hero-copy,.hero-photo,.hero-card,.profile-card,.profile-panel,.orders-panel,.card,.panel,.product-card,.product,.cat,.tile,.stat,.stat-card,.metric,.section-card,.order-card,.info-card,.category-card,.feature-card,.section';
  let observer;
  const reveal=(root)=>{
   const nodes=(root.matches&&root.matches(targets)?[root]:[]);
   if(root.querySelectorAll)nodes.push(...root.querySelectorAll(targets));
-  nodes.forEach((el)=>{
+  nodes.forEach((el,index)=>{
    if(el.dataset.sbMotionReady)return;
    if(el.closest('.sidebar,.side,header,nav,footer'))return;
    el.dataset.sbMotionReady='1';
