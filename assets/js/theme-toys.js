@@ -30,6 +30,7 @@
    if(el.dataset.sbMotionReady)return;
    if(el.closest('.sidebar,.side,header,nav,footer'))return;
    el.dataset.sbMotionReady='1';
+   el.dataset.sbDelay=String(index%5);
    el.classList.add('sb-reveal');
    if(observer)observer.observe(el);else el.classList.add('sb-visible');
   });
