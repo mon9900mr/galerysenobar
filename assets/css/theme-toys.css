@@ -691,3 +691,11 @@ body .senobar-theme-toggle{pointer-events:auto!important}
 body.senobar-dark .sb-cart-drawer{background:#17221b;color:#edf5ee}body.senobar-dark .sb-cart-head{border-color:#35483a}body.senobar-dark .sb-cart-head strong,body.senobar-dark .sb-cart-meta b,body.senobar-dark .sb-cart-empty b,body.senobar-dark .sb-checkout h3{color:#edf5ee}body.senobar-dark .sb-cart-head small,body.senobar-dark .sb-cart-toolbar,body.senobar-dark .sb-cart-meta small,body.senobar-dark .sb-cart-empty{color:#b3c3b6}body.senobar-dark .sb-cart-row{background:#202e24;border-color:#3a4b3d}body.senobar-dark .sb-cart-row img{background:#293a2e}body.senobar-dark .sb-line-total,body.senobar-dark .sb-total-line b{color:#9bd2a9}body.senobar-dark .sb-cart-bottom{background:#1d2a21;border-color:#394a3c}body.senobar-dark .sb-total-line,body.senobar-dark .sb-checkout label{color:#c0d0c3}body.senobar-dark .sb-checkout input,body.senobar-dark .sb-checkout textarea{background:#111a14;color:#edf5ee;border-color:#405544}body.senobar-dark .sb-cart-close{background:#304335;color:#edf5ee}
 @media(max-width:560px){.sb-cart-drawer{width:min(100vw,460px);border-radius:0 14px 14px 0}.sb-cart-head{padding:15px}.sb-cart-items{padding:10px 12px}.sb-cart-bottom{padding:10px 14px max(12px,env(safe-area-inset-bottom));max-height:58%}.sb-cart-row img{width:68px;height:68px;flex-basis:68px}}
 @media(prefers-reduced-motion:reduce){.sb-cart-drawer,.sb-cart-shade,.sb-cart-row{transition:none!important;animation:none!important}}
+
+/* Product image area: resilient fallback without emoji or broken-image text */
+.product-media{position:relative;width:100%;height:220px;overflow:hidden;background:#e9eee9;border-radius:14px 14px 0 0}
+.product-media>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.product-media>.product-image-fallback{position:absolute;inset:0;width:100%;height:100%;min-height:0;background:linear-gradient(135deg,#e8eee8,#dce7df)}
+body.senobar-dark .product-media{background:#26332b}
+body.senobar-dark .product-media>.product-image-fallback{background:linear-gradient(135deg,#304238,#202a24)}
+@media(max-width:600px){.product-media{height:190px}}
