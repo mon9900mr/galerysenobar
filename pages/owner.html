@@ -77,7 +77,7 @@ body.senobar-dark .customer-detail-item b{color:#f1f6f1!important}
    <div class="panel hidden" id="productEditor"><div class="panelhead"><div><h2 id="formTitle">افزودن محصول جدید</h2><p>اطلاعات محصول را وارد کن و ذخیره کن</p></div><button class="btn ghost small" onclick="closeEditor()">بستن ×</button></div>
     <form id="productForm" class="formgrid">
      <input type="hidden" id="editId">
-     <div class="field"><label for="pName">نام محصول</label><input id="pName" required maxlength="90" placeholder="مثلاً ماشین کنترلی"></div>
+     <div class="field"><label for="pName">نام محصول</label><input id="pName" required maxlength="90" placeholder="مثلاً مانتو کتی لینن"></div>
      <div class="field"><label for="pCategory">دسته‌بندی</label><select id="pCategory" required></select></div>
      <div class="field"><label for="pPrice">قیمت (تومان)</label><input id="pPrice" type="number" min="0" step="1000" required placeholder="مثلاً ۵۰۰۰۰۰"></div>
      <div class="field"><label for="pStock">موجودی (عدد)</label><input id="pStock" type="number" min="0" step="1" value="1"></div>
@@ -175,12 +175,12 @@ let categories=loadCategories();
 function loadCategories(){try{const saved=JSON.parse(localStorage.getItem("senobar-categories"));if(Array.isArray(saved)&&saved.length&&saved.some(c=>DEFAULT_CATEGORIES.some(d=>d.name===c.name)))return saved}catch(e){}localStorage.setItem("senobar-categories",JSON.stringify(DEFAULT_CATEGORIES));return DEFAULT_CATEGORIES.map(c=>({...c}))}
 function saveCategories(){localStorage.setItem("senobar-categories",JSON.stringify(categories));fillCategorySelects();renderAll()}
 const sample=[
-{id:1,name:"مانتو کتی لینن",category:"پوشاک زنانه",subcategory:"مانتو و رویه",cat:"مانتو و رویه",price:0,stock:0,tag:"ماشین",img:"https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85"},
-{id:2,name:"شومیز سفید مینیمال",category:"پوشاک زنانه",subcategory:"شومیز و بلوز",cat:"شومیز و بلوز",price:0,stock:0,tag:"خانه‌بازی",img:"https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=900&q=85"},
-{id:3,name:"پیراهن مجلسی زنانه",category:"پوشاک زنانه",subcategory:"پیراهن و لباس",cat:"پیراهن و لباس",price:0,stock:0,tag:"ساختنی",img:"https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=900&q=85"},
-{id:4,name:"ست لباس روزمره",category:"پوشاک زنانه",subcategory:"ست و لباس روزمره",cat:"ست و لباس روزمره",price:0,stock:0,tag:"عروسک",img:"https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=85"},
-{id:5,name:"شلوار پارچه‌ای زنانه",category:"پوشاک زنانه",subcategory:"لباس مجلسی",cat:"لباس مجلسی",price:0,stock:0,tag:"فکری",img:"https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=900&q=85"},
-{id:6,name:"مانتو و استایل بیرونی",category:"پوشاک زنانه",subcategory:"شلوار و دامن",cat:"شلوار و دامن",price:0,stock:0,tag:"سازه",img:"https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=900&q=85"}
+{id:1,name:"مانتو کتی لینن",category:"پوشاک زنانه",subcategory:"مانتو و رویه",cat:"مانتو و رویه",price:0,stock:0,tag:"جدید",img:"https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=900&q=85"},
+{id:2,name:"شومیز سفید مینیمال",category:"پوشاک زنانه",subcategory:"شومیز و بلوز",cat:"شومیز و بلوز",price:0,stock:0,tag:"پرفروش",img:"https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=900&q=85"},
+{id:3,name:"پیراهن مجلسی زنانه",category:"پوشاک زنانه",subcategory:"پیراهن و لباس",cat:"پیراهن و لباس",price:0,stock:0,tag:"ویژه",img:"https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=900&q=85"},
+{id:4,name:"ست لباس روزمره",category:"پوشاک زنانه",subcategory:"ست و لباس روزمره",cat:"ست و لباس روزمره",price:0,stock:0,tag:"ترند",img:"https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85"},
+{id:5,name:"شلوار پارچه‌ای زنانه",category:"پوشاک زنانه",subcategory:"شلوار و دامن",cat:"شلوار و دامن",price:0,stock:0,tag:"کالکشن",img:"https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=85"},
+{id:6,name:"مانتو و استایل بیرونی",category:"پوشاک زنانه",subcategory:"مانتو و رویه",cat:"مانتو و رویه",price:0,stock:0,tag:"جدید",img:"https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=900&q=85"}
 ]
 const KEY="senobar-products";
 const money=n=>new Intl.NumberFormat("fa-IR").format(Number(n)||0)+" تومان";
