@@ -98,7 +98,7 @@ body.senobar-dark .customer-detail-item b{color:#f1f6f1!important}
    <div class="panel"><div class="panelhead"><div><h2 id="categoryFormTitle">افزودن دسته‌بندی جدید</h2><p>نام، توضیح و تصویر اختصاصی دسته‌بندی را وارد کن.</p></div></div>
     <form id="categoryForm" class="formgrid">
      <input type="hidden" id="categoryEditName">
-     <div class="field"><label for="categoryName">نام دسته‌بندی</label><input id="categoryName" maxlength="60" required placeholder="مثلاً مانتو و رویه"></div>
+     <div class="field"><label for="categoryName">نام دسته‌بندی</label><input id="categoryName" maxlength="60" required placeholder="مثلاً ست تیشرت و شلوار راحتی"></div>
      <div class="field full"><label for="categoryDesc">توضیح کوتاه</label><input id="categoryDesc" maxlength="120" placeholder="توضیحی که در فروشگاه نمایش داده می‌شود"></div>
      <div class="field full"><label for="categoryImageFile">عکس دسته‌بندی (JPG / PNG / WEBP)</label><input id="categoryImageFile" type="file" accept="image/jpeg,image/png,image/webp"><small>عکس به‌صورت خودکار اندازه‌اش تنظیم می‌شود و در همین مرورگر ذخیره می‌شود.</small><img id="categoryImagePreview" alt="پیش‌نمایش عکس دسته‌بندی" style="display:none;width:100%;max-width:260px;height:150px;object-fit:cover;border-radius:12px;margin-top:10px"></div>
      <div class="field full actions"><button class="btn" id="saveCategory" type="submit">افزودن دسته‌بندی</button><button class="btn ghost" type="button" onclick="resetCategoryForm()">پاک کردن فرم</button></div>
@@ -162,25 +162,25 @@ body.senobar-dark .customer-detail-item b{color:#f1f6f1!important}
 <div class="toast" id="toast"></div>
 <script>
 const DEFAULT_CATEGORIES=[
- {name:"مانتو و رویه"},
- {name:"شومیز و بلوز"},
- {name:"پیراهن و لباس"},
- {name:"شلوار و دامن"},
- {name:"ست و لباس روزمره"},
- {name:"لباس مجلسی"},
- {name:"بافت و لباس گرم"},
- {name:"پوشاک زنانهی دیگر"}
+ {name:"ست تیشرت و شلوار راحتی"},
+ {name:"ست بلوز و شلوار خانگی"},
+ {name:"لباس خواب و خانگی"},
+ {name:"شلوار راحتی"},
+ {name:"ست تیشرت و شلوار راحتی"},
+ {name:"لباس راحتی و خانگی"},
+ {name:"هودی و دورس"},
+ {name:"روبدوشامبر و لباس نخی"}
 ];
 let categories=loadCategories();
 function loadCategories(){try{const saved=JSON.parse(localStorage.getItem("senobar-categories"));if(Array.isArray(saved)&&saved.length&&saved.some(c=>DEFAULT_CATEGORIES.some(d=>d.name===c.name)))return saved}catch(e){}localStorage.setItem("senobar-categories",JSON.stringify(DEFAULT_CATEGORIES));return DEFAULT_CATEGORIES.map(c=>({...c}))}
 function saveCategories(){localStorage.setItem("senobar-categories",JSON.stringify(categories));fillCategorySelects();renderAll()}
 const sample=[
-{id:1,name:"مانتو کتی لینن",category:"پوشاک زنانه",subcategory:"مانتو و رویه",cat:"مانتو و رویه",price:0,stock:0,tag:"جدید",img:"https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=900&q=85"},
-{id:2,name:"شومیز سفید مینیمال",category:"پوشاک زنانه",subcategory:"شومیز و بلوز",cat:"شومیز و بلوز",price:0,stock:0,tag:"پرفروش",img:"https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=900&q=85"},
-{id:3,name:"پیراهن مجلسی زنانه",category:"پوشاک زنانه",subcategory:"پیراهن و لباس",cat:"پیراهن و لباس",price:0,stock:0,tag:"ویژه",img:"https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=900&q=85"},
-{id:4,name:"ست لباس روزمره",category:"پوشاک زنانه",subcategory:"ست و لباس روزمره",cat:"ست و لباس روزمره",price:0,stock:0,tag:"ترند",img:"https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85"},
-{id:5,name:"شلوار پارچه‌ای زنانه",category:"پوشاک زنانه",subcategory:"شلوار و دامن",cat:"شلوار و دامن",price:0,stock:0,tag:"کالکشن",img:"https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=85"},
-{id:6,name:"مانتو و استایل بیرونی",category:"پوشاک زنانه",subcategory:"مانتو و رویه",cat:"مانتو و رویه",price:0,stock:0,tag:"جدید",img:"https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=900&q=85"}
+{id:1,name:"مانتو کتی لینن",category:"پوشاک زنانه",subcategory:"ست تیشرت و شلوار راحتی",cat:"ست تیشرت و شلوار راحتی",price:0,stock:0,tag:"جدید",img:"https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=900&q=85"},
+{id:2,name:"شومیز سفید مینیمال",category:"پوشاک زنانه",subcategory:"ست بلوز و شلوار خانگی",cat:"ست بلوز و شلوار خانگی",price:0,stock:0,tag:"پرفروش",img:"https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=900&q=85"},
+{id:3,name:"پیراهن راحتی و خانگی زنانه",category:"پوشاک زنانه",subcategory:"لباس خواب و خانگی",cat:"لباس خواب و خانگی",price:0,stock:0,tag:"ویژه",img:"https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=900&q=85"},
+{id:4,name:"ست لباس روزمره",category:"پوشاک زنانه",subcategory:"ست تیشرت و شلوار راحتی",cat:"ست تیشرت و شلوار راحتی",price:0,stock:0,tag:"ترند",img:"https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85"},
+{id:5,name:"شلوار پارچه‌ای زنانه",category:"پوشاک زنانه",subcategory:"شلوار راحتی",cat:"شلوار راحتی",price:0,stock:0,tag:"کالکشن",img:"https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=85"},
+{id:6,name:"مانتو و استایل بیرونی",category:"پوشاک زنانه",subcategory:"ست تیشرت و شلوار راحتی",cat:"ست تیشرت و شلوار راحتی",price:0,stock:0,tag:"جدید",img:"https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=900&q=85"}
 ]
 const KEY="senobar-products";
 const money=n=>new Intl.NumberFormat("fa-IR").format(Number(n)||0)+" تومان";
@@ -188,7 +188,7 @@ const num=n=>new Intl.NumberFormat("fa-IR").format(Number(n)||0);
 const $=id=>document.getElementById(id);
 const escapeHTML=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 let products=loadProducts(),selectedImage="";
-function loadProducts(){try{if(localStorage.getItem("senobar-catalog-version")!=="3"){localStorage.setItem(KEY,JSON.stringify(sample));localStorage.setItem("senobar-catalog-version","3")}const data=JSON.parse(localStorage.getItem(KEY));return (Array.isArray(data)?data:sample).map((p,i)=>({...p,id:p.id??Date.now()+i,category:"پوشاک زنانه",subcategory:p.subcategory||p.cat||"سایر",stock:Number(p.stock??0)}))}catch{return sample.map(p=>({...p}))}}
+function loadProducts(){try{if(localStorage.getItem("senobar-catalog-version")!=="4"){localStorage.setItem(KEY,JSON.stringify(sample));localStorage.setItem("senobar-catalog-version","4")}const data=JSON.parse(localStorage.getItem(KEY));return (Array.isArray(data)?data:sample).map((p,i)=>({...p,id:p.id??Date.now()+i,category:"پوشاک زنانه",subcategory:p.subcategory||p.cat||"سایر",stock:Number(p.stock??0)}))}catch{return sample.map(p=>({...p}))}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(products));renderAll();toast("تغییرات ذخیره شد")}catch(e){toast("فضای ذخیره مرورگر کافی نیست؛ عکس کوچک‌تری انتخاب کن")}}
 function toast(message){$("toast").textContent=message;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),2300)}
 function fillCategorySelects(){const opts=categories.map(c=>'<option value="'+escapeHTML(c.name)+'">'+escapeHTML(c.name)+"</option>").join("");$("pCategory").innerHTML=opts;$("categoryFilter").innerHTML='<option value="">همه دسته‌ها</option>'+opts}
@@ -279,8 +279,8 @@ function download(name,data,type){const blob=new Blob([data],{type}),url=URL.cre
 function exportProducts(){const rows=[["نام محصول","دسته‌بندی","قیمت تومان","موجودی"],...products.map(p=>[p.name,p.subcategory||p.cat,p.price,p.stock??0])];const csv="\uFEFF"+rows.map(r=>r.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\n");download("senobar-products.csv",csv,"text/csv;charset=utf-8")}
 function backupProducts(){download("senobar-products-backup.json",JSON.stringify(products,null,2),"application/json")}
 function resetProducts(){if(!confirm("فهرست فعلی با محصولات نمونه جایگزین شود؟"))return;products=sample.map(p=>({...p}));save()}
-function siteDefaults(){return {brand:"نارا کالکشن",subtitle:"استایلی برای درخشیدن تو",topline:"کالکشن تازه رسید · انتخابی شیک برای هر روز · بوتیک پوشاک زنانه",heroEyebrow:"کالکشن جدید پوشاک زنانه",heroTitle:"استایل خودت را با سنوبر بساز",heroText:"از مانتو و شومیز تا لباس‌های مجلسی و ست‌های روزمره؛ لباس مورد علاقه‌ات را پیدا کن و استایل خاص خودت را بساز.",heroImage:"https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85",heroFit:"cover",bannerTitle:"برای استایل تازه آماده‌ای؟",bannerText:"تازه‌ترین انتخاب‌های پوشاک زنانه را در کالکشن نارا کالکشن ببین.",about:"نارا کالکشن؛ مقصدی برای انتخاب پوشاک زنانه، از استایل روزمره و مینیمال تا لباس‌های خاص و مجلسی.",contact:"برای راهنمایی سایز، ثبت سفارش و پیگیری خرید با پشتیبانی بوتیک در ارتباط باش."}}
-function loadSiteContent(){try{const saved=JSON.parse(localStorage.getItem("senobar-site-content"))||{};if(saved.brand==="گالری سنوبر"||(saved.heroText||"").includes("اسباب‌بازی")){localStorage.removeItem("senobar-site-content");return siteDefaults()}return {...siteDefaults(),...saved}}catch{return siteDefaults()}}
+function siteDefaults(){return {brand:"نارا کالکشن",subtitle:"استایلی برای درخشیدن تو",topline:"کالکشن تازه رسید · انتخابی شیک برای هر روز · بوتیک پوشاک زنانه",heroEyebrow:"NARA COLLECTION · HOMEWEAR",heroTitle:"راحتیِ هر روز، با استایل نارا",heroText:"از ست‌های راحتی و تیشرت‌های آزاد تا لباس خواب و لباس‌های نخی؛ برای لحظه‌های آرام و روزهای خودت انتخاب کن.",heroImage:"https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85",heroFit:"cover",bannerTitle:"برای استایل تازه آماده‌ای؟",bannerText:"تازه‌ترین انتخاب‌های پوشاک زنانه را در کالکشن نارا کالکشن ببین.",about:"نارا کالکشن، انتخاب لباس‌های راحتی و خانگی زنانه؛ ساده، نرم و مناسب استفاده روزمره.",contact:"برای راهنمایی سایز، ثبت سفارش و پیگیری خرید با پشتیبانی بوتیک در ارتباط باش."}}
+function loadSiteContent(){try{const saved=JSON.parse(localStorage.getItem("senobar-site-content"))||{};if(saved.brand==="گالری سنوبر"||(saved.heroText||"").includes("اسباب‌بازی")||(saved.heroText||"").includes("مجلسی")){localStorage.removeItem("senobar-site-content");return siteDefaults()}return {...siteDefaults(),...saved}}catch{return siteDefaults()}}
 let siteImageData="";
 function fillSiteForm(){const c=loadSiteContent();const map={sBrand:"brand",sSubtitle:"subtitle",sTopline:"topline",sEyebrow:"heroEyebrow",sHeroTitle:"heroTitle",sHeroText:"heroText",sBannerTitle:"bannerTitle",sBannerText:"bannerText",sAbout:"about",sContact:"contact"};Object.entries(map).forEach(([id,key])=>$(id).value=c[key]||"");$("siteImagePreview").src=c.heroImage||"";$("siteImagePreview").style.display=c.heroImage?"block":"none";$("siteImagePreview").style.objectFit=c.heroFit==="contain"?"contain":"cover";$("sHeroFit").value=c.heroFit==="contain"?"contain":"cover"}
 function resetSiteContent(){if(!confirm("متن‌ها و تصویر پیش‌فرض سایت به حالت اولیه برگردند؟"))return;localStorage.removeItem("senobar-site-content");siteImageData="";fillSiteForm();toast("محتوای پیش‌فرض بازگردانی شد")}
