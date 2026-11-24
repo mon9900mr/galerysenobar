@@ -115,9 +115,9 @@ window.senobarProducts = function(){
 };
 window.senobarContent = function(){
  const base={brand:"بوتیک سنوبر",subtitle:"استایلی برای درخشیدن تو",topline:"کالکشن تازه رسید · انتخابی شیک برای هر روز",heroEyebrow:"کالکشن جدید پوشاک زنانه",heroTitle:"استایل خودت را با سنوبر بساز",heroText:"از مانتو و شومیز تا لباس‌های مجلسی و ست‌های روزمره؛ لباس مورد علاقه‌ات را پیدا کن و استایل خاص خودت را بساز.",heroImage:"https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=90",heroFit:"cover",bannerTitle:"برای استایل تازه آماده‌ای؟",bannerText:"تازه‌ترین انتخاب‌های پوشاک زنانه را در کالکشن بوتیک سنوبر ببین.",about:"بوتیک سنوبر؛ مقصدی برای انتخاب پوشاک زنانه، از استایل روزمره و مینیمال تا لباس‌های خاص و مجلسی.",contact:"برای راهنمایی سایز، ثبت سفارش و پیگیری خرید با پشتیبانی بوتیک در ارتباط باش."};
- try{return {...base,...(JSON.parse(localStorage.getItem("senobar-site-content"))||{})}}catch(e){return base}
+ try{const saved=JSON.parse(localStorage.getItem("senobar-site-content"))||{};if(saved.brand==="گالری سنوبر"||(saved.heroText||"").includes("اسباب‌بازی")){localStorage.removeItem("senobar-site-content");return base}return {...base,...saved}}catch(e){return base}
 };
 window.senobarCategories = function(){
- try { const saved=JSON.parse(localStorage.getItem("senobar-categories")); if(Array.isArray(saved)) return saved; } catch(e){}
+ try { const saved=JSON.parse(localStorage.getItem("senobar-categories")); if(Array.isArray(saved)&&saved.length&&saved.some(c=>window.SENOBAR_CATEGORIES.some(d=>d.name===c.name))) return saved; } catch(e){}
  return window.SENOBAR_CATEGORIES;
 };
