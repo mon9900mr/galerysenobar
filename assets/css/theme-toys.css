@@ -699,3 +699,17 @@ body.senobar-dark .sb-cart-drawer{background:#17221b;color:#edf5ee}body.senobar-
 body.senobar-dark .product-media{background:#26332b}
 body.senobar-dark .product-media>.product-image-fallback{background:linear-gradient(135deg,#304238,#202a24)}
 @media(max-width:600px){.product-media{height:190px}}
+
+/* Boutique Senobar — women's fashion identity */
+:root{--green:#8d5d69;--deep:#513640;--cream:#faf6f4;--paper:#fffdfc;--ink:#382d31;--muted:#8d7c82;--line:#eee2e4;--orange:#c99aa5;--shadow:0 18px 50px #59394312}
+body{background:#faf6f4!important;color:#382d31!important}
+body.senobar-dark{--green:#d5aab5;--deep:#35252c;--cream:#171216;--paper:#241c21;--ink:#f4eaf0;--muted:#c0aeb6;--line:#493740;--green-soft:#49313c;background:#171216!important;color:#f4eaf0!important}
+body.senobar-dark header{background:#21181df2!important;border-color:#493740!important}
+body.senobar-dark .hero-card,body.senobar-dark .banner{background:#35252c!important}
+body.senobar-dark .hero h1 em,body.senobar-dark .banner h2,body.senobar-dark .nav .brand b{color:#f2dce4!important}
+body.senobar-dark .primary{background:#9c6878!important}
+body.senobar-dark .perk,body.senobar-dark .cat,body.senobar-dark .product{background:#241c21!important;border-color:#493740!important;color:#f4eaf0!important}
+body.senobar-dark .ownerlink{background:#49313c!important;color:#f6e9ee!important}
+body.senobar-dark .tag{background:#49313c!important;color:#f6e9ee!important}
+.senobar-theme-toggle{color:#754957!important;border-color:#ead8dd!important}
+body.senobar-dark .senobar-theme-toggle{background:#49313c!important;color:#fff!important;border-color:#6b4c59!important}
