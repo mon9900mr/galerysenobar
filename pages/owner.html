@@ -29,15 +29,15 @@
 .customer-detail-item small{display:block;color:#52645a;font-size:10px;margin-bottom:5px}
 .customer-detail-item b{display:block;color:#24352d;font-size:12px;line-height:1.9}
 /* Keep customer details readable when the site-wide dark theme is enabled. */
-body.nara-dark .customer-detail-item{background:#2b3b31!important;color:#e5eee7!important;border-color:#526457!important}
-body.nara-dark .customer-detail-item small{color:#bdcbbf!important}
-body.nara-dark .customer-detail-item b{color:#f1f6f1!important}
+body.senobar-dark .customer-detail-item{background:#2b3b31!important;color:#e5eee7!important;border-color:#526457!important}
+body.senobar-dark .customer-detail-item small{color:#bdcbbf!important}
+body.senobar-dark .customer-detail-item b{color:#f1f6f1!important}
 .customer-map-link{margin-top:12px;font-size:11px;color:var(--green)}
 .customer-map-link a{display:inline-block;margin:5px 0;padding:9px 12px;border-radius:9px;background:var(--green-soft);font-weight:800}
 @media(max-width:700px){.customer-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.customer-detail-grid{grid-template-columns:1fr}}
 </style><link rel="stylesheet" href="../assets/css/theme-toys.css"></head>
 <body>
-<script>(function(){if(sessionStorage.getItem('nara-demo-role')!=='owner'){location.replace('login.html?next=owner.html');}})();</script>
+<script>(function(){if(sessionStorage.getItem('senobar-demo-role')!=='owner'){location.replace('login.html?next=owner.html');}})();</script>
 <div class="app"><div style="position:fixed;z-index:50;bottom:12px;left:12px;background:#fff4d9;color:#76510b;border:1px solid #eed79b;border-radius:12px;padding:10px 14px;font:12px Vazirmatn;max-width:330px">نسخه نمایشی GitHub · نقش مالک فقط در مرورگر شبیه‌سازی شده و هنوز احراز هویت امن ندارد.</div>
 <aside class="sidebar">
  <a class="brand" href="../index.html"><span class="brandmark">✿</span><span><b>نارا کالکشن</b><small>پنل اختصاصی مالک</small></span></a>
@@ -55,7 +55,7 @@ body.nara-dark .customer-detail-item b{color:#f1f6f1!important}
  <div class="sidebottom">نارا کالکشن<br>پنل مدیریت نسخه آزمایشی</div>
 </aside>
 <main class="main">
- <header class="topbar"><div class="crumb">نارا کالکشن　/　<b id="crumb">داشبورد</b></div><div class="topactions"><a class="storelink" href="../index.html">مشاهده فروشگاه ↗</a><div class="avatar" title="مالک">م</div><button class="btn ghost small" onclick="sessionStorage.removeItem('nara-demo-role');location.href='login.html'">خروج</button></div></header>
+ <header class="topbar"><div class="crumb">نارا کالکشن　/　<b id="crumb">داشبورد</b></div><div class="topactions"><a class="storelink" href="../index.html">مشاهده فروشگاه ↗</a><div class="avatar" title="مالک">م</div><button class="btn ghost small" onclick="sessionStorage.removeItem('senobar-demo-role');location.href='login.html'">خروج</button></div></header>
  <div class="content">
   <div class="notice">توجه: این نسخه روی GitHub Pages اجرا می‌شود و اطلاعات را در حافظه همین مرورگر نگه می‌دارد. هنوز ورود امن، پایگاه داده مشترک، ثبت سفارش واقعی و پرداخت آنلاین به بک‌اند متصل نیستند؛ برای مدیریت واقعی از چند دستگاه باید بعداً بک‌اند فعال شود.</div>
   <section class="section active" id="page-dashboard">
@@ -172,8 +172,8 @@ const DEFAULT_CATEGORIES=[
  {name:"پوشاک زنانهی دیگر"}
 ];
 let categories=loadCategories();
-function loadCategories(){try{const saved=JSON.parse(localStorage.getItem("nara-categories"));if(Array.isArray(saved)&&saved.length&&saved.some(c=>DEFAULT_CATEGORIES.some(d=>d.name===c.name)))return saved}catch(e){}localStorage.setItem("nara-categories",JSON.stringify(DEFAULT_CATEGORIES));return DEFAULT_CATEGORIES.map(c=>({...c}))}
-function saveCategories(){localStorage.setItem("nara-categories",JSON.stringify(categories));fillCategorySelects();renderAll()}
+function loadCategories(){try{const saved=JSON.parse(localStorage.getItem("senobar-categories"));if(Array.isArray(saved)&&saved.length&&saved.some(c=>DEFAULT_CATEGORIES.some(d=>d.name===c.name)))return saved}catch(e){}localStorage.setItem("senobar-categories",JSON.stringify(DEFAULT_CATEGORIES));return DEFAULT_CATEGORIES.map(c=>({...c}))}
+function saveCategories(){localStorage.setItem("senobar-categories",JSON.stringify(categories));fillCategorySelects();renderAll()}
 const sample=[
 {id:1,name:"مانتو کتی لینن",category:"پوشاک زنانه",subcategory:"مانتو و رویه",cat:"مانتو و رویه",price:0,stock:0,tag:"جدید",img:"https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=900&q=85"},
 {id:2,name:"شومیز سفید مینیمال",category:"پوشاک زنانه",subcategory:"شومیز و بلوز",cat:"شومیز و بلوز",price:0,stock:0,tag:"پرفروش",img:"https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=900&q=85"},
@@ -182,13 +182,13 @@ const sample=[
 {id:5,name:"شلوار پارچه‌ای زنانه",category:"پوشاک زنانه",subcategory:"شلوار و دامن",cat:"شلوار و دامن",price:0,stock:0,tag:"کالکشن",img:"https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=85"},
 {id:6,name:"مانتو و استایل بیرونی",category:"پوشاک زنانه",subcategory:"مانتو و رویه",cat:"مانتو و رویه",price:0,stock:0,tag:"جدید",img:"https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=900&q=85"}
 ]
-const KEY="nara-products";
+const KEY="senobar-products";
 const money=n=>new Intl.NumberFormat("fa-IR").format(Number(n)||0)+" تومان";
 const num=n=>new Intl.NumberFormat("fa-IR").format(Number(n)||0);
 const $=id=>document.getElementById(id);
 const escapeHTML=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 let products=loadProducts(),selectedImage="";
-function loadProducts(){try{if(localStorage.getItem("nara-catalog-version")!=="3"){localStorage.setItem(KEY,JSON.stringify(sample));localStorage.setItem("nara-catalog-version","3")}const data=JSON.parse(localStorage.getItem(KEY));return (Array.isArray(data)?data:sample).map((p,i)=>({...p,id:p.id??Date.now()+i,category:"پوشاک زنانه",subcategory:p.subcategory||p.cat||"سایر",stock:Number(p.stock??0)}))}catch{return sample.map(p=>({...p}))}}
+function loadProducts(){try{if(localStorage.getItem("senobar-catalog-version")!=="3"){localStorage.setItem(KEY,JSON.stringify(sample));localStorage.setItem("senobar-catalog-version","3")}const data=JSON.parse(localStorage.getItem(KEY));return (Array.isArray(data)?data:sample).map((p,i)=>({...p,id:p.id??Date.now()+i,category:"پوشاک زنانه",subcategory:p.subcategory||p.cat||"سایر",stock:Number(p.stock??0)}))}catch{return sample.map(p=>({...p}))}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(products));renderAll();toast("تغییرات ذخیره شد")}catch(e){toast("فضای ذخیره مرورگر کافی نیست؛ عکس کوچک‌تری انتخاب کن")}}
 function toast(message){$("toast").textContent=message;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),2300)}
 function fillCategorySelects(){const opts=categories.map(c=>'<option value="'+escapeHTML(c.name)+'">'+escapeHTML(c.name)+"</option>").join("");$("pCategory").innerHTML=opts;$("categoryFilter").innerHTML='<option value="">همه دسته‌ها</option>'+opts}
@@ -212,7 +212,7 @@ function renderSpecials(){const q=($("specialSearch")?.value||"").trim().toLower
 function toggleFeatured(id){const p=products.find(x=>Number(x.id)===Number(id));if(!p)return;p.featured=!p.featured;save();renderSpecials()}
 function renderAll(){
  $("statProducts").textContent=num(products.length);$("statValue").textContent=money(products.reduce((s,p)=>s+Number(p.price||0),0));$("statCategories").textContent=num(categories.length);
- let orders=[];try{orders=JSON.parse(localStorage.getItem("nara-orders")||"[]")||[]}catch{};$("statOrders").textContent=num(orders.length);
+ let orders=[];try{orders=JSON.parse(localStorage.getItem("senobar-orders")||"[]")||[]}catch{};$("statOrders").textContent=num(orders.length);
  $("recentRows").innerHTML=products.length?products.slice(0,5).map(p=>productRow(p,false)).join(""):'<tr><td colspan="3" class="empty">هنوز محصولی ثبت نشده است.</td></tr>';
  renderProducts();renderSpecials();renderBars("categoryBars");renderBars("reportBars");
  $("categoryTotal").textContent=num(categories.length)+" دسته";
@@ -220,13 +220,13 @@ function renderAll(){
  $("reportCount").textContent=num(products.length);const avg=products.length?products.reduce((s,p)=>s+Number(p.price||0),0)/products.length:0;$("reportAverage").textContent=money(avg);
  const sorted=[...products].sort((a,b)=>Number(b.price)-Number(a.price));$("reportMax").textContent=sorted[0]?escapeHTML(sorted[0].name):"—";$("reportMin").textContent=sorted.length?escapeHTML(sorted[sorted.length-1].name):"—";
  $("orderRows").innerHTML=orders.length?orders.map((o,i)=>'<tr><td>'+escapeHTML(o.id||i+1)+'</td><td>'+escapeHTML(o.name||o.customer||"—")+'</td><td>'+money(o.total||o.amount||0)+'</td><td><span class="pill">'+escapeHTML(o.status||"ثبت‌شده")+'</span></td></tr>').join(""):'<tr><td colspan="4" class="empty">هنوز سفارشی در این مرورگر ثبت نشده است.</td></tr>';
- let users=[];try{users=JSON.parse(localStorage.getItem("nara-users")||"[]")||[]}catch{};$("customerRows").innerHTML=users.length?users.map(u=>'<tr><td>'+escapeHTML(u.name||u.fullName||"—")+'</td><td>'+escapeHTML(u.email||u.username||u.phone||"—")+'</td><td><span class="pill">'+escapeHTML(u.role||"CUSTOMER")+'</span></td></tr>').join(""):'<tr><td colspan="3" class="empty">اطلاعات مشتریان به بک‌اند متصل نیست.</td></tr>';
+ let users=[];try{users=JSON.parse(localStorage.getItem("senobar-users")||"[]")||[]}catch{};$("customerRows").innerHTML=users.length?users.map(u=>'<tr><td>'+escapeHTML(u.name||u.fullName||"—")+'</td><td>'+escapeHTML(u.email||u.username||u.phone||"—")+'</td><td><span class="pill">'+escapeHTML(u.role||"CUSTOMER")+'</span></td></tr>').join(""):'<tr><td colspan="3" class="empty">اطلاعات مشتریان به بک‌اند متصل نیست.</td></tr>';
 }
 
 // Customer management: demo data visible in this browser tab only.
 function getDemoCustomers(){
- let list=[];try{const a=JSON.parse(sessionStorage.getItem("nara-temp-accounts")||"[]");if(Array.isArray(a))list=a}catch(e){}
- try{const legacy=JSON.parse(localStorage.getItem("nara-users")||"[]");if(Array.isArray(legacy))legacy.forEach(u=>{if(!list.some(x=>x.phone&&x.phone===u.phone))list.push(u)})}catch(e){}
+ let list=[];try{const a=JSON.parse(sessionStorage.getItem("senobar-temp-accounts")||"[]");if(Array.isArray(a))list=a}catch(e){}
+ try{const legacy=JSON.parse(localStorage.getItem("senobar-users")||"[]");if(Array.isArray(legacy))legacy.forEach(u=>{if(!list.some(x=>x.phone&&x.phone===u.phone))list.push(u)})}catch(e){}
  return list;
 }
 function customerName(u){return [u.firstName,u.lastName].filter(Boolean).join(" ")||u.name||u.fullName||"بدون نام"}
@@ -256,16 +256,16 @@ function showCustomerDetail(index){
 function closeCustomerDetail(){$("customerDetail").classList.add("hidden")}
 function deleteDemoCustomer(index){
  const all=getDemoCustomers(),u=all[index];if(!u||!confirm("حساب آزمایشی "+customerName(u)+" از همین تب حذف شود؟"))return;
- let accounts=[];try{accounts=JSON.parse(sessionStorage.getItem("nara-temp-accounts")||"[]")}catch(e){}
+ let accounts=[];try{accounts=JSON.parse(sessionStorage.getItem("senobar-temp-accounts")||"[]")}catch(e){}
  const target=accounts.findIndex(x=>x===u||x.phone&&x.phone===u.phone);
- if(target>=0){accounts.splice(target,1);sessionStorage.setItem("nara-temp-accounts",JSON.stringify(accounts))}
- else{let legacy=[];try{legacy=JSON.parse(localStorage.getItem("nara-users")||"[]")}catch(e){}legacy=legacy.filter(x=>x.phone!==u.phone);localStorage.setItem("nara-users",JSON.stringify(legacy))}
+ if(target>=0){accounts.splice(target,1);sessionStorage.setItem("senobar-temp-accounts",JSON.stringify(accounts))}
+ else{let legacy=[];try{legacy=JSON.parse(localStorage.getItem("senobar-users")||"[]")}catch(e){}legacy=legacy.filter(x=>x.phone!==u.phone);localStorage.setItem("senobar-users",JSON.stringify(legacy))}
  renderCustomers();closeCustomerDetail();toast("حساب آزمایشی حذف شد");
 }
 function exportCustomers(){
  const rows=[["نام","شماره موبایل","کد پستی","نشانی","عرض جغرافیایی","طول جغرافیایی","نقش","تاریخ عضویت"],...getDemoCustomers().map(u=>[customerName(u),u.phone||"",u.postalCode||"",u.address||"",u.latitude||"",u.longitude||"",u.role||"user",u.createdAt?new Date(u.createdAt).toISOString():""])];
  const csv="\\uFEFF"+rows.map(row=>row.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\\r\\n");
- const url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"})),a=document.createElement("a");a.href=url;a.download="nara-customers-demo.csv";a.click();URL.revokeObjectURL(url);
+ const url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"})),a=document.createElement("a");a.href=url;a.download="senobar-customers-demo.csv";a.click();URL.revokeObjectURL(url);
 }
 function openNewProduct(){$("productEditor").classList.remove("hidden");$("productForm").reset();$("editId").value="";selectedImage="";$("imagePreview").style.display="none";$("imagePreview").removeAttribute("src");$("formTitle").textContent="افزودن محصول جدید";$("saveProduct").textContent="ذخیره محصول";$("productEditor").scrollIntoView({behavior:"smooth",block:"start"})}
 function closeEditor(){$("productEditor").classList.add("hidden");$("productForm").reset();$("editId").value="";selectedImage="";$("imagePreview").style.display="none"}
@@ -276,15 +276,15 @@ $("pImage").addEventListener("change",async e=>{const file=e.target.files[0];if(
 $("productForm").addEventListener("submit",e=>{e.preventDefault();const old=products.find(p=>String(p.id)===$("editId").value);if(!selectedImage&&!old){alert("لطفاً عکس محصول را انتخاب کن.");return}const id=old?old.id:Date.now(),sub=$("pCategory").value;const item={id,name:$("pName").value.trim(),category:"پوشاک زنانه",subcategory:sub,cat:sub,price:Number($("pPrice").value),stock:Number($("pStock").value||0),tag:$("pTag").value.trim()||"جدید",featured:$("pFeatured").checked,discountPercent:Math.max(0,Math.min(99,Number($("pDiscount").value)||0)),img:selectedImage||(old&&old.img)};if(old)products=products.map(p=>p.id===id?item:p);else products.unshift(item);try{localStorage.setItem(KEY,JSON.stringify(products));renderAll();closeEditor();toast(old?"محصول ویرایش شد":"محصول اضافه شد")}catch(err){if(old)products=products.map(p=>p.id===id?old:p);else products=products.filter(p=>p.id!==id);alert("فضای ذخیره مرورگر کافی نیست. تصویر کوچک‌تری انتخاب کن.")}});
 $("productSearch").addEventListener("input",renderProducts);$("categoryFilter").addEventListener("change",renderProducts);$("specialSearch").addEventListener("input",renderSpecials);$("specialFilter").addEventListener("change",renderSpecials);
 function download(name,data,type){const blob=new Blob([data],{type}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;a.click();URL.revokeObjectURL(url)}
-function exportProducts(){const rows=[["نام محصول","دسته‌بندی","قیمت تومان","موجودی"],...products.map(p=>[p.name,p.subcategory||p.cat,p.price,p.stock??0])];const csv="\uFEFF"+rows.map(r=>r.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\n");download("nara-products.csv",csv,"text/csv;charset=utf-8")}
-function backupProducts(){download("nara-products-backup.json",JSON.stringify(products,null,2),"application/json")}
+function exportProducts(){const rows=[["نام محصول","دسته‌بندی","قیمت تومان","موجودی"],...products.map(p=>[p.name,p.subcategory||p.cat,p.price,p.stock??0])];const csv="\uFEFF"+rows.map(r=>r.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\n");download("senobar-products.csv",csv,"text/csv;charset=utf-8")}
+function backupProducts(){download("senobar-products-backup.json",JSON.stringify(products,null,2),"application/json")}
 function resetProducts(){if(!confirm("فهرست فعلی با محصولات نمونه جایگزین شود؟"))return;products=sample.map(p=>({...p}));save()}
 function siteDefaults(){return {brand:"نارا کالکشن",subtitle:"استایلی برای درخشیدن تو",topline:"کالکشن تازه رسید · انتخابی شیک برای هر روز · بوتیک پوشاک زنانه",heroEyebrow:"کالکشن جدید پوشاک زنانه",heroTitle:"استایل خودت را با سنوبر بساز",heroText:"از مانتو و شومیز تا لباس‌های مجلسی و ست‌های روزمره؛ لباس مورد علاقه‌ات را پیدا کن و استایل خاص خودت را بساز.",heroImage:"https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85",heroFit:"cover",bannerTitle:"برای استایل تازه آماده‌ای؟",bannerText:"تازه‌ترین انتخاب‌های پوشاک زنانه را در کالکشن نارا کالکشن ببین.",about:"نارا کالکشن؛ مقصدی برای انتخاب پوشاک زنانه، از استایل روزمره و مینیمال تا لباس‌های خاص و مجلسی.",contact:"برای راهنمایی سایز، ثبت سفارش و پیگیری خرید با پشتیبانی بوتیک در ارتباط باش."}}
-function loadSiteContent(){try{const saved=JSON.parse(localStorage.getItem("nara-site-content"))||{};if(saved.brand==="گالری سنوبر"||(saved.heroText||"").includes("اسباب‌بازی")){localStorage.removeItem("nara-site-content");return siteDefaults()}return {...siteDefaults(),...saved}}catch{return siteDefaults()}}
+function loadSiteContent(){try{const saved=JSON.parse(localStorage.getItem("senobar-site-content"))||{};if(saved.brand==="گالری سنوبر"||(saved.heroText||"").includes("اسباب‌بازی")){localStorage.removeItem("senobar-site-content");return siteDefaults()}return {...siteDefaults(),...saved}}catch{return siteDefaults()}}
 let siteImageData="";
 function fillSiteForm(){const c=loadSiteContent();const map={sBrand:"brand",sSubtitle:"subtitle",sTopline:"topline",sEyebrow:"heroEyebrow",sHeroTitle:"heroTitle",sHeroText:"heroText",sBannerTitle:"bannerTitle",sBannerText:"bannerText",sAbout:"about",sContact:"contact"};Object.entries(map).forEach(([id,key])=>$(id).value=c[key]||"");$("siteImagePreview").src=c.heroImage||"";$("siteImagePreview").style.display=c.heroImage?"block":"none";$("siteImagePreview").style.objectFit=c.heroFit==="contain"?"contain":"cover";$("sHeroFit").value=c.heroFit==="contain"?"contain":"cover"}
-function resetSiteContent(){if(!confirm("متن‌ها و تصویر پیش‌فرض سایت به حالت اولیه برگردند؟"))return;localStorage.removeItem("nara-site-content");siteImageData="";fillSiteForm();toast("محتوای پیش‌فرض بازگردانی شد")}
+function resetSiteContent(){if(!confirm("متن‌ها و تصویر پیش‌فرض سایت به حالت اولیه برگردند؟"))return;localStorage.removeItem("senobar-site-content");siteImageData="";fillSiteForm();toast("محتوای پیش‌فرض بازگردانی شد")}
 $("siteImage").addEventListener("change",async e=>{const file=e.target.files[0];if(!file)return;try{siteImageData=await compressImage(file);$("siteImagePreview").src=siteImageData;$("siteImagePreview").style.display="block";$("siteImagePreview").style.objectFit=$("sHeroFit").value==="contain"?"contain":"cover"}catch(err){alert(err.message);e.target.value=""}});$("sHeroFit").addEventListener("change",e=>{$("siteImagePreview").style.objectFit=e.target.value==="contain"?"contain":"cover"});
-$("siteForm").addEventListener("submit",e=>{e.preventDefault();const old=loadSiteContent();const c={...old,brand:$("sBrand").value.trim(),subtitle:$("sSubtitle").value.trim(),topline:$("sTopline").value.trim(),heroEyebrow:$("sEyebrow").value.trim(),heroTitle:$("sHeroTitle").value.trim(),heroText:$("sHeroText").value.trim(),bannerTitle:$("sBannerTitle").value.trim(),bannerText:$("sBannerText").value.trim(),about:$("sAbout").value.trim(),contact:$("sContact").value.trim(),heroImage:siteImageData||old.heroImage,heroFit:$("sHeroFit").value};try{localStorage.setItem("nara-site-content",JSON.stringify(c));siteImageData="";toast("متن‌ها و تصویر سایت ذخیره شد")}catch(err){toast("فضای ذخیره مرورگر کافی نیست؛ تصویر کوچک‌تری انتخاب کن")}});
+$("siteForm").addEventListener("submit",e=>{e.preventDefault();const old=loadSiteContent();const c={...old,brand:$("sBrand").value.trim(),subtitle:$("sSubtitle").value.trim(),topline:$("sTopline").value.trim(),heroEyebrow:$("sEyebrow").value.trim(),heroTitle:$("sHeroTitle").value.trim(),heroText:$("sHeroText").value.trim(),bannerTitle:$("sBannerTitle").value.trim(),bannerText:$("sBannerText").value.trim(),about:$("sAbout").value.trim(),contact:$("sContact").value.trim(),heroImage:siteImageData||old.heroImage,heroFit:$("sHeroFit").value};try{localStorage.setItem("senobar-site-content",JSON.stringify(c));siteImageData="";toast("متن‌ها و تصویر سایت ذخیره شد")}catch(err){toast("فضای ذخیره مرورگر کافی نیست؛ تصویر کوچک‌تری انتخاب کن")}});
 fillCategorySelects();renderAll();fillSiteForm();
 </script><script src="../assets/js/order-management.js"></script><script src="../assets/js/theme-toys.js"></script></body></html>
