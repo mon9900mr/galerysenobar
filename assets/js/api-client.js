@@ -3,7 +3,7 @@
  * Server session is authoritative; browser role values are display hints only.
  */
 window.NaraAPI=(()=>{
- const base=new URL('../backend/api/',document.currentScript?.src||location.href).href;
+ const base=new URL('../../backend/api/',document.currentScript?.src||location.href).href;
  let csrfToken='';
  async function request(action,{method='GET',data=null,id=null}={}){
   const url=new URL('index.php',base);url.searchParams.set('action',action);if(id!==null)url.searchParams.set('id',String(id));
