@@ -17,6 +17,7 @@ function needUser():array{if(empty($_SESSION['user']))out(401,['error'=>'login_r
 function needRole(array $roles):array{$u=needUser();if(!in_array($u['role'],$roles,true))out(403,['error'=>'forbidden']);return $u;}
 try{$d=$c['db'];$pdo=new PDO('mysql:host='.$d['host'].';dbname='.$d['name'].';charset='.$d['charset'],$d['user'],$d['password'],[PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC,PDO::ATTR_EMULATE_PREPARES=>false]);}catch(Throwable $e){error_log('Nara DB connection failed: '.$e->getMessage());out(503,['error'=>'database_unavailable']);}
 $a=(string)($_GET['action']??'health');$m=$_SERVER['REQUEST_METHOD']??'GET';$b=payload();
+if($a==='login'&&$m==='POST'){$_SESSION['login_attempts']=$_SESSION['login_attempts']??[];$now=time();$_SESSION['login_attempts']=array_values(array_filter($_SESSION['login_attempts'],fn($t)=>$now-$t<900));if(count($_SESSION['login_attempts'])>=8)out(429,['error'=>'rate_limited','message'=>'تلاش‌های ورود زیاد بوده؛ ۱۵ دقیقه بعد دوباره تلاش کن.']);}
 if($m!=='GET'&&!in_array($a,['login','register'],true)&&!hash_equals(csrfToken(),(string)($_SERVER['HTTP_X_CSRF_TOKEN']??'')))out(419,['error'=>'csrf_failed']);
 switch($a){
 case 'health':out(200,['ok'=>true,'service'=>'nara-api','csrf'=>csrfToken()]);
@@ -27,7 +28,7 @@ case 'register':
  try{$s=$pdo->prepare("INSERT INTO users(first_name,last_name,phone,password_hash,role,address,postal_code) VALUES(?,?,?,?, 'customer',?,?)");$s->execute([$f,$l,$p,password_hash($pw,PASSWORD_DEFAULT),trim((string)($b['address']??'')),trim((string)($b['postalCode']??''))]);}catch(PDOException $e){if($e->getCode()==='23000')out(409,['error'=>'phone_exists']);throw $e;}
  session_regenerate_id(true);$_SESSION['user']=['id'=>(int)$pdo->lastInsertId(),'firstName'=>$f,'lastName'=>$l,'phone'=>$p,'role'=>'customer'];out(201,['user'=>$_SESSION['user'],'csrf'=>csrfToken()]);
 case 'login':
- $p=preg_replace('/\D+/','',(string)($b['phone']??''));$s=$pdo->prepare('SELECT id,first_name,last_name,phone,password_hash,role,is_active FROM users WHERE phone=?');$s->execute([$p]);$u=$s->fetch();if(!$u||!(int)$u['is_active']||!password_verify((string)($b['password']??''),$u['password_hash']))out(401,['error'=>'invalid_credentials']);
+ $p=preg_replace('/\D+/','',(string)($b['phone']??''));$s=$pdo->prepare('SELECT id,first_name,last_name,phone,password_hash,role,is_active FROM users WHERE phone=?');$s->execute([$p]);$u=$s->fetch();if(!$u||!(int)$u['is_active']||!password_verify((string)($b['password']??''),$u['password_hash'])){$_SESSION['login_attempts'][]=time();out(401,['error'=>'invalid_credentials']);}unset($_SESSION['login_attempts']);
  session_regenerate_id(true);$_SESSION['user']=['id'=>(int)$u['id'],'firstName'=>$u['first_name'],'lastName'=>$u['last_name'],'phone'=>$u['phone'],'role'=>$u['role']];out(200,['user'=>$_SESSION['user'],'csrf'=>csrfToken()]);
 case 'me':out(200,['user'=>needUser(),'csrf'=>csrfToken()]);
 case 'logout':$_SESSION=[];session_regenerate_id(true);out(200,['ok'=>true]);
