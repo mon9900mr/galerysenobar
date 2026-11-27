@@ -40,263 +40,263 @@ body.senobar-dark .customer-detail-item b{color:#f1f6f1!important}
 <script>(function(){if(sessionStorage.getItem('senobar-demo-role')!=='owner'){location.replace('login.html?next=owner.html');}})();</script>
 <div class="app"><div style="position:fixed;z-index:50;bottom:12px;left:12px;background:#fff4d9;color:#76510b;border:1px solid #eed79b;border-radius:12px;padding:10px 14px;font:12px Vazirmatn;max-width:330px">نسخه نمایشی GitHub · نقش مالک فقط در مرورگر شبیه‌سازی شده و هنوز احراز هویت امن ندارد.</div>
 <aside class="sidebar">
- <a class="brand" href="../index.html"><span class="brandmark">✿</span><span><b>نارا کالکشن</b><small>پنل اختصاصی مالک</small></span></a>
+ <a class="brand" href="../index.html"><span class="brandmark">N</span><span><b>نارا کالکشن</b><small>پنل اختصاصی مالک</small></span></a>
  <div class="navgroup"><small>مدیریت فروشگاه</small><nav class="nav" id="navigation">
-  <button class="active" data-page="dashboard"><span class="ico">▦</span>داشبورد</button>
-  <button data-page="products"><span class="ico">▣</span>محصولات</button>
-  <button data-page="specials"><span class="ico">★</span>محصولات ویژه و تخفیف</button>
-  <button data-page="categories"><span class="ico">▤</span>دسته‌بندی‌ها</button>
-  <button data-page="orders"><span class="ico">▧</span>سفارش‌ها</button>
-  <button data-page="customers"><span class="ico">♙</span>مشتریان</button>
-  <button data-page="fees"><span class="ico">＋</span>هزینه‌های سفارش</button>
-  <button data-page="reports"><span class="ico">▥</span>گزارش‌ها</button>
-  <button data-page="owner"><span class="ico">✎</span>ویرایش ظاهر سایت</button>
+ <button class="active" data-page="dashboard"><span class="ico">▦</span>داشبورد</button>
+ <button data-page="products"><span class="ico">▣</span>محصولات</button>
+ <button data-page="specials"><span class="ico">★</span>محصولات ویژه و تخفیف</button>
+ <button data-page="categories"><span class="ico">▤</span>دسته‌بندی‌ها</button>
+ <button data-page="orders"><span class="ico">▧</span>سفارش‌ها</button>
+ <button data-page="customers"><span class="ico">♙</span>مشتریان</button>
+ <button data-page="fees"><span class="ico">＋</span>هزینه‌های سفارش</button>
+ <button data-page="reports"><span class="ico">▥</span>گزارش‌ها</button>
+ <button data-page="owner"><span class="ico">✎</span>ویرایش ظاهر سایت</button>
  </nav></div>
- <div class="navgroup"><small>سایر</small><nav class="nav"><button data-page="settings"><span class="ico">⚙</span>تنظیمات</button><a class="btn" href="../index.html" style="text-align:center;margin-top:5px">← مشاهده فروشگاه</a></nav></div>
+ <div class="navgroup"><small>سایر</small><nav class="nav"><button data-page="settings"><span class="ico"></span>تنظیمات</button><a class="btn" href="../index.html" style="text-align:center;margin-top:5px">← مشاهده فروشگاه</a></nav></div>
  <div class="sidebottom">نارا کالکشن<br>پنل مدیریت نسخه آزمایشی</div>
 </aside>
 <main class="main">
- <header class="topbar"><div class="crumb">نارا کالکشن　/　<b id="crumb">داشبورد</b></div><div class="topactions"><a class="storelink" href="../index.html">مشاهده فروشگاه ↗</a><div class="avatar" title="مالک">م</div><button class="btn ghost small" onclick="sessionStorage.removeItem('senobar-demo-role');location.href='login.html'">خروج</button></div></header>
+ <header class="topbar"><div class="crumb">نارا کالکشن　/　<b id="crumb">داشبورد</b></div><div class="topactions"><a class="storelink" href="../index.html">مشاهده فروشگاه </a><div class="avatar" title="مالک">م</div><button class="btn ghost small" onclick="sessionStorage.removeItem('senobar-demo-role');location.href='login.html'">خروج</button></div></header>
  <div class="content">
-  <div class="notice">توجه: این نسخه روی GitHub Pages اجرا می‌شود و اطلاعات را در حافظه همین مرورگر نگه می‌دارد. هنوز ورود امن، پایگاه داده مشترک، ثبت سفارش واقعی و پرداخت آنلاین به بک‌اند متصل نیستند؛ برای مدیریت واقعی از چند دستگاه باید بعداً بک‌اند فعال شود.</div>
-  <section class="section active" id="page-dashboard">
-   <div class="pagehead"><div><h1>داشبورد فروشگاه</h1><p>خلاصه‌ای از وضعیت فعلی نارا کالکشن</p></div><button class="btn" onclick="go('products');openNewProduct()">＋ افزودن محصول</button></div>
-   <div class="stats">
-    <div class="stat"><div class="stathead">کل محصولات <span class="staticon">🧸</span></div><strong id="statProducts">۰</strong><em>محصول ثبت‌شده</em></div>
-    <div class="stat"><div class="stathead">ارزش مجموع کالاها <span class="staticon">💰</span></div><strong id="statValue">۰</strong><em>جمع قیمت محصولات، نه فروش واقعی</em></div>
-    <div class="stat"><div class="stathead">دسته‌بندی‌ها <span class="staticon">🗂️</span></div><strong id="statCategories">۰</strong><em>دسته پوشاک زنانه</em></div>
-    <div class="stat"><div class="stathead">سفارش‌ها <span class="staticon">📦</span></div><strong id="statOrders">۰</strong><em>اطلاعات موجود در این مرورگر</em></div>
-   </div>
-   <div class="grid2">
-    <div class="panel"><div class="panelhead"><div><h2>آخرین محصولات</h2><p>محصولات ثبت‌شده در فروشگاه</p></div><button class="btn soft small" onclick="go('products')">همه محصولات</button></div><div class="tablewrap"><table><thead><tr><th>محصول</th><th>دسته</th><th>قیمت</th></tr></thead><tbody id="recentRows"></tbody></table></div></div>
-    <div class="panel"><div class="panelhead"><div><h2>دسته‌بندی محصولات</h2><p>تعداد محصولات در هر دسته</p></div></div><div class="bars" id="categoryBars"></div></div>
-   </div>
-   <div class="panel"><div class="panelhead"><div><h2>دسترسی سریع</h2><p>کارهای پرکاربرد مدیریت</p></div></div><div class="quick"><button onclick="go('products');openNewProduct()"><span>＋</span>افزودن محصول</button><button onclick="go('categories')"><span>🗂️</span>دسته‌بندی‌ها</button><button onclick="go('reports')"><span>📊</span>گزارش محصولات</button></div></div>
-  </section>
-  <section class="section" id="page-products">
-   <div class="pagehead"><div><h1>مدیریت محصولات</h1><p>افزودن، ویرایش، حذف و جست‌وجوی محصولات پوشاک زنانه</p></div><button class="btn" onclick="openNewProduct()">＋ محصول جدید</button></div>
-   <div class="panel hidden" id="productEditor"><div class="panelhead"><div><h2 id="formTitle">افزودن محصول جدید</h2><p>اطلاعات محصول را وارد کن و ذخیره کن</p></div><button class="btn ghost small" onclick="closeEditor()">بستن ×</button></div>
-    <form id="productForm" class="formgrid">
-     <input type="hidden" id="editId">
-     <div class="field"><label for="pName">نام محصول</label><input id="pName" required maxlength="90" placeholder="مثلاً ست تیشرت و شلوار راحتی"></div>
-     <div class="field"><label for="pCategory">دسته‌بندی</label><select id="pCategory" required></select></div>
-     <div class="field"><label for="pPrice">قیمت (تومان)</label><input id="pPrice" type="number" min="0" step="1000" required placeholder="مثلاً ۵۰۰۰۰۰"></div>
-     <div class="field"><label for="pStock">موجودی (عدد)</label><input id="pStock" type="number" min="0" step="1" value="1"></div>
-     <div class="field"><label for="pTag">برچسب محصول</label><input id="pTag" maxlength="30" placeholder="مثلاً پرفروش یا جدید"></div>\n     <div class="field"><label><input id="pFeatured" type="checkbox"> نمایش در محصولات ویژه</label></div>\n     <div class="field"><label for="pDiscount">درصد تخفیف (۰ تا ۹۹)</label><input id="pDiscount" type="number" min="0" max="99" step="1" value="0" placeholder="مثلاً ۲۰"></div>
-     <div class="field full"><label for="pImage">تصویر محصول</label><div class="upload"><img class="preview" id="imagePreview" alt="پیش‌نمایش"><div><input id="pImage" type="file" accept="image/png,image/jpeg,image/webp,image/gif"><div class="muted" style="font-size:9px;margin-top:6px">فرمت JPG، PNG، WEBP یا GIF؛ تصویر برای ذخیره محلی فشرده می‌شود.</div></div></div></div>
-     <div class="field full actions"><button class="btn" type="submit" id="saveProduct">ذخیره محصول</button><button class="btn ghost" type="button" onclick="closeEditor()">انصراف</button></div>
-    </form>
-   </div>
-   <div class="panel"><div class="toolbar"><input class="control searchbox" id="productSearch" placeholder="جست‌وجوی نام محصول..."><select class="control" id="categoryFilter"><option value="">همه دسته‌ها</option></select><button class="btn soft" onclick="exportProducts()">خروجی CSV</button></div><div class="tablewrap"><table><thead><tr><th>محصول</th><th>دسته‌بندی</th><th>قیمت</th><th>موجودی</th><th>عملیات</th></tr></thead><tbody id="productRows"></tbody></table></div></div>
-  </section>
-  <section class="section" id="page-specials">
-   <div class="pagehead"><div><h1>محصولات ویژه و تخفیف‌ها</h1><p>محصولات منتخب را ویژه کن و درصد تخفیف آن‌ها را مدیریت کن.</p></div></div>
-   <div class="notice">تخفیف‌ها به‌صورت درصدی روی قیمت اصلی اعمال می‌شوند و قیمت نهایی در فروشگاه و سبد خرید نمایش داده می‌شود.</div>
-   <div class="panel"><div class="toolbar"><input class="control searchbox" id="specialSearch" placeholder="جست‌وجوی محصول ویژه..."><select class="control" id="specialFilter"><option value="all">همه محصولات</option><option value="featured">فقط ویژه‌ها</option><option value="discount">فقط تخفیف‌دارها</option></select></div><div class="tablewrap"><table><thead><tr><th>محصول</th><th>قیمت اصلی</th><th>ویژه</th><th>درصد تخفیف</th><th>قیمت نهایی</th><th>عملیات</th></tr></thead><tbody id="specialRows"></tbody></table></div></div>
-  </section>
-  <section class="section" id="page-categories">
-   <div class="pagehead"><div><h1>دسته‌بندی‌های پوشاک زنانه</h1><p>دسته‌بندی‌ها را اضافه، ویرایش یا حذف کن؛ تغییرات در فروشگاه هم نمایش داده می‌شوند.</p></div></div>
-   <div class="panel"><div class="panelhead"><div><h2 id="categoryFormTitle">افزودن دسته‌بندی جدید</h2><p>نام، توضیح و تصویر اختصاصی دسته‌بندی را وارد کن.</p></div></div>
-    <form id="categoryForm" class="formgrid">
-     <input type="hidden" id="categoryEditName">
-     <div class="field"><label for="categoryName">نام دسته‌بندی</label><input id="categoryName" maxlength="60" required placeholder="مثلاً مانتو و رویه"></div>
-     <div class="field full"><label for="categoryDesc">توضیح کوتاه</label><input id="categoryDesc" maxlength="120" placeholder="توضیحی که در فروشگاه نمایش داده می‌شود"></div>
-     <div class="field full"><label for="categoryImageFile">عکس دسته‌بندی (JPG / PNG / WEBP)</label><input id="categoryImageFile" type="file" accept="image/jpeg,image/png,image/webp"><small>عکس به‌صورت خودکار اندازه‌اش تنظیم می‌شود و در همین مرورگر ذخیره می‌شود.</small><img id="categoryImagePreview" alt="پیش‌نمایش عکس دسته‌بندی" style="display:none;width:100%;max-width:260px;height:150px;object-fit:cover;border-radius:12px;margin-top:10px"></div>
-     <div class="field full actions"><button class="btn" id="saveCategory" type="submit">افزودن دسته‌بندی</button><button class="btn ghost" type="button" onclick="resetCategoryForm()">پاک کردن فرم</button></div>
-    </form>
-   </div>
-   <div class="panel"><div class="panelhead"><h2>فهرست دسته‌بندی‌ها</h2><span class="pill" id="categoryTotal">۰ دسته</span></div><div class="categorylist" id="categoryList"></div></div>
-  </section>
-  <section class="section" id="page-orders">
-   <div class="pagehead"><div><h1>سفارش‌ها</h1><p>نمایش سفارش‌هایی که در این مرورگر ذخیره شده باشند.</p></div></div>
-   <div class="notice">در نسخه فعلی فروشگاه، فرایند ثبت سفارش و پرداخت به بک‌اند وصل نیست؛ بنابراین این قسمت تا زمان راه‌اندازی بک‌اند می‌تواند خالی باشد.</div>
-   <div class="panel"><div class="panelhead"><h2>فهرست سفارش‌ها</h2></div><div class="tablewrap"><table><thead><tr><th>شماره</th><th>مشتری</th><th>مبلغ</th><th>وضعیت</th></tr></thead><tbody id="orderRows"></tbody></table></div></div>
-  </section>
-  <section class="section" id="page-customers">
-   <div class="pagehead"><div><h1>مدیریت مشتریان</h1><p>مشاهده مشخصات ثبت‌نام، اطلاعات تماس و نشانی مشتریان این مرورگر</p></div><div class="actions"><button class="btn soft" onclick="exportCustomers()">خروجی CSV</button><button class="btn ghost" onclick="renderCustomers()">به‌روزرسانی</button></div></div>
-   <div class="stats customer-stats">
-    <div class="stat"><div class="stathead">کل حساب‌ها</div><strong id="customerCount">۰</strong><em>حساب‌های آزمایشی قابل مشاهده</em></div>
-    <div class="stat"><div class="stathead">مشتریان</div><strong id="customerRegularCount">۰</strong><em>حساب‌های عادی</em></div>
-    <div class="stat"><div class="stathead">حساب مالک</div><strong id="customerOwnerCount">۰</strong><em>حساب مالک فروشگاه</em></div>
-    <div class="stat"><div class="stathead">دارای نشانی</div><strong id="customerAddressCount">۰</strong><em>ثبت نشانی در فرم ثبت‌نام</em></div>
-   </div>
-   <div class="notice">حریم خصوصی: این فهرست فقط اطلاعات حساب‌های آزمایشی موجود در همین تب مرورگر را نشان می‌دهد. رمز عبور نمایش داده یا در خروجی گرفته نمی‌شود. برای دیدن حساب‌های همه مشتریان از دستگاه‌های مختلف، باید بک‌اند و پایگاه داده مشترک راه‌اندازی شود.</div>
-   <div class="panel">
-    <div class="toolbar"><input class="control searchbox" id="customerSearch" placeholder="جست‌وجو با نام، موبایل یا کد پستی..." oninput="renderCustomers()"><select class="control" id="customerRoleFilter" onchange="renderCustomers()"><option value="">همه نقش‌ها</option><option value="user">مشتری</option><option value="owner">مالک</option></select></div>
-    <div class="tablewrap"><table><thead><tr><th>مشتری</th><th>موبایل</th><th>کد پستی</th><th>نشانی</th><th>تاریخ عضویت</th><th>نقش</th><th>عملیات</th></tr></thead><tbody id="customerRows"></tbody></table></div>
-   </div>
-   <div class="panel hidden" id="customerDetail"><div class="panelhead"><div><h2>جزئیات کامل مشتری</h2><p id="customerDetailSubtitle">اطلاعات ثبت‌نام</p></div><button class="btn ghost small" onclick="closeCustomerDetail()">بستن ×</button></div><div class="customer-detail-grid" id="customerDetailGrid"></div><div class="customer-map-link" id="customerMapLink"></div></div>
-  </section>
-  <section class="section" id="page-reports">
-   <div class="pagehead"><div><h1>گزارش‌ها</h1><p>گزارش آماری کاتالوگ فعلی فروشگاه</p></div><button class="btn soft" onclick="exportProducts()">دریافت گزارش CSV</button></div>
-   <div class="stats"><div class="stat"><div class="stathead">تعداد محصولات</div><strong id="reportCount">۰</strong></div><div class="stat"><div class="stathead">میانگین قیمت</div><strong id="reportAverage">۰</strong></div><div class="stat"><div class="stathead">گران‌ترین محصول</div><strong id="reportMax" style="font-size:14px">—</strong></div><div class="stat"><div class="stathead">ارزان‌ترین محصول</div><strong id="reportMin" style="font-size:14px">—</strong></div></div>
-   <div class="panel"><div class="panelhead"><h2>توزیع محصولات بر اساس دسته</h2></div><div class="bars" id="reportBars"></div></div>
-  </section>
-  <section class="section" id="page-owner">
-   <div class="pagehead"><div><h1>ویرایش ظاهر سایت</h1><p>متن‌ها و تصویر پیش‌فرض صفحه اصلی را تغییر بده.</p></div></div>
-   <div class="notice">نسخه فعلی فقط روی همین مرورگر ذخیره می‌کند و قفل مالکیت امن ندارد؛ هر بازدیدکننده‌ای که به این صفحه برسد می‌تواند ابزار محلی را ببیند. برای محافظت واقعی از مالک، باید پس از خرید هاست، ورود و سطح دسترسی OWNER در بک‌اند فعال شود.</div>
-   <div class="panel"><div class="panelhead"><div><h2>متن‌های پیش‌فرض فروشگاه</h2><p>تغییرات پس از ذخیره در صفحه اصلی همین مرورگر نمایش داده می‌شوند.</p></div></div>
-    <form id="siteForm" class="formgrid">
-     <div class="field"><label for="sBrand">نام فروشگاه</label><input id="sBrand" maxlength="60" required></div>
-     <div class="field"><label for="sSubtitle">متن زیر نام فروشگاه</label><input id="sSubtitle" maxlength="90"></div>
-     <div class="field full"><label for="sTopline">نوار پیام بالای سایت</label><input id="sTopline" maxlength="140"></div>
-     <div class="field"><label for="sEyebrow">متن کوتاه بالای عنوان اصلی</label><input id="sEyebrow" maxlength="90"></div>
-     <div class="field"><label for="sHeroTitle">عنوان اصلی صفحه (متن ساده)</label><input id="sHeroTitle" maxlength="120"></div>
-     <div class="field full"><label for="sHeroText">توضیح صفحه اصلی</label><textarea id="sHeroText" maxlength="400"></textarea></div>
-     <div class="field"><label for="sBannerTitle">عنوان بنر پایین صفحه</label><input id="sBannerTitle" maxlength="100"></div>
-     <div class="field"><label for="sBannerText">توضیح بنر پایین صفحه</label><input id="sBannerText" maxlength="180"></div>
-     <div class="field full"><label for="sAbout">متن درباره فروشگاه</label><textarea id="sAbout" maxlength="500"></textarea></div>
-     <div class="field full"><label for="sContact">اطلاعات تماس</label><input id="sContact" maxlength="180"></div>
-     <div class="field full"><label>تصویر اصلی صفحه</label><div class="upload"><img class="preview" id="siteImagePreview" alt="پیش‌نمایش تصویر اصلی"><div style="min-width:220px;flex:1"><input id="siteImage" type="file" accept="image/png,image/jpeg,image/webp"><div class="muted" style="font-size:10px;line-height:1.9;margin:7px 0 12px">تصویر با هر اندازه‌ای انتخاب کنی، خودکار متناسب با کادر صفحه تنظیم می‌شود.</div><label for="sHeroFit">نحوه نمایش عکس در سایت</label><select id="sHeroFit"><option value="cover">پر کردن کامل کادر (ممکن است لبه‌ها کمی برش بخورند)</option><option value="contain">نمایش کامل عکس (بدون برش)</option></select></div></div></div>
-     <div class="field full actions"><button class="btn" type="submit">ذخیره تغییرات ظاهر سایت</button><button class="btn ghost" type="button" onclick="resetSiteContent()">بازگردانی متن‌های پیش‌فرض</button></div>
-    </form>
-   </div>
-   <div class="panel"><div class="panelhead"><div><h2>ویرایش تصاویر محصولات</h2><p>برای تغییر عکس هر محصول، از بخش محصولات گزینه ویرایش را بزن و عکس جدید بارگذاری کن.</p></div><button class="btn soft" onclick="go('products')">رفتن به محصولات</button></div></div>
-  </section>
-  <section class="section" id="page-settings">
-   <div class="pagehead"><div><h1>تنظیمات فروشگاه</h1><p>تنظیمات پایه این نسخه آزمایشی</p></div></div>
-   <div class="panel"><div class="panelhead"><h2>اطلاعات فروشگاه</h2></div><div class="formgrid"><div class="field"><label>نام فروشگاه</label><input class="control" value="نارا کالکشن" readonly></div><div class="field"><label>گروه محصولات</label><input class="control" value="پوشاک زنانه" readonly></div><div class="field"><label>واحد قیمت</label><input class="control" value="تومان" readonly></div><div class="field"><label>روش ذخیره‌سازی</label><input class="control" value="LocalStorage مرورگر" readonly></div></div></div>
-   <div class="panel"><div class="panelhead"><h2>پشتیبان‌گیری از محصولات</h2></div><p class="muted" style="font-size:11px;line-height:2">می‌توانی فهرست محصولات را به صورت فایل JSON دریافت کنی. این فایل جایگزین بک‌آپ پایگاه داده سرور نیست.</p><div class="actions"><button class="btn" onclick="backupProducts()">دانلود پشتیبان محصولات</button><button class="btn danger" onclick="resetProducts()">بازگردانی محصولات نمونه</button></div></div>
-  </section>
-   <section class="section" id="page-fees">
-    <div class="pagehead"><div><h1>هزینه‌های اضافه سفارش</h1><p>هزینه‌هایی مثل بسته‌بندی، ارسال یا خدمات را تعریف کن؛ این مبلغ به سفارش‌های جدید اضافه می‌شود.</p></div></div>
-    <div class="notice">هزینه‌هایی که اینجا ثبت می‌کنی در سبد خرید مشتری نمایش داده می‌شوند و مبلغ نهایی سفارش را تغییر می‌دهند. برای هر هزینه یک عنوان و مبلغ به تومان وارد کن.</div>
-    <div class="panel">
-     <div class="panelhead"><div><h2>افزودن هزینه جدید</h2><p>برای مثال: ارسال، بسته‌بندی یا خدمات</p></div></div>
-     <form id="extraCostForm" class="formgrid">
-      <div class="field"><label for="extraCostTitle">عنوان هزینه</label><input id="extraCostTitle" maxlength="60" required placeholder="مثلاً هزینه بسته‌بندی"></div>
-      <div class="field"><label for="extraCostAmount">مبلغ (تومان)</label><input id="extraCostAmount" type="text" required inputmode="numeric" autocomplete="off" placeholder="مثلاً ۵۰۰۰۰"></div>
-      <div class="field full actions"><button class="btn" type="submit">＋ ثبت هزینه</button></div>
-     </form>
-    </div>
-    <div class="panel">
-     <div class="panelhead"><div><h2>فهرست هزینه‌های ثبت‌شده</h2><p>حذف هر هزینه فقط روی سفارش‌های جدید اثر می‌گذارد؛ هزینه سفارش‌های قبلی ثابت می‌ماند.</p></div><span class="pill" id="extraCostCount">۰ هزینه</span></div>
-     <div class="tablewrap"><table><thead><tr><th>عنوان هزینه</th><th>مبلغ</th><th>وضعیت نمایش در پرداخت</th><th>عملیات</th></tr></thead><tbody id="extraCostRows"></tbody></table></div>
-     <p class="muted" style="font-size:10px;line-height:1.9;margin-bottom:0">توجه: اطلاعات این نسخه در حافظه همین مرورگر ذخیره می‌شود و بین دستگاه‌ها همگام نیست.</p>
-    </div>
-   </section>
+ <div class="notice">توجه: این نسخه روی GitHub Pages اجرا می‌شود و اطلاعات را در حافظه همین مرورگر نگه می‌دارد. هنوز ورود امن، پایگاه داده مشترک، ثبت سفارش واقعی و پرداخت آنلاین به بک‌اند متصل نیستند؛ برای مدیریت واقعی از چند دستگاه باید بعداً بک‌اند فعال شود.</div>
+ <section class="section active" id="page-dashboard">
+ <div class="pagehead"><div><h1>داشبورد فروشگاه</h1><p>خلاصه‌ای از وضعیت فعلی نارا کالکشن</p></div><button class="btn" onclick="go('products');openNewProduct()">＋ افزودن محصول</button></div>
+ <div class="stats">
+ <div class="stat"><div class="stathead">کل محصولات <span class="staticon"></span></div><strong id="statProducts">۰</strong><em>محصول ثبت‌شده</em></div>
+ <div class="stat"><div class="stathead">ارزش مجموع کالاها <span class="staticon"></span></div><strong id="statValue">۰</strong><em>جمع قیمت محصولات، نه فروش واقعی</em></div>
+ <div class="stat"><div class="stathead">دسته‌بندی‌ها <span class="staticon"></span></div><strong id="statCategories">۰</strong><em>دسته پوشاک زنانه</em></div>
+ <div class="stat"><div class="stathead">سفارش‌ها <span class="staticon"></span></div><strong id="statOrders">۰</strong><em>اطلاعات موجود در این مرورگر</em></div>
+ </div>
+ <div class="grid2">
+ <div class="panel"><div class="panelhead"><div><h2>آخرین محصولات</h2><p>محصولات ثبت‌شده در فروشگاه</p></div><button class="btn soft small" onclick="go('products')">همه محصولات</button></div><div class="tablewrap"><table><thead><tr><th>محصول</th><th>دسته</th><th>قیمت</th></tr></thead><tbody id="recentRows"></tbody></table></div></div>
+ <div class="panel"><div class="panelhead"><div><h2>دسته‌بندی محصولات</h2><p>تعداد محصولات در هر دسته</p></div></div><div class="bars" id="categoryBars"></div></div>
+ </div>
+ <div class="panel"><div class="panelhead"><div><h2>دسترسی سریع</h2><p>کارهای پرکاربرد مدیریت</p></div></div><div class="quick"><button onclick="go('products');openNewProduct()"><span>＋</span>افزودن محصول</button><button onclick="go('categories')"><span></span>دسته‌بندی‌ها</button><button onclick="go('reports')"><span></span>گزارش محصولات</button></div></div>
+ </section>
+ <section class="section" id="page-products">
+ <div class="pagehead"><div><h1>مدیریت محصولات</h1><p>افزودن، ویرایش، حذف و جست‌وجوی محصولات پوشاک زنانه</p></div><button class="btn" onclick="openNewProduct()">＋ محصول جدید</button></div>
+ <div class="panel hidden" id="productEditor"><div class="panelhead"><div><h2 id="formTitle">افزودن محصول جدید</h2><p>اطلاعات محصول را وارد کن و ذخیره کن</p></div><button class="btn ghost small" onclick="closeEditor()">بستن ×</button></div>
+ <form id="productForm" class="formgrid">
+ <input type="hidden" id="editId">
+ <div class="field"><label for="pName">نام محصول</label><input id="pName" required maxlength="90" placeholder="مثلاً ست تیشرت و شلوار راحتی"></div>
+ <div class="field"><label for="pCategory">دسته‌بندی</label><select id="pCategory" required></select></div>
+ <div class="field"><label for="pPrice">قیمت (تومان)</label><input id="pPrice" type="number" min="0" step="1000" required placeholder="مثلاً ۵۰۰۰۰۰"></div>
+ <div class="field"><label for="pStock">موجودی (عدد)</label><input id="pStock" type="number" min="0" step="1" value="1"></div>
+ <div class="field"><label for="pTag">برچسب محصول</label><input id="pTag" maxlength="30" placeholder="مثلاً پرفروش یا جدید"></div>\n <div class="field"><label><input id="pFeatured" type="checkbox"> نمایش در محصولات ویژه</label></div>\n <div class="field"><label for="pDiscount">درصد تخفیف (۰ تا ۹۹)</label><input id="pDiscount" type="number" min="0" max="99" step="1" value="0" placeholder="مثلاً ۲۰"></div>
+ <div class="field full"><label for="pImage">تصویر محصول</label><div class="upload"><img class="preview" id="imagePreview" alt="پیش‌نمایش"><div><input id="pImage" type="file" accept="image/png,image/jpeg,image/webp,image/gif"><div class="muted" style="font-size:9px;margin-top:6px">فرمت JPG، PNG، WEBP یا GIF؛ تصویر برای ذخیره محلی فشرده می‌شود.</div></div></div></div>
+ <div class="field full actions"><button class="btn" type="submit" id="saveProduct">ذخیره محصول</button><button class="btn ghost" type="button" onclick="closeEditor()">انصراف</button></div>
+ </form>
+ </div>
+ <div class="panel"><div class="toolbar"><input class="control searchbox" id="productSearch" placeholder="جست‌وجوی نام محصول..."><select class="control" id="categoryFilter"><option value="">همه دسته‌ها</option></select><button class="btn soft" onclick="exportProducts()">خروجی CSV</button></div><div class="tablewrap"><table><thead><tr><th>محصول</th><th>دسته‌بندی</th><th>قیمت</th><th>موجودی</th><th>عملیات</th></tr></thead><tbody id="productRows"></tbody></table></div></div>
+ </section>
+ <section class="section" id="page-specials">
+ <div class="pagehead"><div><h1>محصولات ویژه و تخفیف‌ها</h1><p>محصولات منتخب را ویژه کن و درصد تخفیف آن‌ها را مدیریت کن.</p></div></div>
+ <div class="notice">تخفیف‌ها به‌صورت درصدی روی قیمت اصلی اعمال می‌شوند و قیمت نهایی در فروشگاه و سبد خرید نمایش داده می‌شود.</div>
+ <div class="panel"><div class="toolbar"><input class="control searchbox" id="specialSearch" placeholder="جست‌وجوی محصول ویژه..."><select class="control" id="specialFilter"><option value="all">همه محصولات</option><option value="featured">فقط ویژه‌ها</option><option value="discount">فقط تخفیف‌دارها</option></select></div><div class="tablewrap"><table><thead><tr><th>محصول</th><th>قیمت اصلی</th><th>ویژه</th><th>درصد تخفیف</th><th>قیمت نهایی</th><th>عملیات</th></tr></thead><tbody id="specialRows"></tbody></table></div></div>
+ </section>
+ <section class="section" id="page-categories">
+ <div class="pagehead"><div><h1>دسته‌بندی‌های پوشاک زنانه</h1><p>دسته‌بندی‌ها را اضافه، ویرایش یا حذف کن؛ تغییرات در فروشگاه هم نمایش داده می‌شوند.</p></div></div>
+ <div class="panel"><div class="panelhead"><div><h2 id="categoryFormTitle">افزودن دسته‌بندی جدید</h2><p>نام، توضیح و تصویر اختصاصی دسته‌بندی را وارد کن.</p></div></div>
+ <form id="categoryForm" class="formgrid">
+ <input type="hidden" id="categoryEditName">
+ <div class="field"><label for="categoryName">نام دسته‌بندی</label><input id="categoryName" maxlength="60" required placeholder="مثلاً مانتو و رویه"></div>
+ <div class="field full"><label for="categoryDesc">توضیح کوتاه</label><input id="categoryDesc" maxlength="120" placeholder="توضیحی که در فروشگاه نمایش داده می‌شود"></div>
+ <div class="field full"><label for="categoryImageFile">عکس دسته‌بندی (JPG / PNG / WEBP)</label><input id="categoryImageFile" type="file" accept="image/jpeg,image/png,image/webp"><small>عکس به‌صورت خودکار اندازه‌اش تنظیم می‌شود و در همین مرورگر ذخیره می‌شود.</small><img id="categoryImagePreview" alt="پیش‌نمایش عکس دسته‌بندی" style="display:none;width:100%;max-width:260px;height:150px;object-fit:cover;border-radius:12px;margin-top:10px"></div>
+ <div class="field full actions"><button class="btn" id="saveCategory" type="submit">افزودن دسته‌بندی</button><button class="btn ghost" type="button" onclick="resetCategoryForm()">پاک کردن فرم</button></div>
+ </form>
+ </div>
+ <div class="panel"><div class="panelhead"><h2>فهرست دسته‌بندی‌ها</h2><span class="pill" id="categoryTotal">۰ دسته</span></div><div class="categorylist" id="categoryList"></div></div>
+ </section>
+ <section class="section" id="page-orders">
+ <div class="pagehead"><div><h1>سفارش‌ها</h1><p>نمایش سفارش‌هایی که در این مرورگر ذخیره شده باشند.</p></div></div>
+ <div class="notice">در نسخه فعلی فروشگاه، فرایند ثبت سفارش و پرداخت به بک‌اند وصل نیست؛ بنابراین این قسمت تا زمان راه‌اندازی بک‌اند می‌تواند خالی باشد.</div>
+ <div class="panel"><div class="panelhead"><h2>فهرست سفارش‌ها</h2></div><div class="tablewrap"><table><thead><tr><th>شماره</th><th>مشتری</th><th>مبلغ</th><th>وضعیت</th></tr></thead><tbody id="orderRows"></tbody></table></div></div>
+ </section>
+ <section class="section" id="page-customers">
+ <div class="pagehead"><div><h1>مدیریت مشتریان</h1><p>مشاهده مشخصات ثبت‌نام، اطلاعات تماس و نشانی مشتریان این مرورگر</p></div><div class="actions"><button class="btn soft" onclick="exportCustomers()">خروجی CSV</button><button class="btn ghost" onclick="renderCustomers()">به‌روزرسانی</button></div></div>
+ <div class="stats customer-stats">
+ <div class="stat"><div class="stathead">کل حساب‌ها</div><strong id="customerCount">۰</strong><em>حساب‌های آزمایشی قابل مشاهده</em></div>
+ <div class="stat"><div class="stathead">مشتریان</div><strong id="customerRegularCount">۰</strong><em>حساب‌های عادی</em></div>
+ <div class="stat"><div class="stathead">حساب مالک</div><strong id="customerOwnerCount">۰</strong><em>حساب مالک فروشگاه</em></div>
+ <div class="stat"><div class="stathead">دارای نشانی</div><strong id="customerAddressCount">۰</strong><em>ثبت نشانی در فرم ثبت‌نام</em></div>
+ </div>
+ <div class="notice">حریم خصوصی: این فهرست فقط اطلاعات حساب‌های آزمایشی موجود در همین تب مرورگر را نشان می‌دهد. رمز عبور نمایش داده یا در خروجی گرفته نمی‌شود. برای دیدن حساب‌های همه مشتریان از دستگاه‌های مختلف، باید بک‌اند و پایگاه داده مشترک راه‌اندازی شود.</div>
+ <div class="panel">
+ <div class="toolbar"><input class="control searchbox" id="customerSearch" placeholder="جست‌وجو با نام، موبایل یا کد پستی..." oninput="renderCustomers()"><select class="control" id="customerRoleFilter" onchange="renderCustomers()"><option value="">همه نقش‌ها</option><option value="user">مشتری</option><option value="owner">مالک</option></select></div>
+ <div class="tablewrap"><table><thead><tr><th>مشتری</th><th>موبایل</th><th>کد پستی</th><th>نشانی</th><th>تاریخ عضویت</th><th>نقش</th><th>عملیات</th></tr></thead><tbody id="customerRows"></tbody></table></div>
+ </div>
+ <div class="panel hidden" id="customerDetail"><div class="panelhead"><div><h2>جزئیات کامل مشتری</h2><p id="customerDetailSubtitle">اطلاعات ثبت‌نام</p></div><button class="btn ghost small" onclick="closeCustomerDetail()">بستن ×</button></div><div class="customer-detail-grid" id="customerDetailGrid"></div><div class="customer-map-link" id="customerMapLink"></div></div>
+ </section>
+ <section class="section" id="page-reports">
+ <div class="pagehead"><div><h1>گزارش‌ها</h1><p>گزارش آماری کاتالوگ فعلی فروشگاه</p></div><button class="btn soft" onclick="exportProducts()">دریافت گزارش CSV</button></div>
+ <div class="stats"><div class="stat"><div class="stathead">تعداد محصولات</div><strong id="reportCount">۰</strong></div><div class="stat"><div class="stathead">میانگین قیمت</div><strong id="reportAverage">۰</strong></div><div class="stat"><div class="stathead">گران‌ترین محصول</div><strong id="reportMax" style="font-size:14px">—</strong></div><div class="stat"><div class="stathead">ارزان‌ترین محصول</div><strong id="reportMin" style="font-size:14px">—</strong></div></div>
+ <div class="panel"><div class="panelhead"><h2>توزیع محصولات بر اساس دسته</h2></div><div class="bars" id="reportBars"></div></div>
+ </section>
+ <section class="section" id="page-owner">
+ <div class="pagehead"><div><h1>ویرایش ظاهر سایت</h1><p>متن‌ها و تصویر پیش‌فرض صفحه اصلی را تغییر بده.</p></div></div>
+ <div class="notice">نسخه فعلی فقط روی همین مرورگر ذخیره می‌کند و قفل مالکیت امن ندارد؛ هر بازدیدکننده‌ای که به این صفحه برسد می‌تواند ابزار محلی را ببیند. برای محافظت واقعی از مالک، باید پس از خرید هاست، ورود و سطح دسترسی OWNER در بک‌اند فعال شود.</div>
+ <div class="panel"><div class="panelhead"><div><h2>متن‌های پیش‌فرض فروشگاه</h2><p>تغییرات پس از ذخیره در صفحه اصلی همین مرورگر نمایش داده می‌شوند.</p></div></div>
+ <form id="siteForm" class="formgrid">
+ <div class="field"><label for="sBrand">نام فروشگاه</label><input id="sBrand" maxlength="60" required></div>
+ <div class="field"><label for="sSubtitle">متن زیر نام فروشگاه</label><input id="sSubtitle" maxlength="90"></div>
+ <div class="field full"><label for="sTopline">نوار پیام بالای سایت</label><input id="sTopline" maxlength="140"></div>
+ <div class="field"><label for="sEyebrow">متن کوتاه بالای عنوان اصلی</label><input id="sEyebrow" maxlength="90"></div>
+ <div class="field"><label for="sHeroTitle">عنوان اصلی صفحه (متن ساده)</label><input id="sHeroTitle" maxlength="120"></div>
+ <div class="field full"><label for="sHeroText">توضیح صفحه اصلی</label><textarea id="sHeroText" maxlength="400"></textarea></div>
+ <div class="field"><label for="sBannerTitle">عنوان بنر پایین صفحه</label><input id="sBannerTitle" maxlength="100"></div>
+ <div class="field"><label for="sBannerText">توضیح بنر پایین صفحه</label><input id="sBannerText" maxlength="180"></div>
+ <div class="field full"><label for="sAbout">متن درباره فروشگاه</label><textarea id="sAbout" maxlength="500"></textarea></div>
+ <div class="field full"><label for="sContact">اطلاعات تماس</label><input id="sContact" maxlength="180"></div>
+ <div class="field full"><label>تصویر اصلی صفحه</label><div class="upload"><img class="preview" id="siteImagePreview" alt="پیش‌نمایش تصویر اصلی"><div style="min-width:220px;flex:1"><input id="siteImage" type="file" accept="image/png,image/jpeg,image/webp"><div class="muted" style="font-size:10px;line-height:1.9;margin:7px 0 12px">تصویر با هر اندازه‌ای انتخاب کنی، خودکار متناسب با کادر صفحه تنظیم می‌شود.</div><label for="sHeroFit">نحوه نمایش عکس در سایت</label><select id="sHeroFit"><option value="cover">پر کردن کامل کادر (ممکن است لبه‌ها کمی برش بخورند)</option><option value="contain">نمایش کامل عکس (بدون برش)</option></select></div></div></div>
+ <div class="field full actions"><button class="btn" type="submit">ذخیره تغییرات ظاهر سایت</button><button class="btn ghost" type="button" onclick="resetSiteContent()">بازگردانی متن‌های پیش‌فرض</button></div>
+ </form>
+ </div>
+ <div class="panel"><div class="panelhead"><div><h2>ویرایش تصاویر محصولات</h2><p>برای تغییر عکس هر محصول، از بخش محصولات گزینه ویرایش را بزن و عکس جدید بارگذاری کن.</p></div><button class="btn soft" onclick="go('products')">رفتن به محصولات</button></div></div>
+ </section>
+ <section class="section" id="page-settings">
+ <div class="pagehead"><div><h1>تنظیمات فروشگاه</h1><p>تنظیمات پایه این نسخه آزمایشی</p></div></div>
+ <div class="panel"><div class="panelhead"><h2>اطلاعات فروشگاه</h2></div><div class="formgrid"><div class="field"><label>نام فروشگاه</label><input class="control" value="نارا کالکشن" readonly></div><div class="field"><label>گروه محصولات</label><input class="control" value="پوشاک زنانه" readonly></div><div class="field"><label>واحد قیمت</label><input class="control" value="تومان" readonly></div><div class="field"><label>روش ذخیره‌سازی</label><input class="control" value="LocalStorage مرورگر" readonly></div></div></div>
+ <div class="panel"><div class="panelhead"><h2>پشتیبان‌گیری از محصولات</h2></div><p class="muted" style="font-size:11px;line-height:2">می‌توانی فهرست محصولات را به صورت فایل JSON دریافت کنی. این فایل جایگزین بک‌آپ پایگاه داده سرور نیست.</p><div class="actions"><button class="btn" onclick="backupProducts()">دانلود پشتیبان محصولات</button><button class="btn danger" onclick="resetProducts()">بازگردانی محصولات نمونه</button></div></div>
+ </section>
+ <section class="section" id="page-fees">
+ <div class="pagehead"><div><h1>هزینه‌های اضافه سفارش</h1><p>هزینه‌هایی مثل بسته‌بندی، ارسال یا خدمات را تعریف کن؛ این مبلغ به سفارش‌های جدید اضافه می‌شود.</p></div></div>
+ <div class="notice">هزینه‌هایی که اینجا ثبت می‌کنی در سبد خرید مشتری نمایش داده می‌شوند و مبلغ نهایی سفارش را تغییر می‌دهند. برای هر هزینه یک عنوان و مبلغ به تومان وارد کن.</div>
+ <div class="panel">
+ <div class="panelhead"><div><h2>افزودن هزینه جدید</h2><p>برای مثال: ارسال، بسته‌بندی یا خدمات</p></div></div>
+ <form id="extraCostForm" class="formgrid">
+ <div class="field"><label for="extraCostTitle">عنوان هزینه</label><input id="extraCostTitle" maxlength="60" required placeholder="مثلاً هزینه بسته‌بندی"></div>
+ <div class="field"><label for="extraCostAmount">مبلغ (تومان)</label><input id="extraCostAmount" type="text" required inputmode="numeric" autocomplete="off" placeholder="مثلاً ۵۰۰۰۰"></div>
+ <div class="field full actions"><button class="btn" type="submit">＋ ثبت هزینه</button></div>
+ </form>
+ </div>
+ <div class="panel">
+ <div class="panelhead"><div><h2>فهرست هزینه‌های ثبت‌شده</h2><p>حذف هر هزینه فقط روی سفارش‌های جدید اثر می‌گذارد؛ هزینه سفارش‌های قبلی ثابت می‌ماند.</p></div><span class="pill" id="extraCostCount">۰ هزینه</span></div>
+ <div class="tablewrap"><table><thead><tr><th>عنوان هزینه</th><th>مبلغ</th><th>وضعیت نمایش در پرداخت</th><th>عملیات</th></tr></thead><tbody id="extraCostRows"></tbody></table></div>
+ <p class="muted" style="font-size:10px;line-height:1.9;margin-bottom:0">توجه: اطلاعات این نسخه در حافظه همین مرورگر ذخیره می‌شود و بین دستگاه‌ها همگام نیست.</p>
+ </div>
+ </section>
  </div>
 </main></div>
 <div class="toast" id="toast"></div>
 <script>
 const DEFAULT_CATEGORIES=[
-  {
-    "name": "ست تیشرت و شلوار راحتی",
-    "desc": "ست‌های نرم و راحت برای خانه و استفاده روزانه",
-    "image": "https://images.unsplash.com/photo-1551163943-3f6a855d1153?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    "name": "ست بلوز و شلوار خانگی",
-    "desc": "ست‌های خانگی سبک و کاربردی",
-    "image": "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    "name": "تیشرت و تاپ",
-    "desc": "تیشرت‌های آزاد، لانگ و تاپ‌های راحت",
-    "image": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    "name": "شلوار راحتی",
-    "desc": "شلوارهای نخی، اسلش و آزاد",
-    "image": "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    "name": "لباس خواب و خانگی",
-    "desc": "لباس خواب و لباس‌های نرم برای استراحت",
-    "image": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    "name": "هودی و دورس",
-    "desc": "لباس‌های گرم و راحت برای روزهای خنک",
-    "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    "name": "روبدوشامبر و لباس نخی",
-    "desc": "روبدوشامبر و لباس‌های سبک و لطیف",
-    "image": "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=900&q=85"
-  }
+ {
+ "name": "ست تیشرت و شلوار راحتی",
+ "desc": "ست‌های نرم و راحت برای خانه و استفاده روزانه",
+ "image": "https://images.unsplash.com/photo-1551163943-3f6a855d1153?auto=format&fit=crop&w=900&q=85"
+ },
+ {
+ "name": "ست بلوز و شلوار خانگی",
+ "desc": "ست‌های خانگی سبک و کاربردی",
+ "image": "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=900&q=85"
+ },
+ {
+ "name": "تیشرت و تاپ",
+ "desc": "تیشرت‌های آزاد، لانگ و تاپ‌های راحت",
+ "image": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=900&q=85"
+ },
+ {
+ "name": "شلوار راحتی",
+ "desc": "شلوارهای نخی، اسلش و آزاد",
+ "image": "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=85"
+ },
+ {
+ "name": "لباس خواب و خانگی",
+ "desc": "لباس خواب و لباس‌های نرم برای استراحت",
+ "image": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=900&q=85"
+ },
+ {
+ "name": "هودی و دورس",
+ "desc": "لباس‌های گرم و راحت برای روزهای خنک",
+ "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=85"
+ },
+ {
+ "name": "روبدوشامبر و لباس نخی",
+ "desc": "روبدوشامبر و لباس‌های سبک و لطیف",
+ "image": "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=900&q=85"
+ }
 ];
 let categories=loadCategories();
 function loadCategories(){try{const saved=JSON.parse(localStorage.getItem("senobar-categories"));if(localStorage.getItem("senobar-category-version")==="4"&&Array.isArray(saved)&&saved.length&&saved.some(c=>DEFAULT_CATEGORIES.some(d=>d.name===c.name)))return saved}catch(e){}localStorage.setItem("senobar-category-version","4");localStorage.setItem("senobar-categories",JSON.stringify(DEFAULT_CATEGORIES));return DEFAULT_CATEGORIES.map(c=>({...c}))}
 function saveCategories(){localStorage.setItem("senobar-categories",JSON.stringify(categories));fillCategorySelects();renderAll()}
 const sample=[
-  {
-    "id": 1,
-    "name": "ست تیشرت و شلوار راحتی",
-    "category": "پوشاک زنانه",
-    "subcategory": "ست تیشرت و شلوار راحتی",
-    "cat": "ست تیشرت و شلوار راحتی",
-    "price": 0,
-    "stock": 0,
-    "tag": "پرفروش",
-    "img": "https://images.unsplash.com/photo-1551163943-3f6a855d1153?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    "id": 2,
-    "name": "ست بلوز و شلوار خانگی",
-    "category": "پوشاک زنانه",
-    "subcategory": "ست بلوز و شلوار خانگی",
-    "cat": "ست بلوز و شلوار خانگی",
-    "price": 0,
-    "stock": 0,
-    "tag": "جدید",
-    "img": "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    "id": 3,
-    "name": "تیشرت لانگ زنانه",
-    "category": "پوشاک زنانه",
-    "subcategory": "تیشرت و تاپ",
-    "cat": "تیشرت و تاپ",
-    "price": 0,
-    "stock": 0,
-    "tag": "محبوب",
-    "img": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    "id": 4,
-    "name": "شلوار راحتی نخی",
-    "category": "پوشاک زنانه",
-    "subcategory": "شلوار راحتی",
-    "cat": "شلوار راحتی",
-    "price": 0,
-    "stock": 0,
-    "tag": "راحت و سبک",
-    "img": "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    "id": 5,
-    "name": "ست لباس خواب نخی",
-    "category": "پوشاک زنانه",
-    "subcategory": "لباس خواب و خانگی",
-    "cat": "لباس خواب و خانگی",
-    "price": 0,
-    "stock": 0,
-    "tag": "لطیف و خنک",
-    "img": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    "id": 6,
-    "name": "هودی دورس زنانه",
-    "category": "پوشاک زنانه",
-    "subcategory": "هودی و دورس",
-    "cat": "هودی و دورس",
-    "price": 0,
-    "stock": 0,
-    "tag": "مناسب روزهای خنک",
-    "img": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    "id": 7,
-    "name": "روبدوشامبر نخی",
-    "category": "پوشاک زنانه",
-    "subcategory": "روبدوشامبر و لباس نخی",
-    "cat": "روبدوشامبر و لباس نخی",
-    "price": 0,
-    "stock": 0,
-    "tag": "جدید",
-    "img": "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=900&q=85"
-  }
+ {
+ "id": 1,
+ "name": "ست تیشرت و شلوار راحتی",
+ "category": "پوشاک زنانه",
+ "subcategory": "ست تیشرت و شلوار راحتی",
+ "cat": "ست تیشرت و شلوار راحتی",
+ "price": 0,
+ "stock": 0,
+ "tag": "پرفروش",
+ "img": "https://images.unsplash.com/photo-1551163943-3f6a855d1153?auto=format&fit=crop&w=900&q=85"
+ },
+ {
+ "id": 2,
+ "name": "ست بلوز و شلوار خانگی",
+ "category": "پوشاک زنانه",
+ "subcategory": "ست بلوز و شلوار خانگی",
+ "cat": "ست بلوز و شلوار خانگی",
+ "price": 0,
+ "stock": 0,
+ "tag": "جدید",
+ "img": "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=900&q=85"
+ },
+ {
+ "id": 3,
+ "name": "تیشرت لانگ زنانه",
+ "category": "پوشاک زنانه",
+ "subcategory": "تیشرت و تاپ",
+ "cat": "تیشرت و تاپ",
+ "price": 0,
+ "stock": 0,
+ "tag": "محبوب",
+ "img": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=900&q=85"
+ },
+ {
+ "id": 4,
+ "name": "شلوار راحتی نخی",
+ "category": "پوشاک زنانه",
+ "subcategory": "شلوار راحتی",
+ "cat": "شلوار راحتی",
+ "price": 0,
+ "stock": 0,
+ "tag": "راحت و سبک",
+ "img": "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=85"
+ },
+ {
+ "id": 5,
+ "name": "ست لباس خواب نخی",
+ "category": "پوشاک زنانه",
+ "subcategory": "لباس خواب و خانگی",
+ "cat": "لباس خواب و خانگی",
+ "price": 0,
+ "stock": 0,
+ "tag": "لطیف و خنک",
+ "img": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=900&q=85"
+ },
+ {
+ "id": 6,
+ "name": "هودی دورس زنانه",
+ "category": "پوشاک زنانه",
+ "subcategory": "هودی و دورس",
+ "cat": "هودی و دورس",
+ "price": 0,
+ "stock": 0,
+ "tag": "مناسب روزهای خنک",
+ "img": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=85"
+ },
+ {
+ "id": 7,
+ "name": "روبدوشامبر نخی",
+ "category": "پوشاک زنانه",
+ "subcategory": "روبدوشامبر و لباس نخی",
+ "cat": "روبدوشامبر و لباس نخی",
+ "price": 0,
+ "stock": 0,
+ "tag": "جدید",
+ "img": "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=900&q=85"
+ }
 ]
 const KEY="senobar-products";
 const money=n=>new Intl.NumberFormat("fa-IR").format(Number(n)||0)+" تومان";
@@ -349,16 +349,16 @@ function customerName(u){return [u.firstName,u.lastName].filter(Boolean).join(" 
 function renderCustomers(){
  const q=($("customerSearch")?.value||"").trim().toLowerCase(),role=$("customerRoleFilter")?.value||"";
  const all=getDemoCustomers(),list=all.filter(u=>{
-  const r=u.role||"user",hay=[customerName(u),u.phone,u.postalCode,u.address].join(" ").toLowerCase();
-  return (!role||r===role)&&(!q||hay.includes(q));
+ const r=u.role||"user",hay=[customerName(u),u.phone,u.postalCode,u.address].join(" ").toLowerCase();
+ return (!role||r===role)&&(!q||hay.includes(q));
  });
  $("customerCount").textContent=num(all.length);
  $("customerRegularCount").textContent=num(all.filter(u=>(u.role||"user")==="user").length);
  $("customerOwnerCount").textContent=num(all.filter(u=>u.role==="owner").length);
  $("customerAddressCount").textContent=num(all.filter(u=>u.address).length);
  $("customerRows").innerHTML=list.length?list.map(u=>{
-  const key=all.indexOf(u),date=u.createdAt?new Date(u.createdAt).toLocaleDateString("fa-IR"):"—";
-  return '<tr><td><b>'+escapeHTML(customerName(u))+'</b></td><td>'+escapeHTML(u.phone||"—")+'</td><td>'+escapeHTML(u.postalCode||"—")+'</td><td title="'+escapeHTML(u.address||"")+'">'+escapeHTML((u.address||"ثبت نشده").slice(0,48))+'</td><td>'+date+'</td><td><span class="pill">'+(u.role==="owner"?"مالک":"مشتری")+'</span></td><td><button class="btn soft small" onclick="showCustomerDetail('+key+')">جزئیات</button> <button class="btn danger small" onclick="deleteDemoCustomer('+key+')">حذف آزمایشی</button></td></tr>';
+ const key=all.indexOf(u),date=u.createdAt?new Date(u.createdAt).toLocaleDateString("fa-IR"):"—";
+ return '<tr><td><b>'+escapeHTML(customerName(u))+'</b></td><td>'+escapeHTML(u.phone||"—")+'</td><td>'+escapeHTML(u.postalCode||"—")+'</td><td title="'+escapeHTML(u.address||"")+'">'+escapeHTML((u.address||"ثبت نشده").slice(0,48))+'</td><td>'+date+'</td><td><span class="pill">'+(u.role==="owner"?"مالک":"مشتری")+'</span></td><td><button class="btn soft small" onclick="showCustomerDetail('+key+')">جزئیات</button> <button class="btn danger small" onclick="deleteDemoCustomer('+key+')">حذف آزمایشی</button></td></tr>';
  }).join(""):'<tr><td colspan="7" class="empty">مشتری مطابق جست‌وجو پیدا نشد؛ یا حساب آزمایشی دیگری در این تب ثبت نشده است.</td></tr>';
 }
 function showCustomerDetail(index){
@@ -366,7 +366,7 @@ function showCustomerDetail(index){
  const fields=[["نام",customerName(u)],["شماره موبایل",u.phone],["کد پستی",u.postalCode],["نشانی کامل",u.address],["عرض جغرافیایی",u.latitude],["طول جغرافیایی",u.longitude],["تاریخ عضویت",u.createdAt?new Date(u.createdAt).toLocaleString("fa-IR"):"—"],["نقش",u.role==="owner"?"مالک":"مشتری"]];
  $("customerDetailSubtitle").textContent=customerName(u)+" · "+(u.phone||"بدون شماره");
  $("customerDetailGrid").innerHTML=fields.map(([k,v])=>'<div class="customer-detail-item"><small>'+escapeHTML(k)+'</small><b>'+escapeHTML(v||"ثبت نشده")+'</b></div>').join("");
- $("customerMapLink").innerHTML=u.latitude&&u.longitude?'<a target="_blank" rel="noopener" href="https://www.openstreetmap.org/?mlat='+encodeURIComponent(u.latitude)+'&mlon='+encodeURIComponent(u.longitude)+'#map=17/'+encodeURIComponent(u.latitude)+'/'+encodeURIComponent(u.longitude)+'">مشاهده نشانی روی نقشه ↗</a>':"برای این حساب مختصات نقشه ثبت نشده است.";
+ $("customerMapLink").innerHTML=u.latitude&&u.longitude?'<a target="_blank" rel="noopener" href="https://www.openstreetmap.org/?mlat='+encodeURIComponent(u.latitude)+'&mlon='+encodeURIComponent(u.longitude)+'#map=17/'+encodeURIComponent(u.latitude)+'/'+encodeURIComponent(u.longitude)+'">مشاهده نشانی روی نقشه </a>':"برای این حساب مختصات نقشه ثبت نشده است.";
  $("customerDetail").classList.remove("hidden");$("customerDetail").scrollIntoView({behavior:"smooth",block:"center"});
 }
 function closeCustomerDetail(){$("customerDetail").classList.add("hidden")}
