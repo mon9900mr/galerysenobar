@@ -1,17 +1,17 @@
 (()=>{
- const themeKey='senobar-theme';
+ const themeKey='nara-theme';
  const body=document.body;
  const saved=localStorage.getItem(themeKey)||'light';
- body.classList.toggle('senobar-dark',saved==='dark');
+ body.classList.toggle('nara-dark',saved==='dark');
  const toggle=document.createElement('button');
  toggle.type='button';
- toggle.className='senobar-theme-toggle';
+ toggle.className='nara-theme-toggle';
  toggle.setAttribute('aria-label','تغییر حالت روشن و تاریک');
  toggle.setAttribute('title','تغییر حالت روشن و تاریک');
- function updateLabel(){toggle.textContent=body.classList.contains('senobar-dark')?'حالت روز':'حالت شب';}
+ function updateLabel(){toggle.textContent=body.classList.contains('nara-dark')?'حالت روز':'حالت شب';}
  toggle.addEventListener('click',()=>{
- const dark=!body.classList.contains('senobar-dark');
- body.classList.toggle('senobar-dark',dark);
+ const dark=!body.classList.contains('nara-dark');
+ body.classList.toggle('nara-dark',dark);
  localStorage.setItem(themeKey,dark?'dark':'light');
  updateLabel();
  });
