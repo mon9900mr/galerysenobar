@@ -43,7 +43,7 @@ let marker=null,selectedAddress='';
 function setStatus(msg,type=''){status.textContent=msg;status.className='status '+type}
 function digits(s){return String(s||'').replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d))}
 function normalizePhone(s){let n=digits(s).replace(/\D/g,'');if(n.startsWith('0098'))n='0'+n.slice(4);else if(n.startsWith('98')&&n.length===12)n='0'+n.slice(2);return n}
-function isOwnerPhone(s){return normalizePhone(s)==='09991733170'}
+
 function showAddress(text,extra=''){
  const box=$('addressResult');
  box.replaceChildren();
