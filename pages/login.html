@@ -152,16 +152,16 @@ function setMode(login){
 $('modeToggle').addEventListener('click',()=>setMode(!loginMode));
 $('signup').addEventListener('submit',async e=>{
  e.preventDefault();const phone=normalizePhone($('phone').value),password=$('password').value;
- if(!/^09\\d{9}$/.test(phone)){setStatus('شماره موبایل باید با 09 شروع شود و ۱۱ رقم باشد.','error');return}
+ if(!/^09\d{9}$/.test(phone)){setStatus('شماره موبایل باید با 09 شروع شود و ۱۱ رقم باشد.','error');return}
  if(password.length<10){setStatus('رمز عبور باید حداقل ۱۰ کاراکتر باشد.','error');return}
  const button=$('submitButton');button.disabled=true;setStatus('در حال ارتباط امن با سرور فروشگاه...');
  try{
   await NaraAPI.initialize();let result;
   if(loginMode){result=await NaraAPI.login({phone,password})}
   else{
-   const firstName=$('firstName').value.trim(),lastName=$('lastName').value.trim(),postal=digits($('postalCode').value).replace(/\\D/g,'');
+   const firstName=$('firstName').value.trim(),lastName=$('lastName').value.trim(),postal=digits($('postalCode').value).replace(/\D/g,'');
    if(!firstName||!lastName)throw new Error('نام و نام خانوادگی را کامل وارد کن.');
-   if(!/^\\d{10}$/.test(postal))throw new Error('کد پستی باید ۱۰ رقم باشد.');
+   if(!/^\d{10}$/.test(postal))throw new Error('کد پستی باید ۱۰ رقم باشد.');
    if(!$('latitude').value||!$('address').value)throw new Error('لطفاً نشانی را روی نقشه انتخاب کن.');
    result=await NaraAPI.register({firstName,lastName,phone,password,postalCode:postal,address:$('address').value,latitude:$('latitude').value,longitude:$('longitude').value});
   }
