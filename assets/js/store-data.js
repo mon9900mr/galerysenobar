@@ -1,5 +1,5 @@
 /* NARA COLLECTION — لباس راحتی و خانگی زنانه */
-window.SENOBAR_DEFAULT_PRODUCTS=[
+window.NARA_DEFAULT_PRODUCTS=[
  {
  "id": 1,
  "name": "ست تیشرت و شلوار راحتی",
@@ -71,7 +71,7 @@ window.SENOBAR_DEFAULT_PRODUCTS=[
  "img": "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=900&q=85"
  }
 ];
-window.SENOBAR_CATEGORIES=[
+window.NARA_CATEGORIES=[
  {
  "name": "ست تیشرت و شلوار راحتی",
  "desc": "ست‌های نرم و راحت برای خانه و استفاده روزانه",
@@ -108,10 +108,10 @@ window.SENOBAR_CATEGORIES=[
  "image": "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=900&q=85"
  }
 ];
-window.senobarProducts=function(){try{if(localStorage.getItem("senobar-catalog-version")!=="4"){localStorage.setItem("senobar-products",JSON.stringify(window.SENOBAR_DEFAULT_PRODUCTS));localStorage.setItem("senobar-catalog-version","4")}const v=JSON.parse(localStorage.getItem("senobar-products"));return Array.isArray(v)&&v.length?v:window.SENOBAR_DEFAULT_PRODUCTS}catch(e){return window.SENOBAR_DEFAULT_PRODUCTS}};
-window.senobarContent=function(){const base={brand:"NARA COLLECTION | نارا کالکشن",subtitle:"راحتی، سادگی، حال خوب",topline:"کالکشن تازه لباس‌های راحتی و خانگی رسید",heroEyebrow:"NARA COLLECTION · HOMEWEAR",heroTitle:"راحتیِ هر روز، با استایل نارا",heroText:"از ست‌های راحتی و تیشرت‌های آزاد تا لباس خواب و لباس‌های نخی؛ برای لحظه‌های آرام و روزهای خودت انتخاب کن.",heroImage:"https://images.unsplash.com/photo-1551163943-3f6a855d1153?auto=format&fit=crop&w=900&q=85",heroFit:"cover",bannerTitle:"وقتشه راحت‌تر انتخاب کنی",bannerText:"مدل‌های راحتی و خانگی نارا کالکشن را ببین و ست دلخواهت را پیدا کن.",about:"نارا کالکشن، انتخاب لباس‌های راحتی و خانگی زنانه؛ ساده، نرم و مناسب استفاده روزمره.",contact:"برای راهنمایی سایز، جنس پارچه و ثبت سفارش با پشتیبانی فروشگاه در ارتباط باش."};try{const saved=JSON.parse(localStorage.getItem("senobar-site-content"))||{};if((saved.heroText||"").includes("اسباب‌بازی")||(saved.heroText||"").includes("مجلسی")||(saved.heroText||"").includes("مانتو")){localStorage.removeItem("senobar-site-content");return base}return {...base,...saved}}catch(e){return base}};
-window.senobarCategories=function(){try{const saved=JSON.parse(localStorage.getItem("senobar-categories"));if(localStorage.getItem("senobar-category-version")==="4"&&Array.isArray(saved)&&saved.length&&saved.some(c=>window.SENOBAR_CATEGORIES.some(d=>d.name===c.name)))return saved}catch(e){}localStorage.setItem("senobar-category-version","4");localStorage.setItem("senobar-categories",JSON.stringify(window.SENOBAR_CATEGORIES));return window.SENOBAR_CATEGORIES};
+window.naraProducts=function(){try{if(localStorage.getItem("nara-catalog-version")!=="4"){localStorage.setItem("nara-products",JSON.stringify(window.NARA_DEFAULT_PRODUCTS));localStorage.setItem("nara-catalog-version","4")}const v=JSON.parse(localStorage.getItem("nara-products"));return Array.isArray(v)&&v.length?v:window.NARA_DEFAULT_PRODUCTS}catch(e){return window.NARA_DEFAULT_PRODUCTS}};
+window.naraContent=function(){const base={brand:"NARA COLLECTION | نارا کالکشن",subtitle:"راحتی، سادگی، حال خوب",topline:"کالکشن تازه لباس‌های راحتی و خانگی رسید",heroEyebrow:"NARA COLLECTION · HOMEWEAR",heroTitle:"راحتیِ هر روز، با استایل نارا",heroText:"از ست‌های راحتی و تیشرت‌های آزاد تا لباس خواب و لباس‌های نخی؛ برای لحظه‌های آرام و روزهای خودت انتخاب کن.",heroImage:"https://images.unsplash.com/photo-1551163943-3f6a855d1153?auto=format&fit=crop&w=900&q=85",heroFit:"cover",bannerTitle:"وقتشه راحت‌تر انتخاب کنی",bannerText:"مدل‌های راحتی و خانگی نارا کالکشن را ببین و ست دلخواهت را پیدا کن.",about:"نارا کالکشن، انتخاب لباس‌های راحتی و خانگی زنانه؛ ساده، نرم و مناسب استفاده روزمره.",contact:"برای راهنمایی سایز، جنس پارچه و ثبت سفارش با پشتیبانی فروشگاه در ارتباط باش."};try{const saved=JSON.parse(localStorage.getItem("nara-site-content"))||{};if((saved.heroText||"").includes("اسباب‌بازی")||(saved.heroText||"").includes("مجلسی")||(saved.heroText||"").includes("مانتو")){localStorage.removeItem("nara-site-content");return base}return {...base,...saved}}catch(e){return base}};
+window.naraCategories=function(){try{const saved=JSON.parse(localStorage.getItem("nara-categories"));if(localStorage.getItem("nara-category-version")==="4"&&Array.isArray(saved)&&saved.length&&saved.some(c=>window.NARA_CATEGORIES.some(d=>d.name===c.name)))return saved}catch(e){}localStorage.setItem("nara-category-version","4");localStorage.setItem("nara-categories",JSON.stringify(window.NARA_CATEGORIES));return window.NARA_CATEGORIES};
 
 // Apply the current NARA catalog migration before any storefront page reads local storage.
-window.senobarProducts();
-window.senobarCategories();
+window.naraProducts();
+window.naraCategories();
