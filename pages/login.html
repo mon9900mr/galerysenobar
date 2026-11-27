@@ -28,7 +28,7 @@ button,input{font:inherit}a{color:inherit;text-decoration:none}.wrap{width:min(9
 <div class="field full" id="mapField"><label for="addressSearch">جست‌وجوی آدرس روی نقشه</label><div class="maptools"><input id="addressSearch" placeholder="نام شهر، خیابان یا محله را بنویس..." aria-label="جست‌وجوی آدرس"><button class="btn light" type="button" id="searchAddress">جست‌وجو</button><button class="btn light" type="button" id="locate">موقعیت من</button></div><div id="map" aria-label="نقشه انتخاب نشانی"></div><p class="mapnote">روی نقشه نقطه دقیق محل را انتخاب کن یا نشانگر را جابه‌جا کن. نشانی به‌صورت خودکار از روی مختصات دریافت می‌شود.</p><div class="address" id="addressResult" role="status" aria-live="polite"><strong>نشانی دقیق انتخاب‌شده</strong><span>هنوز مکانی انتخاب نشده است. برای انتخاب، روی نقشه کلیک کن یا نشانی را جست‌وجو کن.</span></div><label for="addressManual" class="mapnote" style="display:block;margin-top:10px">نشانی کامل (در صورت ناقص بودن، اینجا اصلاحش کن)</label><textarea id="addressManual" class="address-edit" dir="rtl" lang="fa" placeholder="استان، شهر، محله، خیابان، کوچه، پلاک و واحد را وارد کن..."></textarea><div class="search-results" id="searchResults"></div><input type="hidden" id="latitude" name="latitude"><input type="hidden" id="longitude" name="longitude"><input type="hidden" id="address" name="address"></div>
 </div>
 <div class="notice" id="temporaryNotice"><b>حساب کاربری</b><br>اطلاعات حساب کاربری در همین مرورگر ذخیره می‌شود؛ هنوز تأیید پیامکی و امنیت سمت سرور فعال نیست. پیامک ارسال نمی‌شود؛ از رمز قوی و اختصاصی استفاده کن.</div>
-<div class="submitrow"><button class="btn" id="submitButton" type="submit">ساخت حساب کاربری</button><span class="status" id="status" aria-live="polite">حساب کاربری فقط در همین تب فعال است.</span></div>
+<div class="submitrow"><button class="btn" id="submitButton" type="submit">ساخت حساب کاربری</button><span class="status" id="status" aria-live="polite">حساب کاربری از طریق سرور فروشگاه مدیریت می‌شود.</span></div>
 </form>
 <div class="footer"><a href="../index.html">بازگشت به فروشگاه</a></div>
 </section></main>
@@ -145,7 +145,7 @@ function setMode(login){
  $('modeToggle').textContent=login?'حساب جدید می‌خواهم؛ ثبت‌نام':'قبلاً حساب ساخته‌ام؛ ورود';
  $('modeHint').textContent=login?'حالت ورود امن':'حالت ثبت‌نام';
  $('submitButton').textContent=login?'ورود به حساب':'ساخت حساب کاربری';
- $('temporaryNotice').innerHTML=login?'<b>ورود آزمایشی</b><br>شماره موبایل و رمز حسابی را وارد کن که قبلاً در همین مرورگر ساخته‌ای.':'<b>حساب کاربری و آزمایشی</b><br>اطلاعات حساب فقط در همین تب مرورگر نگهداری می‌شود و با بستن تب از بین می‌رود. پیامک ارسال نمی‌شود؛ از رمز قوی و اختصاصی استفاده کن.';
+ $('temporaryNotice').innerHTML=login?'<b>ورود آزمایشی</b><br>شماره موبایل و رمز حسابی را وارد کن که قبلاً در همین مرورگر ساخته‌ای.':'<b>ثبت‌نام در نارا کالکشن</b><br>حساب در پایگاه داده هاست ذخیره می‌شود. تأیید پیامکی هنوز راه‌اندازی نشده است؛ رمز قوی و اختصاصی انتخاب کن.';
  setStatus(login?'شماره موبایل و رمز عبور را وارد کن.':'اطلاعات حساب شما در پایگاه داده فروشگاه ثبت می‌شود.');
  if(!login)setTimeout(()=>map.invalidateSize(),80);
 }
