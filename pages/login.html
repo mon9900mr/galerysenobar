@@ -166,7 +166,7 @@ $('signup').addEventListener('submit',async e=>{
    result=await NaraAPI.register({firstName,lastName,phone,password,postalCode:postal,address:$('address').value,latitude:$('latitude').value,longitude:$('longitude').value});
   }
   const u=result.user,role=u.role==='customer'?'user':u.role;
-  sessionStorage.setItem('senobar-demo-user',JSON.stringify({...u,role}));sessionStorage.setItem('senobar-demo-role',role);
+  sessionStorage.setItem('nara-demo-user',JSON.stringify({...u,role}));sessionStorage.setItem('nara-demo-role',role);
   setStatus(loginMode?'ورود به حساب واقعی موفق بود.':'حساب کاربری در پایگاه داده ساخته شد.','ok');
   const next=new URLSearchParams(location.search).get('next');
   const allowed=['user-panel.html','owner.html','admin-panel.html'];const dest=allowed.includes(next)?next:(role==='owner'?'owner.html':role==='admin'?'admin-panel.html':'user-panel.html');
