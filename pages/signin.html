@@ -37,17 +37,20 @@ body.senobar-dark{background:#111a16;color:#e8efe9}body.senobar-dark .login-wrap
 <form id="loginForm" novalidate>
 <div class="field"><label for="phone">شماره موبایل</label><input id="phone" type="tel" inputmode="numeric" autocomplete="username" maxlength="11" placeholder="09xxxxxxxxx" required></div>
 <div class="field"><label for="password">رمز عبور</label><div class="password-wrap"><input id="password" type="password" autocomplete="current-password" placeholder="رمز عبور حساب" required><button class="show-pass" type="button" id="showPass">نمایش</button></div></div>
-<button class="submit" id="submit" type="submit">ورود به حساب</button><div class="status" id="status" role="status" aria-live="polite">اطلاعات حساب آزمایشی در همین تب مرورگر نگهداری می‌شود.</div>
+<button class="submit" id="submit" type="submit">ورود به حساب</button><div class="status" id="status" role="status" aria-live="polite">ورود امن به حساب ثبت‌شده در پایگاه داده.</div>
 </form>
 <div class="switch">هنوز حساب نساخته‌ای؟ <a href="login.html">ساخت حساب موقت</a></div>
 <a class="back" href="../index.html">بازگشت به فروشگاه</a>
 </section>
 </main>
 <script>
-(()=>{const $=id=>document.getElementById(id),status=$('status');const digits=s=>String(s||'').replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));const normalizePhone=s=>{let n=digits(s).replace(/\D/g,'');if(n.startsWith('0098'))n='0'+n.slice(4);else if(n.startsWith('98')&&n.length===12)n='0'+n.slice(2);return n};const isOwnerPhone=s=>normalizePhone(s)==='09991733170';function say(t,type=''){status.textContent=t;status.className='status '+type}
+<script src="../assets/js/api-client.js"></script>
+<script>
+(()=>{const $=id=>document.getElementById(id),status=$('status');const digits=s=>String(s||'').replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));const normalizePhone=s=>{let n=digits(s).replace(/\\D/g,'');if(n.startsWith('0098'))n='0'+n.slice(4);else if(n.startsWith('98')&&n.length===12)n='0'+n.slice(2);return n};function say(t,type=''){status.textContent=t;status.className='status '+type}
 $('showPass').addEventListener('click',()=>{const p=$('password');p.type=p.type==='password'?'text':'password';$('showPass').textContent=p.type==='password'?'نمایش':'پنهان'});
-$('loginForm').addEventListener('submit',e=>{e.preventDefault();const phone=normalizePhone($('phone').value),password=$('password').value;if(!/^09\d{9}$/.test(phone)){say('شماره موبایل باید ۱۱ رقم و با 09 شروع شود.','error');return}if(!password){say('رمز عبور را وارد کن.','error');return}let accounts=[];try{accounts=JSON.parse(localStorage.getItem('senobar-temp-accounts')||'[]');if(!Array.isArray(accounts))accounts=[]}catch{}const account=accounts.find(a=>normalizePhone(a.phone)===phone&&a.password===password);if(!account){say('حسابی با این شماره و رمز در این مرورگر پیدا نشد. اگر هنوز حساب نساخته‌ای، از گزینه ساخت حساب استفاده کن.','error');return}const role=isOwnerPhone(phone)?'owner':'user';const accountIndex=accounts.findIndex(a=>normalizePhone(a.phone)===phone);if(accountIndex>=0){accounts[accountIndex]={...accounts[accountIndex],phone,role};localStorage.setItem('senobar-temp-accounts',JSON.stringify(accounts))}const active={...account,phone,role};sessionStorage.setItem('senobar-demo-user',JSON.stringify(active));sessionStorage.setItem('senobar-demo-role',role);say(role==='owner'?'ورود مالک موفق بود؛ در حال انتقال به پنل مالک...':'ورود موفق بود؛ در حال انتقال به پنل کاربری...','ok');$('submit').disabled=true;setTimeout(()=>location.href=role==='owner'?'owner.html':'user-panel.html',550)});
+$('loginForm').addEventListener('submit',async e=>{e.preventDefault();const phone=normalizePhone($('phone').value),password=$('password').value;if(!/^09\\d{9}$/.test(phone)){say('شماره موبایل باید ۱۱ رقم و با 09 شروع شود.','error');return}if(password.length<10){say('رمز عبور حساب باید حداقل ۱۰ کاراکتر باشد.','error');return}const btn=$('submit');btn.disabled=true;say('در حال ورود امن به حساب...');try{const result=await NaraAPI.login({phone,password}),u=result.user,role=u.role==='customer'?'user':u.role;sessionStorage.setItem('senobar-demo-user',JSON.stringify({...u,role}));sessionStorage.setItem('senobar-demo-role',role);say('ورود موفق بود؛ در حال انتقال به پنل...','ok');btn.disabled=true;setTimeout(()=>location.href=role==='owner'?'owner.html':role==='admin'?'admin-panel.html':'user-panel.html',500)}catch(err){say(err.message==='invalid_credentials'?'شماره موبایل یا رمز عبور اشتباه است.':(err.message||'اتصال به سرور برقرار نشد.'),'error');btn.disabled=false}});
 })();
 </script>
+
 <script src="../assets/js/theme-toys.js"></script>
 </body></html>
