@@ -43,7 +43,6 @@ body.senobar-dark{background:#111a16;color:#e8efe9}body.senobar-dark .login-wrap
 <a class="back" href="../index.html">بازگشت به فروشگاه</a>
 </section>
 </main>
-<script>
 <script src="../assets/js/api-client.js"></script>
 <script>
 (()=>{const $=id=>document.getElementById(id),status=$('status');const digits=s=>String(s||'').replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));const normalizePhone=s=>{let n=digits(s).replace(/\\D/g,'');if(n.startsWith('0098'))n='0'+n.slice(4);else if(n.startsWith('98')&&n.length===12)n='0'+n.slice(2);return n};function say(t,type=''){status.textContent=t;status.className='status '+type}
