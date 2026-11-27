@@ -713,3 +713,33 @@ body.senobar-dark .ownerlink{background:#49313c!important;color:#f6e9ee!importan
 body.senobar-dark .tag{background:#49313c!important;color:#f6e9ee!important}
 .senobar-theme-toggle{color:#754957!important;border-color:#ead8dd!important}
 body.senobar-dark .senobar-theme-toggle{background:#49313c!important;color:#fff!important;border-color:#6b4c59!important}
+
+
+/* Nara Collection — restrained boutique finish */
+.mark,.brandmark{
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-weight:700!important;letter-spacing:-.06em;
+}
+.hero-fallback .toys{
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-size:clamp(46px,7vw,82px)!important;
+  letter-spacing:.16em!important;
+  filter:none!important;
+}
+.banner-signature{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(18px,2.5vw,30px)!important;
+  letter-spacing:.14em;
+  color:#315d48;
+  font-weight:700;
+}
+.perk>span:empty{
+  width:34px;height:34px;flex:0 0 34px;border:1px solid #c9d6c9;
+  border-radius:50%;display:grid;place-items:center;color:#315d48;
+}
+.perk:nth-child(1)>span:empty:before{content:"01"}
+.perk:nth-child(2)>span:empty:before{content:"02"}
+.perk:nth-child(3)>span:empty:before{content:"03"}
+.perk:nth-child(4)>span:empty:before{content:"04"}
+.staticon:empty:before{content:"—";font-size:16px;color:#9aab9d}
+body.senobar-dark .banner-signature{color:#c6d7c8}
