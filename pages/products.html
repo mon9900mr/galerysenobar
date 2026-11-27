@@ -103,26 +103,26 @@ main.wrap>#productList .sale-badge{position:absolute;z-index:2;top:10px;right:10
 .sb-map-status{font-size:10px;color:#6d7e71;line-height:1.8}
 .sb-map-status.error{color:#b84d43}
 .sb-checkout .sb-order-submit{margin-top:4px}
-body.senobar-dark .sb-account-required{background:#332c1d;border-color:#685331;color:#f0d8a7}
-body.senobar-dark .sb-account-required a{color:#a9d7b2}
-body.senobar-dark .sb-profile-title{color:#a9d7b2}
-body.senobar-dark .sb-profile-grid>div{background:#202e24;border-color:#405444}
-body.senobar-dark .sb-profile-grid small{color:#b6c7b9}
-body.senobar-dark .sb-profile-grid b{color:#edf5ee}
-body.senobar-dark .sb-address-toggle{background:#263b2c;border-color:#48634d;color:#d8ecdc!important}
-body.senobar-dark .sb-map-instruction,body.senobar-dark .sb-map-status{color:#c0d0c3}
-body.senobar-dark .sb-map-result{background:#202e24;border-color:#405444;color:#edf5ee}
-body.senobar-dark .sb-map-search input{background:#111a14;color:#edf5ee;border-color:#405544}
+body.nara-dark .sb-account-required{background:#332c1d;border-color:#685331;color:#f0d8a7}
+body.nara-dark .sb-account-required a{color:#a9d7b2}
+body.nara-dark .sb-profile-title{color:#a9d7b2}
+body.nara-dark .sb-profile-grid>div{background:#202e24;border-color:#405444}
+body.nara-dark .sb-profile-grid small{color:#b6c7b9}
+body.nara-dark .sb-profile-grid b{color:#edf5ee}
+body.nara-dark .sb-address-toggle{background:#263b2c;border-color:#48634d;color:#d8ecdc!important}
+body.nara-dark .sb-map-instruction,body.nara-dark .sb-map-status{color:#c0d0c3}
+body.nara-dark .sb-map-result{background:#202e24;border-color:#405444;color:#edf5ee}
+body.nara-dark .sb-map-search input{background:#111a14;color:#edf5ee;border-color:#405544}
 @media(max-width:420px){.sb-profile-grid{grid-template-columns:1fr}.sb-profile-grid .sb-profile-address{grid-column:auto}#sbAddressMap{height:190px}}
 </style><style>
 .sale-badge{position:absolute;z-index:2;top:12px;right:12px;background:#c83e35;color:#fff;padding:6px 10px;border-radius:20px;font-size:11px;font-weight:900;box-shadow:0 4px 12px #0002}
 .card{position:relative}.discount-prices{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.discount-prices del{font-size:10px;color:#8a948c}.discount-prices .price{font-size:14px;color:#bd4038}
 .special-products{margin:0 0 28px;padding:18px;border:1px solid #e2b9a7;border-radius:18px;background:linear-gradient(135deg,#fff8f1,#fff)}
 .special-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}.special-heading span{font-size:10px;color:#a15b42}.special-heading h2{font-size:20px;margin:4px 0;color:#263b2d}.special-heading>b{font-size:10px;color:#b33e35;background:#ffe7df;padding:7px 10px;border-radius:20px}
-body.senobar-dark .special-products{background:linear-gradient(135deg,#202d24,#19231d);border-color:#594237}body.senobar-dark .special-heading h2{color:#edf5ee}body.senobar-dark .special-heading>b{background:#4a2928;color:#ffd8d5}body.senobar-dark .discount-prices del{color:#b2beb4}
-</style></head><body><div class="top">نارا کالکشن · لباس راحتی و خانگی زنانه</div><header><div class="wrap nav"><a class="brand" href="../index.html">N نارا کالکشن<small>استایلی برای درخشیدن تو</small></a><nav class="navlinks"><a href="../index.html">خانه</a><a href="category.html">دسته‌بندی‌ها</a><a id="accountPanelLink" href="user-panel.html">پنل کاربری</a></nav></div></header><script>(()=>{const r=sessionStorage.getItem("senobar-demo-role"),a=document.getElementById("accountPanelLink");if(!a)return;if(r==="owner"){a.href="owner.html";a.textContent="پنل مالک"}else if(r==="admin"){a.href="admin-panel.html";a.textContent="پنل ادمین"}else if(r==="user"){a.href="user-panel.html";a.textContent="پنل کاربری"}else{a.href="login.html";a.textContent="ورود / ثبت‌نام"}})();</script><main class="wrap"><div class="head"><h1 id="pageTitle">همه لباس‌های راحتی و خانگی</h1><p>برای نمایش قیمت و موجودی واقعی، اطلاعات محصول را در پنل مالک تکمیل کن.</p></div><div class="filters" id="filters"></div><div class="grid" id="productList"></div></main><footer> نارا کالکشن · همراه استایل و انتخاب‌های خاص تو</footer><script src="../assets/js/store-data.js"></script><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script>
-const all=(()=>{try{const v=JSON.parse(localStorage.getItem("senobar-products")||"null");return (Array.isArray(v)&&v.length?v:senobarProducts()).filter(p=>(p.category||"لباس راحتی و خانگی زنانه" )==="لباس راحتی و خانگی زنانه")}catch(e){return senobarProducts()}})(),cats=senobarCategories(),params=new URLSearchParams(location.search);let selected=params.get("subcategory")||"";const q=(params.get("q")||"").toLowerCase(),$=id=>document.getElementById(id),money=n=>Number(n)>0?new Intl.NumberFormat("fa-IR").format(n)+" تومان":"قیمت پس از ثبت اطلاعات";
-const CART_KEY="senobar-cart-v1",ORDER_KEY="senobar-orders-v1";const EXTRA_COST_KEY="nara-extra-costs-v1";const readExtraCosts=()=>{try{const v=JSON.parse(localStorage.getItem(EXTRA_COST_KEY)||"[]");return Array.isArray(v)?v.filter(x=>x&&x.enabled!==false&&String(x.title||"").trim()&&Number(x.amount)>0).map(x=>({title:String(x.title).trim(),amount:Math.round(Number(x.amount))})):[]}catch(e){return[]}};const effectivePrice=p=>Math.round(Number(p.price||0)*(100-Math.max(0,Math.min(99,Number(p.discountPercent)||0)))/100);
+body.nara-dark .special-products{background:linear-gradient(135deg,#202d24,#19231d);border-color:#594237}body.nara-dark .special-heading h2{color:#edf5ee}body.nara-dark .special-heading>b{background:#4a2928;color:#ffd8d5}body.nara-dark .discount-prices del{color:#b2beb4}
+</style></head><body><div class="top">نارا کالکشن · لباس راحتی و خانگی زنانه</div><header><div class="wrap nav"><a class="brand" href="../index.html">N نارا کالکشن<small>استایلی برای درخشیدن تو</small></a><nav class="navlinks"><a href="../index.html">خانه</a><a href="category.html">دسته‌بندی‌ها</a><a id="accountPanelLink" href="user-panel.html">پنل کاربری</a></nav></div></header><script>(()=>{const r=sessionStorage.getItem("nara-demo-role"),a=document.getElementById("accountPanelLink");if(!a)return;if(r==="owner"){a.href="owner.html";a.textContent="پنل مالک"}else if(r==="admin"){a.href="admin-panel.html";a.textContent="پنل ادمین"}else if(r==="user"){a.href="user-panel.html";a.textContent="پنل کاربری"}else{a.href="login.html";a.textContent="ورود / ثبت‌نام"}})();</script><main class="wrap"><div class="head"><h1 id="pageTitle">همه لباس‌های راحتی و خانگی</h1><p>برای نمایش قیمت و موجودی واقعی، اطلاعات محصول را در پنل مالک تکمیل کن.</p></div><div class="filters" id="filters"></div><div class="grid" id="productList"></div></main><footer> نارا کالکشن · همراه استایل و انتخاب‌های خاص تو</footer><script src="../assets/js/store-data.js"></script><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script>
+const all=(()=>{try{const v=JSON.parse(localStorage.getItem("nara-products")||"null");return (Array.isArray(v)&&v.length?v:naraProducts()).filter(p=>(p.category||"لباس راحتی و خانگی زنانه" )==="لباس راحتی و خانگی زنانه")}catch(e){return naraProducts()}})(),cats=naraCategories(),params=new URLSearchParams(location.search);let selected=params.get("subcategory")||"";const q=(params.get("q")||"").toLowerCase(),$=id=>document.getElementById(id),money=n=>Number(n)>0?new Intl.NumberFormat("fa-IR").format(n)+" تومان":"قیمت پس از ثبت اطلاعات";
+const CART_KEY="nara-cart-v1",ORDER_KEY="nara-orders-v1";const EXTRA_COST_KEY="nara-extra-costs-v1";const readExtraCosts=()=>{try{const v=JSON.parse(localStorage.getItem(EXTRA_COST_KEY)||"[]");return Array.isArray(v)?v.filter(x=>x&&x.enabled!==false&&String(x.title||"").trim()&&Number(x.amount)>0).map(x=>({title:String(x.title).trim(),amount:Math.round(Number(x.amount))})):[]}catch(e){return[]}};const effectivePrice=p=>Math.round(Number(p.price||0)*(100-Math.max(0,Math.min(99,Number(p.discountPercent)||0)))/100);
 const readCart=()=>{try{return JSON.parse(localStorage.getItem(CART_KEY))||[]}catch(e){return[]}};
 const saveCart=v=>localStorage.setItem(CART_KEY,JSON.stringify(v));
 const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -140,9 +140,9 @@ const checkoutForm=drawer.querySelector("#sbCheckout");
 const accountRequired=$("sbAccountRequired"),profileBox=$("sbAccountProfile");
 const digitsOnly=v=>String(v||"").replace(/[۰-۹]/g,d=>"۰۱۲۳۴۵۶۷۸۹".indexOf(d)).replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d)).replace(/\D/g,"");
 function currentAccount(){
- let active=null;try{active=JSON.parse(sessionStorage.getItem("senobar-demo-user")||"null")}catch(_){}
+ let active=null;try{active=JSON.parse(sessionStorage.getItem("nara-demo-user")||"null")}catch(_){}
  if(!active)return null;
- let saved=null;try{const accounts=JSON.parse(sessionStorage.getItem("senobar-temp-accounts")||"[]");saved=Array.isArray(accounts)?accounts.find(x=>digitsOnly(x.phone)===digitsOnly(active.phone)):null}catch(_){}
+ let saved=null;try{const accounts=JSON.parse(sessionStorage.getItem("nara-temp-accounts")||"[]");saved=Array.isArray(accounts)?accounts.find(x=>digitsOnly(x.phone)===digitsOnly(active.phone)):null}catch(_){}
  return {...(saved||{}),...active};
 }
 function fillAccount(){
